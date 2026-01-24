@@ -1,38 +1,28 @@
+# Unified Rigidity Framework (URF Core)
 
-# urf-core
-Unified Rigidity Framework — unconditional axiomatic core (URF 0.0–0.4).
+Foundational invariant-based framework for structural limits in physical
+and computational systems.
 
-# Unified Rigidity Framework — Core Axioms (URF 0.0–0.4)
+## Overview
 
-This repository contains the unconditional axiomatic core of the Unified Rigidity Framework (URF).
+The Unified Rigidity Framework (URF) provides a general formal structure
+for analyzing constraints arising from locality, information capacity,
+entropy, and dynamical stability.
 
-The URF core formalizes universal constraints on finite-information systems based on:
-- locality of observation,
-- bounded information capacity,
-- entropy ceilings,
-- impossibility of global reconstruction from local views.
+URF is not a single result, but a unifying invariant layer that supports
+multiple concrete instantiations across mathematics, physics, and
+computer science.
 
-## Axioms (Core)
+## Core Principles
 
-URF 0.0 — Finite Realizability  
-URF 0.1 — Locality  
-URF 0.2 — Capacity  
-URF 0.3 — Entropy Non-Amplification (derived from 0.2)  
-URF 0.4 — No Global Reconstruction  
+- Finite capacity implies structural rigidity.
+- Local refinement cannot amplify global information.
+- Invariant collapse replaces algorithmic collapse.
+- Operational constraints replace model-dependent assumptions.
 
-These axioms imply information-theoretic limits on:
-- computation,
-- learning,
-- control,
-- global inference.
+## Concrete Instantiations
 
-No rigidity, graph-theoretic, or logical amplification assumptions are used.
+URF is instantiated in the following completed works:
 
-## Files
-
-- `URF-Axioms-Core.tex` — formal axiomatization in LaTeX  
-- `urf_law3.lean` — Lean mechanization skeleton of Law 3  
-- `LICENSE` — usage license  
-
-This repository is intended as a permanent foundational reference object.
-8143b37 (Add URF Core content)
+- Cycle–Local Rigidity (FO⁴):  
+  https://github.com/inaciov
