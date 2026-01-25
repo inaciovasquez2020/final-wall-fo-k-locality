@@ -25,4 +25,4 @@ computer science.
 URF is instantiated in the following completed works:
 
 - Cycle–Local Rigidity (FO⁴):  
-  https://github.com/inaciov
+https://github.com/inaciovasquez2020/cycle-local-rigidity
