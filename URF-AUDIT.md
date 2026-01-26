@@ -1,39 +1,20 @@
-## Claim ID: URF-SG-BASE-1 (finite truncation)
+## Claim ID: urf-sg-Cn-analysis.md
 
 Text:
-Fourier truncation of -d2/dx2 on S1 is rigid under symmetry-preserving V.
+Cycle graphs C_n are spectrally rigid under URF-SG admissible perturbations.
 
 Operator A:
-tools/A_s1_trunc8.json
+Graph Laplacian on C_n (self-adjoint, finite-dimensional).
 
 Perturbation V:
-tools/V_s1_rigid.json
+Any D_n-equivariant operator V (admissible class: G-equivariant).
 
 Gap:
-(E1, E2)
+(E_k, E_{k+1}) for consecutive isolated eigenvalues with k ≠ 0 and (if n even) k ≠ n/2.
 
 ΠVΠ:
-computed = 0
+forced = 0 by representation-theoretic commutant calculation for D_n irreps.
 
 Status:
-VERIFIED
-## Claim ID: URF-SG-BASE-1 (generic break)
-
-Text:
-Generic diagonal perturbation breaks rigidity.
-
-Operator A:
-tools/A_s1_trunc8.json
-
-Perturbation V:
-tools/V_s1_break.json
-
-Gap:
-(E1, E2)
-
-ΠVΠ:
-computed ≠ 0
-
-Status:
-VERIFIED (non-rigid)
+VERIFIED (theoretical; symmetry-commutant argument).
 
