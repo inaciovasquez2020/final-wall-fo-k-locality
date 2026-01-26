@@ -1,0 +1,12 @@
+{
+  "standard": "URF-SG",
+  "instance": "URF-SG-BASE-1",
+  "hilbert_space": "L2(S1)",
+  "operator": "-d2/dx2",
+  "domain": "H2(S1)",
+  "kernel_removed": "span{1}",
+  "spectral_gap": 1.0,
+  "proof_method": "Fourier diagonalization",
+  "status": "certified"
+}
+
