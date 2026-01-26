@@ -72,3 +72,6 @@
   ]
 }
 
+Reference implementation:
+tools/block_exact_check.py
+
