@@ -1,20 +1,22 @@
 ## Claim ID: urf-sg-Cn-analysis.md
 
+## Claim ID: urf-sg-torus-chords
+
 Text:
-Cycle graphs C_n are spectrally rigid under URF-SG admissible perturbations.
+Toroidal grid with chords is not spectrally rigid under URF-SG admissible perturbations.
 
 Operator A:
-Graph Laplacian on C_n (self-adjoint, finite-dimensional).
+Graph Laplacian on toroidal-chord graph.
 
 Perturbation V:
-Any D_n-equivariant operator V (admissible class: G-equivariant).
+Any translation-equivariant local operator.
 
 Gap:
-(E_k, E_{k+1}) for consecutive isolated eigenvalues with k ≠ 0 and (if n even) k ≠ n/2.
+Generic consecutive gaps.
 
 ΠVΠ:
-forced = 0 by representation-theoretic commutant calculation for D_n irreps.
+forced ≠ 0 by abelian symmetry and representation multiplicity.
 
 Status:
-VERIFIED (theoretical; symmetry-commutant argument).
+VERIFIED (non-rigid; representation-theoretic obstruction).
 
