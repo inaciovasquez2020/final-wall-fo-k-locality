@@ -1,0 +1,54 @@
+{
+  "schema_version": "URF-SG-1.0",
+  "kind": "URF_SPECTRAL_GAP_CERT",
+  "cert_id": "URF-SG-BASE-2",
+  "title": "Spectral gap on the 2-torus (L^2(T^2), -Delta, constants)",
+  "created_utc": "2026-01-26T00:00:00Z",
+
+  "triple": {
+    "H": {
+      "type": "L2",
+      "domain": "T2",
+      "field": "R"
+    },
+    "Delta_H": {
+      "type": "Laplacian",
+      "expression": "-d2/dx2 - d2/dy2",
+      "self_adjoint": true,
+      "compact_resolvent": true,
+      "justification": "Rellich-Kondrachov: H^2(T^2) compactly embeds into L^2(T^2) so (Delta+I)^{-1} is compact."
+    },
+    "Per": {
+      "type": "OrthogonalProjection",
+      "target": "constants",
+      "ker_basis": ["1"]
+    }
+  },
+
+  "claim": {
+    "gap_space": "ker(Per)^⊥",
+    "lambda_1_lower_bound": 1.0,
+    "witness": "Fourier spectrum on T^2: eigenvalues k^2 + l^2. Minimum over (k,l)≠(0,0) equals 1."
+  },
+
+  "basis_frame": {
+    "basis": "Fourier",
+    "elements": "e_{k,l}(x,y)=exp(i k x) exp(i l y)",
+    "euler_gram_coercivity_c": 1.0,
+    "justification": "Orthonormal basis in L^2: sum |<u,e_{k,l}>|^2 = ||u||^2."
+  },
+
+  "finite_rank_projector": {
+    "definition": "P_N = Σ_{k^2+l^2 ≤ N^2} |e_{k,l}><e_{k,l}|",
+    "tail_bound_form": "ε_N ≤ C/N",
+    "note": "Optional (not required for exact gap = 1), included for truncation-based verification workflows."
+  },
+
+  "reduction": {
+    "U": "Id",
+    "target_space": "L2(T2)",
+    "target_operator": "Laplacian",
+    "equivalence": "U Δ_H U^{-1} = -Δ_{T^2}"
+  }
+}
+
