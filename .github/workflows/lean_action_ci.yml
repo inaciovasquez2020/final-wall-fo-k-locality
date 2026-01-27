@@ -10,11 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Lean + Mathlib cache
+      - name: Setup Lean
         uses: leanprover/lean-action@v1
-        with:
-          use-mathlib-cache: true
-          use-github-cache: true
 
       - name: Build
         run: lake build
