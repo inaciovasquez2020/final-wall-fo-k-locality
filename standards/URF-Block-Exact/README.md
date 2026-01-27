@@ -1,77 +1,38 @@
-{
-  "standard": "URF-Block-Exact",
-  "version": "1.1",
-  "status": "binding-core-standard",
-  "scope": "All rigidity / stability / robustness claims in URF",
+# URF-Block-Exact Standard
 
-  "purpose": "Replace informal perturbative stability claims with a single block-exact operator criterion.",
+This directory contains the **URF-Block-Exact** standard — a JSON schema and normative description of the block-exact criterion used across the Unified Rigidity Framework (URF).
 
-  "formal_definition": {
-    "objects": {
-      "H": "Hilbert space",
-      "A": "Self-adjoint operator with compact resolvent",
-      "V": "Symmetric A-bounded perturbation",
-      "Ek": "Eigenspace of lambda_k",
-      "Ek1": "Eigenspace of lambda_{k+1}"
-    },
-    "projection": "Pi = projection onto Ek ⊕ Ek1",
-    "criterion": "Pi V Pi == 0"
-  },
+The block-exact criterion formalizes the notion of exactness under perturbation in spectral problems:  
+an operator block that projects to zero corresponds to quadratic sensitivity, whereas nonzero leads to linear perturbative effects.
 
-  "allowed_claims": [
-    {
-      "type": "rigid",
-      "condition": "Pi V Pi == 0",
-      "consequence": "|gamma_k(eps) - gamma_k(0)| = O(eps^2)"
-    },
-    {
-      "type": "generic-non-rigid",
-      "condition": "Pi V Pi != 0",
-      "consequence": "|gamma_k(eps) - gamma_k(0)| = Theta(|eps|)"
-    }
-  ],
+## Standard Contents
 
-  "prohibited_language": [
-    "stable",
-    "robust",
-    "protected",
-    "insensitive",
-    "rigid under perturbations"
-  ],
+- `schema.json` — canonical JSON Schema v1.0 for URF-Block-Exact certificates  
+- `examples/` — example certificates conforming to the schema  
+- `checks/` — verification scripts for example certificates
 
-  "mechanical_verification": {
-    "tool": "tools/block_exact_check.py",
-    "command": "python tools/block_exact_check.py A.json V.json k",
-    "output_field": "block_exact_rigid"
-  },
+## Canonical Criterion
 
-  "finite_witnesses": [
-    {
-      "operator": "tools/A_s1_trunc8.json",
-      "perturbation": "tools/V_s1_rigid.json",
-      "result": "Pi V Pi = 0"
-    },
-    {
-      "operator": "tools/A_s1_trunc8.json",
-      "perturbation": "tools/V_s1_break.json",
-      "result": "Pi V Pi != 0"
-    }
-  ],
+Formally, the block-exact standard asserts:
 
-  "audit_binding": {
-    "ledger": "URF-AUDIT.md",
-    "requirement": "Every rigidity claim must appear with computed Pi V Pi."
-  },
+\[
+\Pi V \Pi = 0 \iff |\,\gamma_k(\varepsilon)-\gamma_k(0)\,| = O(\varepsilon^2),
+\]
+\[
+\Pi V \Pi \neq 0 \Rightarrow |\,\gamma_k(\varepsilon)-\gamma_k(0)\,| = \Theta(|\varepsilon|),
+\]
 
-  "conceptual_statement": "All URF rigidity reduces to the invariant Pi V Pi. No other stability principle exists.",
+where:
+- \(\Pi\) is a projection onto a subspace of interest,
+- \(V\) is a bounded perturbation,
+- \(\gamma_k(\varepsilon)\) is an eigenvalue branch of an admissible spectral problem.
 
-  "research_frontier": [
-    "Classification of admissible perturbations V",
-    "Symmetry forcing of block invariance",
-    "Representation-theoretic obstructions to Pi V Pi != 0"
-  ]
-}
+This rule is mechanically checkable using the JSON schema and verification tooling.
 
-Reference implementation:
-tools/block_exact_check.py
+## Usage
 
+To validate a certificate against this standard:
+
+1. Install `jsonschema`:
+   ```sh
+   pip install jsonschema
