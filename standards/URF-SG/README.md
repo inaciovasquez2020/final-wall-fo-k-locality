@@ -1,14 +1,22 @@
-URF-SG — Spectral Gap Rigidity Standard
-Version: v1.0
+# URF-SG — Spectral Gap Rigidity Standard
 
-Status: Conditional / Institutional Standard
+This directory defines the URF Spectral Gap Rigidity Wall (URF_law3).
 
-This directory defines the URF Spectral Gap (URF-SG) certificate.
-A valid certificate is any JSON object satisfying:
+Contents:
 
-  λ_min(G) ≥ α > 0
+- `URF_Spectral_Gap_Rigidity_Wall.pdf`  
+  Terminal theorem (formal statement).
 
-Verified by verify.py.
+- `verify.py`  
+  Reference verifier for URF-SG certificates.
 
-- URF_law3 Terminal Wall: `URF_LAW3_TERMINAL_WALL.md`
+- `examples/URF-SG-BASE-2.json`  
+  Example certificate artifact.
+
+## Usage
+
+Run:
+
+```bash
+python3 verify.py examples/URF-SG-BASE-2.json
 
