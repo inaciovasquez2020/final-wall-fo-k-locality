@@ -1,15 +1,23 @@
-name: URF-SG Check
+name: URF-SG Verification
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
-  urf-sg:
+  verify-urf-sg:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install numpy
-      - run: python standards/URF-SG/verify.py standards/URF-SG/example.json
+      - name: Install dependencies
+        run: |
+          pip install numpy jsonschema
+      - name: Run URF-SG verifier
+        run: |
+          cd standards/URF-SG
+          python verify.py examples/URF-SG-BASE-2.json
 
