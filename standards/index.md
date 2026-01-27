@@ -1,3 +1,5 @@
+- **URF_law3 — Spectral Gap Rigidity Wall (Terminal Theorem)**  
+  `standards/URF-SG/URF_Spectral_Gap_Rigidity_Wall.pdf`
 ## URF-SG — Spectral Gap Rigidity
 
 Status: Conditional / Standard
