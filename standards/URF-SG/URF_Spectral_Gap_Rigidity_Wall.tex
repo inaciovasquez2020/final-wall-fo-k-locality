@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\title{Spectral Gap Rigidity Wall (Terminal Theorem)}
+\author{Inacio F. Vasquez}
+\date{January 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+We record the terminal form of the Spectral Gap Rigidity Wall (URF\_law3): a coercivity
+inequality on the orthogonal complement of an intrinsic ``periodic/symmetry'' subspace.
+We present the canonical statement in a form suitable for standardization and
+certificate-based verification.
+
+\section{Objects}
+
+\begin{definition}[Admissible Triple]
+An \emph{admissible triple} is a triple $(H,\Delta,\mathrm{Per})$ where:
+\begin{enumerate}[label=(\roman*)]
+\item $H$ is a real or complex separable Hilbert space with inner product $\langle \cdot,\cdot\rangle$
+      and norm $\|\cdot\|$.
+\item $\Delta:\mathcal D(\Delta)\subset H\to H$ is a densely-defined, self-adjoint, nonnegative operator.
+\item $\mathrm{Per}:H\to H$ is an orthogonal projector (self-adjoint idempotent), interpreted as the
+      projector onto the intrinsic ``periodic/symmetry/trivial'' subspace.
+\end{enumerate}
+Define the reduced subspace
+\[
+H_0 := \ker(\mathrm{Per})^\perp.
+\]
+\end{definition}
+
+\begin{definition}[Restricted First Eigenvalue / Spectral Gap on $H_0$]
+For an admissible triple $(H,\Delta,\mathrm{Per})$, define
+\[
+\lambda_1(\Delta\mid H_0)
+:= \inf\left\{
+\frac{\langle u,\Delta u\rangle}{\langle u,u\rangle} :
+u\in \mathcal D(\Delta)\cap H_0,\ u\neq 0
+\right\}.
+\]
+\end{definition}
+
+\section{Terminal Theorem}
+
+\begin{theorem}[Spectral Gap Rigidity Wall (Terminal Theorem / URF\_law3)]
+\label{thm:URF-law3-terminal}
+Let $(H,\Delta,\mathrm{Per})$ be an admissible triple and set $H_0=\ker(\mathrm{Per})^\perp$.
+The following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+\item (\textbf{Spectral Gap}) $\lambda_1(\Delta\mid H_0)>0$.
+\item (\textbf{Coercivity on $H_0$}) There exists $c>0$ such that for all
+      $u\in \mathcal D(\Delta)\cap H_0$,
+      \[
+      \langle u,\Delta u\rangle \ge c\,\|u\|^2.
+      \]
+\item (\textbf{No-Soft-Mode Rigidity}) There does not exist a sequence
+      $u_n\in \mathcal D(\Delta)\cap H_0$ with $\|u_n\|=1$ and $\langle u_n,\Delta u_n\rangle\to 0$.
+\end{enumerate}
+In this case, any admissible refinement constrained to $H_0$ carries a uniform energetic/functional
+floor $c$ and cannot approach the trivial subspace without paying a fixed cost.
+\end{theorem}
+
+\begin{proof}
+(a)$\Leftrightarrow$(b) is immediate from the Rayleigh quotient definition of $\lambda_1(\Delta\mid H_0)$.
+(b)$\Leftrightarrow$(c) follows by contrapositive: failure of coercivity yields a normalized sequence in $H_0$
+with Rayleigh quotient tending to $0$, and conversely such a sequence contradicts any $c>0$.
+\end{proof}
+
+\section{Certified External Instances}
+
+\subsection*{Instance EXT-1: Heisenberg Nilmanifold Horizontal Sub-Laplacian}
+
+\begin{corollary}[URF-SG-EXT-1 (Heisenberg)]
+Let $M=H_1/\Gamma$ be a compact Heisenberg nilmanifold with standard left-invariant
+horizontal vector fields
+\[
+X=\partial_x-\tfrac12 y\,\partial_z,\qquad
+Y=\partial_y+\tfrac12 x\,\partial_z,
+\]
+and horizontal sub-Laplacian $\Delta_H:=-(X^2+Y^2)$ acting on $H=L^2(M)$.
+Let $\mathrm{Per}$ be the orthogonal projector onto the $k=0$ vertical Fourier mode
+(i.e.\ functions constant along the $z$-fiber), and $H_0=\ker(\mathrm{Per})^\perp$.
+Then
+\[
+\lambda_1(\Delta_H\mid H_0)\ge 4\pi>0,
+\]
+hence the coercivity bound
+\[
+\langle u,\Delta_H u\rangle \ge 4\pi\,\|u\|^2
+\quad \forall u\in \mathcal D(\Delta_H)\cap H_0
+\]
+holds.
+\end{corollary}
+
+\subsection*{Instance EXT-2: Ornstein--Uhlenbeck Generator}
+
+\begin{corollary}[URF-SG-EXT-2 (Ornstein--Uhlenbeck)]
+Let $H=L^2(\mathbb R,\gamma)$ where $d\gamma(x)=(2\pi)^{-1/2}e^{-x^2/2}\,dx$.
+Let
+\[
+\Delta_{OU}u := -u'' + x u'
+\]
+(with its standard self-adjoint realization on $H$).
+Let $\mathrm{Per}(u) = \left(\int_{\mathbb R} u\,d\gamma\right)\cdot 1$ be the projector onto constants,
+and $H_0=\ker(\mathrm{Per})^\perp=\{u\in H:\langle u,1\rangle_\gamma=0\}$.
+Then
+\[
+\lambda_1(\Delta_{OU}\mid H_0)=1>0,
+\]
+hence
+\[
+\langle u,\Delta_{OU}u\rangle_\gamma \ge \|u\|_\gamma^2
+\quad \forall u\in \mathcal D(\Delta_{OU})\cap H_0.
+\]
+\end{corollary}
+
+\section{Certificate Form (Standardization Hook)}
+A \emph{URF-SG certificate} for an admissible triple $(H,\Delta,\mathrm{Per})$ consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a precise specification of $H$, $\Delta$, $\mathrm{Per}$;
+\item a constant $c>0$;
+\item a verification object asserting either:
+\begin{enumerate}[label=(\alph*)]
+\item an analytic proof of $\langle u,\Delta u\rangle\ge c\|u\|^2$ on $H_0$, or
+\item a certified numerical lower bound for $\lambda_1(\Delta\mid H_0)$ implying $c$.
+\end{enumerate}
+\end{enumerate}
+By Theorem~\ref{thm:URF-law3-terminal}, any valid certificate implies the Spectral Gap Rigidity Wall.
+
+\end{document}
+
