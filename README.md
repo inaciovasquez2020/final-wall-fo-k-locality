@@ -52,4 +52,4 @@ The core mathematical requirements for Local$\to$Global spectral rigidity are **
 * [**Technical Dashboard**](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
 * [**Manuscripts**](https://inaciovasquez2020.github.io/publications.html)
 
-**Inquiries:** [inaciovasquez2020@gmail.com](mailto:inaciovasquez2020@gmail.com)
+**Inquiries:** [inacio@vasquezresearch.com](mailto:inaciovasquez2020@gmail.com)
