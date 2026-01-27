@@ -1,4 +1,4 @@
-name: Lean build
+- uses: leanprover-community/setup-lean@v1
 
 on:
   push:
