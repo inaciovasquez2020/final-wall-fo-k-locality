@@ -10,3 +10,5 @@ A valid certificate is any JSON object satisfying:
 
 Verified by verify.py.
 
+- URF_law3 Terminal Wall: `URF_LAW3_TERMINAL_WALL.md`
+
