@@ -1,0 +1,119 @@
+{
+  "standard": "URF-SG",
+  "version": "v1.0",
+  "cert_id": "URF-SG-NUM-8-2p0",
+  "admissible_class": "finite_numeric",
+  "statement": {
+    "type": "spectral_gap",
+    "quantity": "lambda_1(P | ker(P)^\u22a5)",
+    "lower_bound": 2.0
+  },
+  "instance": {
+    "geometry": {
+      "name": "FiniteDimToy",
+      "model": "R^8"
+    },
+    "hilbert_space": {
+      "H": "R^8"
+    },
+    "operator": {
+      "name": "P",
+      "definition": "Diagonal numeric toy operator",
+      "domain": "R^8"
+    },
+    "projection": {
+      "name": "Per",
+      "subspace": "span{e0}",
+      "kernel_orthogonal": "span{e1,...,e7}"
+    }
+  },
+  "P": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.0
+    ]
+  ],
+  "n": 8,
+  "created_utc": "2026-01-27T02:07:18.665413Z",
+  "notes": "Generated diagonal toy certificate: eigenvalues [0,gap,...,gap].",
+  "checks": {
+    "method": "numeric",
+    "notes": "Verifier computes smallest nonzero eigenvalue and checks >= lower_bound."
+  }
+}
