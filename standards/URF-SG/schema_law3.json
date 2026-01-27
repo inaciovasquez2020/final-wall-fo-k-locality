@@ -1,0 +1,20 @@
+{
+  "title": "URF_law3_admissibility",
+  "type": "object",
+  "required": ["compact_resolvent", "unitary_equivalence", "projection_alignment"],
+  "properties": {
+    "compact_resolvent": {
+      "type": "boolean",
+      "description": "(Δ + I)^{-1} is compact"
+    },
+    "unitary_equivalence": {
+      "type": "boolean",
+      "description": "Δ = U^{-1}Δ_g U for compact geometry"
+    },
+    "projection_alignment": {
+      "type": "boolean",
+      "description": "Per = U^{-1}Π_const U"
+    }
+  }
+}
+

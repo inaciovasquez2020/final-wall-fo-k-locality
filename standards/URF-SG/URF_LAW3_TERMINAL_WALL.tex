@@ -1,0 +1,52 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+
+\title{URF\_law3 — Spectral Gap Rigidity Wall (Terminal, Conditional)}
+\author{Inacio F. Vasquez}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Axiom Schema (SG--Closure)}
+
+For every admissible URF system $(H,\Delta_H,\mathrm{Per})$:
+
+\textbf{(A) Compact Resolvent}
+\[
+(\Delta_H + I)^{-1} \in \mathcal{K}(H).
+\]
+
+\textbf{(B) Geometric Unitary Realization}
+\[
+\exists\ (M,g)\ \text{compact},\ \exists\ U:H\to L^2(M)\ \text{unitary such that}
+\quad \Delta_H = U^{-1}(-\Delta_g)U.
+\]
+
+\textbf{(C) Projection Alignment}
+\[
+\mathrm{Per} = U^{-1}\Pi_{\mathrm{const}}U.
+\]
+
+\section*{Theorem (URF\_law3 — Conditional Closure)}
+
+Assuming (A)--(C),
+\[
+\inf \mathrm{Spec}(\Delta_H \mid \ker(\mathrm{Per})^\perp) > 0.
+\]
+
+\section*{Impossibility Corollary}
+
+Under (A)--(C), failure of URF\_law3 is logically impossible in ZFC.
+
+\section*{Break Modes}
+
+URF\_law3 can fail only by violation of at least one of:
+\begin{enumerate}
+\item Essential spectrum at zero.
+\item Non-unitary similarity.
+\item Projection misalignment.
+\end{enumerate}
+
+\end{document}
+
