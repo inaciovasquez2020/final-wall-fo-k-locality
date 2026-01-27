@@ -1,3 +1,8 @@
+## CI Status
+
+Latest automated verification:
+https://github.com/inaciovasquez2020/urf-core/actions/runs/21395243030
+
 # URF-SG — Spectral Gap Rigidity Standard
 
 This directory defines the URF Spectral Gap Rigidity Wall (URF_law3).
