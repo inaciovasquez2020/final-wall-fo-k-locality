@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "urf-cli"
+version = "0.1.1"
+
+requires-python = ">=3.10"
+authors = [{ name = "Inacio F. Vasquez" }]
+dependencies = ["jsonschema>=4.21"]
+
+[project.scripts]
+urf = "urf_cli.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/urf_cli"]
+

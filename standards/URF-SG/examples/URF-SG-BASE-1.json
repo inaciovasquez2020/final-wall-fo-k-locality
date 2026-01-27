@@ -1,0 +1,26 @@
+{
+  "schema": "URF-SG/v1.0",
+  "cert_id": "URF-SG-BASE-1",
+  "issued_utc": "2026-01-27T12:00:00Z",
+  "subject": {
+    "hilbert_space": "L2(S1)",
+    "operator": "-d2/dx2",
+    "per": "span{1}"
+  },
+  "statement": {
+    "lambda1_lower_bound": 1.0
+  },
+  "evidence": {
+    "method": "analytic",
+    "artifacts": [
+      {
+        "path": "proof.pdf",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ]
+  },
+  "hashes": {
+    "manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  }
+}
+

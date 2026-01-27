@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/inaciovasquez2020/urf-core/main/standards/URF-SG/schema/urf-sg-v1.0.schema.json",
+  "title": "URF-SG Certificate (v1.0)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema","cert_id","issued_utc","subject","statement","evidence","hashes"],
+  "properties": {
+    "schema": { "type": "string", "const": "URF-SG/v1.0" },
+    "cert_id": { "type": "string" },
+    "issued_utc": { "type": "string", "format": "date-time" },
+    "subject": {
+      "type": "object",
+      "required": ["hilbert_space","operator","per"],
+      "properties": {
+        "hilbert_space": { "type": "string" },
+        "operator": { "type": "string" },
+        "per": { "type": "string" }
+      }
+    },
+    "statement": {
+      "type": "object",
+      "required": ["lambda1_lower_bound"],
+      "properties": {
+        "lambda1_lower_bound": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["method","artifacts"],
+      "properties": {
+        "method": { "type": "string", "enum": ["analytic","numeric","hybrid"] },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path","sha256"],
+            "properties": {
+              "path": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+            }
+          }
+        }
+      }
+    },
+    "hashes": {
+      "type": "object",
+      "required": ["manifest_sha256"],
+      "properties": {
+        "manifest_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,12 @@
+{
+  "schema": "URF-SG/index/v1.0",
+  "updated_utc": "2026-01-27T15:30:00Z",
+  "certificates": [
+    {
+      "cert_id": "URF-SG-BASE-1",
+      "path": "examples/URF-SG-BASE-1.json",
+      "sha256": "3547c1ccce8a9b444830a18c73d8e23e4c3919c4d2da4ae8db654e040034179b"
+    }
+  ]
+}
+
