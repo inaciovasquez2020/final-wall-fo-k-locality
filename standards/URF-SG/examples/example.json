@@ -1,0 +1,20 @@
+{
+  "id": "URF-SG-TEST-0001",
+  "operator": "Ornstein-Uhlenbeck",
+  "hilbert_space": "L2(R, Gaussian)",
+  "projector": "Mean projector",
+  "proof_reference": "EXT-2-OrnsteinUhlenbeck.tex",
+
+  "alpha": 1.0,
+
+  "gram_matrix": [
+    [2.0, 0.0],
+    [0.0, 2.0]
+  ],
+
+  "basis_description": [
+    "H1(x) = x",
+    "H2(x) = x^2 - 1"
+  ]
+}
+
