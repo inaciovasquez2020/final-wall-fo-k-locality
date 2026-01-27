@@ -1,0 +1,7 @@
+{
+  "artifact_id": "EXT-2",
+  "operator_type": "Ornstein-Uhlenbeck",
+  "spectral_gap_value": 1.0,
+  "period_kernel_certified": true,
+  "external_witness_ref": "https://inaciovasquez2020.github.io/vasquez-index/dashboard.html"
+}
