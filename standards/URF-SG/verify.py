@@ -71,6 +71,15 @@ def verify_certificate(cert, sch):
         print("❌ Physics: FAILED (Gap smaller than claimed)")
         return False
 
+import sys
+
+def load_json(path: str):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 if __name__ == "__main__":
-    verify_certificate(certificate_data, schema)
+    path = sys.argv[1] if len(sys.argv) > 1 else "examples/URF-SG-BASE-2.json"
+    cert = load_json(path)
+    ok = verify_certificate(cert, schema)
+    raise SystemExit(0 if ok else 1)
 

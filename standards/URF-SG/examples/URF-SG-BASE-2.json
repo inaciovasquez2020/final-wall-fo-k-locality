@@ -1,0 +1,13 @@
+{
+  "id": "URF-SG-BASE-2",
+  "operator": "Laplacian on T2",
+  "hilbert_space": "L2(T2)",
+  "projector": "constants",
+  "alpha": 1.0,
+  "gram_matrix": [
+    [1.0, 0.0],
+    [0.0, 1.0]
+  ],
+  "version": "v1.0"
+}
+
