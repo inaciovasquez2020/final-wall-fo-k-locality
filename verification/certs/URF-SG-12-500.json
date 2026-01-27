@@ -1,0 +1,61 @@
+{
+  "standard": "URF-SG",
+  "version": "v1.0",
+  "cert_id": "URF-SG-12-500",
+  "admissible_class": "finite_numeric",
+
+  "statement": {
+    "type": "spectral_gap",
+    "quantity": "lambda_1(P | ker(P)^⊥)",
+    "lower_bound": 1.0
+  },
+
+  "instance": {
+    "geometry": {
+      "name": "FiniteDimToy",
+      "model": "R^12 with defect space span(e0)"
+    },
+
+    "hilbert_space": {
+      "H": "R^12"
+    },
+
+    "operator": {
+      "name": "P",
+      "definition": "Diagonal matrix with one zero eigenvalue and unit eigenvalues on complement",
+      "domain": "R^12"
+    },
+
+    "projection": {
+      "name": "Per",
+      "subspace": "span{e0}",
+      "kernel_orthogonal": "span{e1,...,e11}"
+    }
+  },
+
+  "P": [
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+  ],
+
+  "n": 12,
+  "epsilon": 0.5,
+  "created_utc": "2026-01-25T18:20:29Z",
+  "notes": "Toy example: defect space span(e0), unit gap on complement.",
+
+  "checks": {
+    "method": "numeric",
+    "notes": "Eigenvalues are {0,1,...,1}, so spectral gap on ker(P)^⊥ is exactly 1."
+  }
+}
+

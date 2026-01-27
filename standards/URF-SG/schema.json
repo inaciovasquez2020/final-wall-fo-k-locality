@@ -2,25 +2,57 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "URF Spectral Gap Certificate",
   "type": "object",
-  "required": ["standard", "version", "cert_id", "statement", "instance", "checks"],
+  "required": [
+    "standard",
+    "version",
+    "cert_id",
+    "statement",
+    "instance",
+    "checks"
+  ],
   "properties": {
-    "standard": { "type": "string", "enum": ["URF-SG"] },
-    "version": { "type": "string" },
-    "cert_id": { "type": "string" },
+    "standard": {
+      "type": "string",
+      "enum": ["URF-SG"]
+    },
+
+    "version": {
+      "type": "string"
+    },
+
+    "cert_id": {
+      "type": "string"
+    },
+
+    "admissible_class": {
+      "type": "string",
+      "enum": ["cheeger", "lichnerowicz", "finite_numeric"]
+    },
+
     "statement": {
       "type": "object",
       "required": ["type", "quantity"],
       "properties": {
-        "type": { "type": "string", "enum": ["spectral_gap"] },
-        "quantity": { "type": "string" },
-        "lower_bound": { "type": "number" },
-        "lower_bound_exact": { "type": "string" }
+        "type": {
+          "type": "string",
+          "enum": ["spectral_gap"]
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "lower_bound": {
+          "type": "number"
+        },
+        "lower_bound_exact": {
+          "type": "string"
+        }
       },
       "oneOf": [
         { "required": ["lower_bound"] },
         { "required": ["lower_bound_exact"] }
       ]
     },
+
     "instance": {
       "type": "object",
       "required": ["geometry", "hilbert_space", "operator", "projection"],
@@ -31,15 +63,25 @@
           "properties": {
             "name": { "type": "string" },
             "model": { "type": "string" },
-            "coordinates": { "type": "array", "items": { "type": "string" } },
-            "periods": { "type": "array", "items": { "type": "number" } }
+            "coordinates": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "periods": {
+              "type": "array",
+              "items": { "type": "number" }
+            }
           }
         },
+
         "hilbert_space": {
           "type": "object",
           "required": ["H"],
-          "properties": { "H": { "type": "string" } }
+          "properties": {
+            "H": { "type": "string" }
+          }
         },
+
         "operator": {
           "type": "object",
           "required": ["name", "definition", "domain"],
@@ -49,6 +91,7 @@
             "domain": { "type": "string" }
           }
         },
+
         "projection": {
           "type": "object",
           "required": ["name", "subspace", "kernel_orthogonal"],
@@ -60,16 +103,49 @@
         }
       }
     },
+
+    "P": {
+      "type": "array",
+      "description": "Numeric operator matrix for finite-dimensional certificates",
+      "items": {
+        "type": "array",
+        "items": { "type": "number" }
+      }
+    },
+
+    "n": {
+      "type": "number",
+      "description": "Dimension for numeric certificates"
+    },
+
+    "epsilon": {
+      "type": "number"
+    },
+
+    "created_utc": {
+      "type": "string"
+    },
+
+    "notes": {
+      "type": "string"
+    },
+
     "checks": {
       "type": "object",
       "required": ["method"],
       "properties": {
-        "method": { "type": "string", "enum": ["closed_form", "numeric"] },
-        "exact_value": { "type": "string" },
-        "notes": { "type": "string" }
+        "method": {
+          "type": "string",
+          "enum": ["closed_form", "numeric"]
+        },
+        "exact_value": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
       }
     }
   }
 }
-
 
