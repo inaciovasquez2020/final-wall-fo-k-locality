@@ -1,0 +1,15 @@
+{
+  "E": 288,
+  "F": 144,
+  "L_definition": "Delta1 = d1 d1^T + d2^T d2",
+  "N": 12,
+  "P_definition": "orthogonal projector onto ker(L) via eigendecomposition",
+  "V": 144,
+  "construction": "NxN periodic square grid (torus) combinatorial cochains",
+  "null_tol": 1e-10,
+  "ordering": {
+    "edges": "first all horizontal (east), then vertical (north)",
+    "faces": "fid(x,y)=y*N+x (mod N)",
+    "vertices": "vid(x,y)=y*N+x (mod N)"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "standard": "URF-SG",
+  "version": "v1.0",
+  "cert_id": "URF-SG-STRESS-T2-L-8",
+  "statement": {
+    "type": "spectral_gap",
+    "quantity": "lambda_1(Delta_H | ker(Per)^\u22a5)",
+    "lower_bound_exact": "(2*pi/8)^2"
+  },
+  "instance": {
+    "geometry": {
+      "name": "T^2_L",
+      "model": "(R/LZ)\u00d7(R/Z)",
+      "periods": [
+        8,
+        1
+      ]
+    },
+    "hilbert_space": {
+      "H": "L2(T^2_L)"
+    },
+    "operator": {
+      "name": "Delta_H",
+      "definition": "-(d^2/dx^2 + d^2/dy^2)",
+      "domain": "H^2(T^2_L)"
+    },
+    "projection": {
+      "name": "Per",
+      "subspace": "span{1}",
+      "kernel_orthogonal": "mean_zero"
+    }
+  },
+  "checks": {
+    "method": "closed_form",
+    "exact_value": "(2*pi/8)^2",
+    "notes": "Stress-test: gap collapses as L\u2192\u221e"
+  }
+}

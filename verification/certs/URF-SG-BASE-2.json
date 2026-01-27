@@ -1,54 +1,41 @@
 {
-  "schema_version": "URF-SG-1.0",
-  "kind": "URF_SPECTRAL_GAP_CERT",
+  "standard": "URF-SG",
+  "version": "v1.0",
   "cert_id": "URF-SG-BASE-2",
-  "title": "Spectral gap on the 2-torus (L^2(T^2), -Delta, constants)",
-  "created_utc": "2026-01-26T00:00:00Z",
-
-  "triple": {
-    "H": {
-      "type": "L2",
-      "domain": "T2",
-      "field": "R"
+  "statement": {
+    "type": "spectral_gap",
+    "quantity": "lambda_1(Delta_H | ker(Per)^⊥)",
+    "lower_bound_exact": "(2*pi)^2"
+  },
+  "instance": {
+    "geometry": {
+      "name": "T^2",
+      "model": "R^2 / Z^2",
+      "coordinates": ["x", "y"],
+      "periods": [1, 1]
     },
-    "Delta_H": {
-      "type": "Laplacian",
-      "expression": "-d2/dx2 - d2/dy2",
-      "self_adjoint": true,
-      "compact_resolvent": true,
-      "justification": "Rellich-Kondrachov: H^2(T^2) compactly embeds into L^2(T^2) so (Delta+I)^{-1} is compact."
+    "hilbert_space": {
+      "H": "L2(T^2)"
     },
-    "Per": {
-      "type": "OrthogonalProjection",
-      "target": "constants",
-      "ker_basis": ["1"]
+    "operator": {
+      "name": "Delta_H",
+      "definition": "-(d^2/dx^2 + d^2/dy^2)",
+      "domain": "H^2(T^2)"
+    },
+    "projection": {
+      "name": "Per",
+      "subspace": "span{1}",
+      "kernel_orthogonal": "mean_zero"
     }
   },
-
-  "claim": {
-    "gap_space": "ker(Per)^⊥",
-    "lambda_1_lower_bound": 1.0,
-    "witness": "Fourier spectrum on T^2: eigenvalues k^2 + l^2. Minimum over (k,l)≠(0,0) equals 1."
+  "certificate": {
+    "orthonormal_eigenbasis": "e_{m,n}(x,y)=exp(2*pi*i*(m*x+n*y))",
+    "spectrum": "Delta_H e_{m,n}=(2*pi)^2(m^2+n^2)e_{m,n}",
+    "gap_argument": "min_{(m,n)≠(0,0)}(m^2+n^2)=1"
   },
-
-  "basis_frame": {
-    "basis": "Fourier",
-    "elements": "e_{k,l}(x,y)=exp(i k x) exp(i l y)",
-    "euler_gram_coercivity_c": 1.0,
-    "justification": "Orthonormal basis in L^2: sum |<u,e_{k,l}>|^2 = ||u||^2."
-  },
-
-  "finite_rank_projector": {
-    "definition": "P_N = Σ_{k^2+l^2 ≤ N^2} |e_{k,l}><e_{k,l}|",
-    "tail_bound_form": "ε_N ≤ C/N",
-    "note": "Optional (not required for exact gap = 1), included for truncation-based verification workflows."
-  },
-
-  "reduction": {
-    "U": "Id",
-    "target_space": "L2(T2)",
-    "target_operator": "Laplacian",
-    "equivalence": "U Δ_H U^{-1} = -Δ_{T^2}"
+  "checks": {
+    "method": "closed_form",
+    "exact_value": "(2*pi)^2",
+    "notes": "First nonzero eigenvalue on mean-zero subspace"
   }
 }
-

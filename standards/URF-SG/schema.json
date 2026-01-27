@@ -1,8 +1,75 @@
 {
-  "kind": "URF-SG",
-  "alpha": 0.0,
-  "gram_matrix": [],
-  "hash": "",
-  "signature": ""
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "URF Spectral Gap Certificate",
+  "type": "object",
+  "required": ["standard", "version", "cert_id", "statement", "instance", "checks"],
+  "properties": {
+    "standard": { "type": "string", "enum": ["URF-SG"] },
+    "version": { "type": "string" },
+    "cert_id": { "type": "string" },
+    "statement": {
+      "type": "object",
+      "required": ["type", "quantity"],
+      "properties": {
+        "type": { "type": "string", "enum": ["spectral_gap"] },
+        "quantity": { "type": "string" },
+        "lower_bound": { "type": "number" },
+        "lower_bound_exact": { "type": "string" }
+      },
+      "oneOf": [
+        { "required": ["lower_bound"] },
+        { "required": ["lower_bound_exact"] }
+      ]
+    },
+    "instance": {
+      "type": "object",
+      "required": ["geometry", "hilbert_space", "operator", "projection"],
+      "properties": {
+        "geometry": {
+          "type": "object",
+          "required": ["name", "model"],
+          "properties": {
+            "name": { "type": "string" },
+            "model": { "type": "string" },
+            "coordinates": { "type": "array", "items": { "type": "string" } },
+            "periods": { "type": "array", "items": { "type": "number" } }
+          }
+        },
+        "hilbert_space": {
+          "type": "object",
+          "required": ["H"],
+          "properties": { "H": { "type": "string" } }
+        },
+        "operator": {
+          "type": "object",
+          "required": ["name", "definition", "domain"],
+          "properties": {
+            "name": { "type": "string" },
+            "definition": { "type": "string" },
+            "domain": { "type": "string" }
+          }
+        },
+        "projection": {
+          "type": "object",
+          "required": ["name", "subspace", "kernel_orthogonal"],
+          "properties": {
+            "name": { "type": "string" },
+            "subspace": { "type": "string" },
+            "kernel_orthogonal": { "type": "string" }
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "required": ["method"],
+      "properties": {
+        "method": { "type": "string", "enum": ["closed_form", "numeric"] },
+        "exact_value": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
 }
+
 
