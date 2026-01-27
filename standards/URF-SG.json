@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/inaciovasquez2020/urf-core/standards/URF-SG.json",
+  "title": "URF Spectral Gap Certification Standard",
+  "description": "Schema for verifying URF_law3 compliance in operator systems and discrete graphs.",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "operator_type",
+    "spectral_gap_value",
+    "period_kernel_certified"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string",
+      "description": "Unique identifier for the witness (e.g., EXT-1, EXT-2)."
+    },
+    "operator_type": {
+      "type": "string",
+      "enum": [
+        "sub-Laplacian",
+        "Ornstein-Uhlenbeck",
+        "Discrete-Graph-Laplacian",
+        "Custom-Operator"
+      ]
+    },
+    "spectral_gap_value": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMinimum": true,
+      "description": "The value of lambda_1 on the orthogonal complement of the Period Kernel."
+    },
+    "period_kernel_certified": {
+      "type": "boolean",
+      "description": "Must be true to confirm the gap is measured relative to ker(Per)^perp."
+    },
+    "logic_width_dependency": {
+      "type": "object",
+      "properties": {
+        "k": { "type": "integer" },
+        "tw": { "type": "integer" },
+        "verified": { "type": "boolean" }
+      },
+      "description": "Mapping for bounded treewidth instances where k >= f(tw)."
+    },
+    "external_witness_ref": {
+      "type": "string",
+      "format": "uri",
+      "description": "Link to the external paper or physical benchmark."
+    }
+  }
+}
