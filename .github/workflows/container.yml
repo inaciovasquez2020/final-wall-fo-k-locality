@@ -1,8 +1,10 @@
+# .github/workflows/container.yml
 name: Publish URF-SG Verifier Container
 
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,6 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Compute schema hash (URF-SG.json)
+        id: schema
+        run: |
+          set -euo pipefail
+          H="$(sha256sum standards/URF-SG.json | awk '{print $1}')"
+          echo "hash12=${H:0:12}" >> "$GITHUB_OUTPUT"
+          echo "hash64=$H" >> "$GITHUB_OUTPUT"
+
       - name: Log in to GHCR
         uses: docker/login-action@v3
         with:
@@ -21,8 +31,17 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push (latest + sha256-tag)
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/inaciovasquez2020/urf-sg-verifier:latest
+          tags: |
+            ghcr.io/inaciovasquez2020/urf-sg-verifier:latest
+            ghcr.io/inaciovasquez2020/urf-sg-verifier:sha256-${{ steps.schema.outputs.hash12 }}
+          labels: |
+            org.opencontainers.image.title=URF-SG Verifier
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            urf.schema.sha256=${{ steps.schema.outputs.hash64 }}
+
+      
