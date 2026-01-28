@@ -53,3 +53,30 @@ The core mathematical requirements for Local$\to$Global spectral rigidity are **
 * [**Manuscripts**](https://inaciovasquez2020.github.io/publications.html)
 
 **Inquiries:** [inacio@vasquezresearch.com](mailto:inaciovasquez2020@gmail.com)
+
+## Citation
+
+If you use or reference this work, please cite:
+
+Vasquez, Inacio F. (2026). *Terminal Rigidity Witness — ERB: A Structural Resolution of Zero-Capacity Regimes*. Independent Research Program.  
+GitHub: https://github.com/inaciovasquez2020/trw-erb-sigc
+
+### Contact
+**Inacio F. Vasquez**  
+Independent Research Program  
+Email: inacio@vasquezresearch.com  
+Web: https://www.vasquezresearch.com  
+ORCID: https://orcid.org/0009-0008-8459-3400
+
+© 2026 Inacio F. Vasquez. Core Logic.
+
+
+
+
+
+
+
+
+
+
+
