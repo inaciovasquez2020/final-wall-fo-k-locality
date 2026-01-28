@@ -10,9 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Lean
+      - name: Setup Lean toolchain only
         uses: leanprover/lean-action@v1
         with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
           use-mathlib-cache: false
           use-github-cache: false
 
