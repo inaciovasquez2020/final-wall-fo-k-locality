@@ -26,8 +26,7 @@
     },
     "spectral_gap_value": {
       "type": "number",
-      "minimum": 0,
-      "exclusiveMinimum": true,
+      "exclusiveMinimum": 0,
       "description": "The value of lambda_1 on the orthogonal complement of the Period Kernel."
     },
     "period_kernel_certified": {
