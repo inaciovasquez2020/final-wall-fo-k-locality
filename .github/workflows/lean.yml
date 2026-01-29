@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Preinstall Elan + Lean toolchain (retry)
+      - name: Preinstall Elan + Lean toolchain
         run: |
           set -eux
           curl -L --retry 10 --retry-delay 15 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
@@ -23,7 +23,8 @@ jobs:
       - uses: leanprover/lean-action@v1
         with:
           auto-config: true
-          use-github-cache: true
+          use-mathlib-cache: false   # ← critical
+          use-github-cache: false
 
       - name: Build
         run: lake build
