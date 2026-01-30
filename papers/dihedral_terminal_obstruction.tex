@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Terminal Obstruction to Universal Local--Global Rigidity:\\
+The Dihedral Counterexample}
+\author{Inacio F. Vasquez}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{principle}{Principle}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+
+We prove a terminal obstruction to any universal local--to--global rigidity
+principle. Using the Cayley graphs of the dihedral groups, we show that
+global symmetries can remain completely invisible to all bounded-radius
+local observations. This result establishes a fundamental limitation of
+all rigidity frameworks based purely on local structural inference,
+including the Unified Rigidity Framework (URF).
+
+\section{Motivating Question}
+
+A central question in modern rigidity theory is whether global structure
+can be inferred from local observations. Abstractly:
+
+\begin{quote}
+\emph{If two large systems look identical in every small neighborhood,
+must they be globally equivalent?}
+\end{quote}
+
+This intuition underlies many rigidity principles in mathematics,
+physics, and complexity theory.
+
+\section{Local--Global Rigidity Principle}
+
+We formalize the strongest possible form of this intuition.
+
+\begin{principle}[Universal Local--Global Rigidity]
+There exists a constant radius $R$ such that for every finite
+vertex-transitive graph $G$, all global automorphisms of $G$ are
+detectable inside some ball $B_R(v)$.
+\end{principle}
+
+In other words, sufficiently large global symmetries must eventually
+manifest in small neighborhoods.
+
+\section{The Dihedral Groups}
+
+Let $D_n$ denote the dihedral group:
+\[
+D_n = \langle r, s \mid r^n = e,\; s^2 = e,\; srs = r^{-1} \rangle.
+\]
+
+Consider the Cayley graph:
+\[
+G_n = \mathrm{Cay}(D_n, \{r, r^{-1}, s\}).
+\]
+
+This is a $3$--regular, finite, vertex-transitive graph.
+
+\section{Terminal Obstruction Theorem}
+
+\begin{theorem}[Dihedral Obstruction]
+For the family $G_n = \mathrm{Cay}(D_n)$,
+there exist global automorphisms $\phi_n$ such that
+for every fixed radius $R$,
+\[
+\phi_n \text{ acts trivially on } B_R(v)
+\]
+whenever $n \gg R$.
+
+Consequently, no universal bound $R$ exists.
+\end{theorem}
+
+\begin{proof}
+Consider the global rotation automorphism:
+\[
+\phi_k(g) = r^k g.
+\]
+
+For $R \ll n$, the ball $B_R(e)$ is isomorphic to a finite path.
+Rotating by $k = n/2$ maps the graph onto itself but preserves
+all rooted neighborhoods of radius $R$.
+
+Thus for every fixed $R$, there exist nontrivial automorphisms
+invisible inside all radius-$R$ neighborhoods.
+\end{proof}
+
+\section{Interpretation}
+
+This theorem shows that global symmetries can hide arbitrarily deep.
+No amount of bounded local inspection can detect certain large-scale
+structural transformations.
+
+\section{Consequences for URF}
+
+\begin{corollary}
+No theory based purely on local observation can yield a universal
+global rigidity principle.
+\end{corollary}
+
+All rigidity frameworks must therefore include additional hypotheses,
+such as:
+\begin{itemize}
+\item spectral expansion,
+\item group simplicity,
+\item absence of large cyclic factors,
+\item or geometric curvature constraints.
+\end{itemize}
+
+\section{Terminal Classification}
+
+This result occupies a special role in URF:
+
+\begin{itemize}
+\item It is not a supporting axiom.
+\item It is not a conjectural principle.
+\item It is a \emph{terminal obstruction}.
+\end{itemize}
+
+It marks the exact boundary of what URF can ever prove.
+
+\section{Philosophical Summary}
+
+The dihedral obstruction establishes:
+
+\begin{quote}
+\emph{Global structure can remain completely invisible to all bounded local observation.}
+\end{quote}
+
+This is not a failure of rigidity theory, but a definitive map of its limits.
+
+\section*{Conclusion}
+
+Any valid form of rigidity must be conditional.
+The dream of universal local--global inference is mathematically impossible.
+The dihedral group provides the simplest and most fundamental witness of this fact.
+
+\end{document}
+
