@@ -1,12 +1,15 @@
 # Oblivion Rigidity and the Final Wall of FO^k Locality
 
-Status: Framework-complete, theorem-conditional.
+Status: Public Archive / Reference Artifact.
 
-This repository contains a structural reduction of FO^k locality,
-isolating a single open conjecture ("Final Wall / Oblivion Conjecture").
+This repository contains a framework-level reduction isolating a single
+open conjecture ("Final Wall / Oblivion Conjecture").
 
-No solution is claimed.
-All results are conditional on the stated conjecture.
+No proof is claimed.
+No active development occurs here.
+
+This is a frozen reference boundary for FO^k locality and related
+descriptive complexity programs.
 
 Author: Inacio F. Vasquez
 
