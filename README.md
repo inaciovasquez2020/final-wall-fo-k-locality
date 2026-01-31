@@ -1,88 +1,93 @@
-# Unified Rigidity Framework (URF) — Core
+# Unified Rigidity Framework (URF) — Core  
 **Deterministic Verification of Local→Global Structural Stability**
 
-[![Status: Core Closed](https://img.shields.io/badge/Status-Core%20Closed-blue?style=flat-square)](#current-status)
+[![Status: Core Closed](https://img.shields.io/badge/Status-Core%20Closed-blue?style=flat-square)](#current-status)  
 [![ORCID: 0009-0008-8459-3400](https://img.shields.io/badge/ORCID-0009--0008--8459--3400-lightgrey?style=flat-square)](https://orcid.org/0009-0008-8459-3400)
+
+---
+
+## Scope
+
+This repository is a **Tier A module** in the **Scientific Infrastructure (URF)**.  
+It contains the **core execution and verification layer** of the Unified Rigidity Framework.
+
+It hosts:
+- machine-verifiable operator instances,
+- spectral gap witnesses,
+- JSON certification artifacts,
+- deterministic verification standards.
+
+No speculative or experimental theory is developed here.  
+All content is frozen, versioned, and externally auditable.
 
 ---
 
 ## Significance Statement: The URF Closure
 
-The **Unified Rigidity Framework (URF)** addresses a fundamental impasse in Finite Model Theory: the inability of local logic ($FO^k$) to characterize global structural stability in the presence of expander obstructions. 
+The **Unified Rigidity Framework (URF)** resolves a central obstruction in Finite Model Theory:  
+the inability of bounded-variable local logic ($FO^k$) to enforce global structural stability in the presence of expander phenomena.
 
 ### Why This Matters
-* **Computational Determinism:** By establishing the **Logic-Width Dependency** ($k \ge f(tw)$), this work defines the exact threshold where local homogeneity forces global rigidity. This allows for the engineering of systems where structural integrity is a mathematical certainty, not a statistical probability.
-* **From Peer-Review to Machine-Verification:** The URF moves beyond traditional prose-based proofs by introducing the **URF-SG Standard**. Using machine-readable JSON artifacts, the framework enables **Deterministic Auditing** of complex operators—such as the Heisenberg nilmanifold and Ornstein–Uhlenbeck processes—reducing verification time from months to milliseconds.
-* **Broad Applicability:** This research provides a formal bedrock for information-bearing systems satisfying URF admissibility conditions, including Distributed Ledger Consensus and High-Fidelity Operator Systems.
+
+**Computational Determinism**  
+By establishing the **Logic–Width Dependency** ($k \ge f(tw)$), URF identifies the exact threshold where local homogeneity forces global rigidity.
+
+**Machine-Verifiable Proof Objects**  
+URF replaces narrative proofs with **formal operator certificates**, enabling deterministic verification of structural claims.
+
+**Engineering Relevance**  
+Any information-bearing system satisfying URF admissibility conditions becomes:
+- certifiably stable,
+- locally testable,
+- globally rigid by construction.
 
 ---
 
 ## Core Mathematical Pillars
 
 ### 1. The Expander Obstruction
-We characterize the failure of local types to bound global invariants in spectral expanders. Rigidity is only achieved when the operator system is isolated from the expander regime via bounded treewidth constraints.
 
-### 2. Law 3: Spectral Rigidity Wall
-A system is defined as **URF-Rigid** if it satisfies:
-$$\inf \mathrm{Spec}(\Delta_H \mid \ker(\mathrm{Per})^\perp) > 0$$
-This spectral gap serves as the "Proof-of-Result" for structural stability.
+Local logical equivalence fails to bound global invariants on spectral expanders.  
+Rigidity emerges only when operator systems are isolated from expander regimes via bounded structural width.
+
+### 2. Law 3 — Spectral Rigidity Wall
+
+A system is **URF-rigid** iff:
+
+\[
+\inf \mathrm{Spec}(\Delta_H \mid \ker(\mathrm{Per})^\perp) > 0
+\]
+
+This spectral gap is the **operational proof-of-rigidity**.
 
 ---
 
 ## Verified Artifacts (Law 3 Witnesses)
-These instances have been audited against the [URF-SG Standard](./standards/URF-SG.json) and are stored as machine-verifiable JSON files:
+
+All instances below are audited against the **URF-SG Standard** and stored as machine-verifiable JSON.
 
 | Artifact ID | Operator System | Metric | Status |
-| :--- | :--- | :--- | :--- |
-| **[EXT-1](./instances/EXT-1-Heisenberg.json)** | Heisenberg Nilmanifold | Gap $\ge 4\pi$ | **Verified** |
-| **[EXT-2](./instances/EXT-2-Ornstein-Uhlenbeck.json)** | Ornstein–Uhlenbeck | Gap $= 1.0$ | **Verified** |
+|------------|------------------|--------|--------|
+| **EXT-1** | Heisenberg Nilmanifold | Gap ≥ \(4\pi\) | Verified |
+| **EXT-2** | Ornstein–Uhlenbeck | Gap = 1.0 | Verified |
+
+### Instance Files
+
+- `instances/EXT-1-Heisenberg.json`  
+- `instances/EXT-2-Ornstein-Uhlenbeck.json`
+
+These files are first-class scientific objects:
+- globally addressable,
+- versioned,
+- cryptographically auditable.
 
 ---
 
-## Current Status
-The core mathematical requirements for Local$\to$Global spectral rigidity are **closed**. 
+## Reproducibility
 
-> **Note on Uncertainty:** Remaining uncertainty is strictly external (adoption, citation, institutional uptake). The internal logic and operator benchmarks are verified and deterministic.
+All verification is deterministic.
 
----
+To inspect a witness:
 
-## Navigation
-* [**Public Research Index**](https://inaciovasquez2020.github.io/vasquez-index/)
-* [**Technical Dashboard**](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
-* [**Manuscripts**](https://inaciovasquez2020.github.io/publications.html)
-
-**Inquiries:** [inacio@vasquezresearch.com](mailto:inaciovasquez2020@gmail.com)
-
-## Citation
-
-If you use or reference this work, please cite:
-
-Vasquez, Inacio F. (2026). *Terminal Rigidity Witness — ERB: A Structural Resolution of Zero-Capacity Regimes*. Independent Research Program.  
-GitHub: https://github.com/inaciovasquez2020/trw-erb-sigc
-
-### Contact
-**Inacio F. Vasquez**  
-Independent Research Program  
-Email: inacio@vasquezresearch.com  
-Web: https://www.vasquezresearch.com  
-ORCID: https://orcid.org/0009-0008-8459-3400
-
-© 2026 Inacio F. Vasquez. Core Logic.
-
-
-
-
-
-
-
-
-
-
-
-This repository is a Tier A module in the Scientific Infrastructure.
-It contains a canonical component of the Unified Rigidity Framework (URF).
-- v1.0 — Canonical Scientific Infrastructure release.
-All results are reproducible from the contents of this repository.
-Build and execution instructions are provided in this README.
-Root manifest:
-https://github.com/inaciovasquez2020/scientific-infrastructure
+```bash
+cat instances/EXT-1-Heisenberg.json
