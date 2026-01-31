@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Unified Rigidity Framework — Module"
+authors:
+  - family-names: Vasquez
+    given-names: Inacio F.
+version: 1.0
+year: 2026
+url: "https://github.com/inaciovasquez2020"
+license: MIT
