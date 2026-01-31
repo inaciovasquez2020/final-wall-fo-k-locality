@@ -79,3 +79,10 @@ ORCID: https://orcid.org/0009-0008-8459-3400
 
 
 
+This repository is a Tier A module in the Scientific Infrastructure.
+It contains a canonical component of the Unified Rigidity Framework (URF).
+- v1.0 — Canonical Scientific Infrastructure release.
+All results are reproducible from the contents of this repository.
+Build and execution instructions are provided in this README.
+Root manifest:
+https://github.com/inaciovasquez2020/scientific-infrastructure
