@@ -1,30 +1,10 @@
-name: Lean CI
-
+name: build
 on:
   push:
   pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Preinstall Elan + Lean toolchain
-        run: |
-          set -eux
-          curl -L --retry 10 --retry-delay 15 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-          source "$HOME/.profile" || true
-          elan toolchain install leanprover/lean4:v4.27.0
-          elan default leanprover/lean4:v4.27.0
-          lean --version
-
       - uses: leanprover/lean-action@v1
-        with:
-          auto-config: true
-          use-mathlib-cache: false   # ← critical
-          use-github-cache: false
-
-      - name: Build
-        run: lake build
