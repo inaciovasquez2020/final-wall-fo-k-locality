@@ -1,23 +1,33 @@
-URF Core
+# urf-core
 
-Lean formalization of the Unified Rigidity Framework (URF).
+This repository contains the core axioms and foundational logic for the Universal Reference Frame (URF) framework. It serves as the primary dependency for associated research modules within the Vasquez ecosystem.
 
-Scope
-This repository contains the core axioms, definitions, and Lean proofs for the URF program. It is intended to be the canonical formal backbone referenced by the public scientific index.
+## Overview
+The `urf-core` module provides the essential definitions and logic structures required by higher-level modules such as `chronos-urf-rr` and `radiative-rigidity`.
 
-Primary references
-Vasquez, Inacio F. (2026). Unified Rigidity Framework (URF). Submitted manuscripts and internal verification artifacts.
+## Canonical Registry
+This repository is a registered core module of the Vasquez Index. Stable versioning, archival DOIs, and reproducibility links are maintained at:
+* [Vasquez Index Dashboard](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
 
-Related repositories
-urf-axioms
-chronos-urf-rr
-scientific-infrastructure
-vasquez-index
+## Repository Metadata
+* **Repository Handle:** inaciovasquez2020/urf-core
+* **DOI Reference:** [10.5281/zenodo.18437927](https://doi.org/10.5281/zenodo.18437927)
+* **Status:** Operational / Core Library
 
-DOI
-10.5281/zenodo.18437927
+---
 
-Build
-Lake build on the default toolchain.
+## Technical Notes
+* **Integration:** This library is designed to be imported by other repositories within the inaciovasquez2020 organization.
+* **Reproducibility:** For stable research results, ensure you are utilizing the specific version referenced in the Vasquez Index dashboard.
+* **Dependencies:** Refer to `scientific-infrastructure` for the standard execution environment.
 
-Status: executable Lean project.
+## Citation
+If you utilize this core logic in your research, please cite it using the following entry:
+
+```bibtex
+@manual{Vasquez_URF_Core_2026,
+  author = {Vasquez, Inacio F.},
+  title  = {urf-core: Foundational Logic for the Universal Reference Frame},
+  year   = {2026},
+  url    = {[https://github.com/inaciovasquez2020/urf-core](https://github.com/inaciovasquez2020/urf-core)}
+}
