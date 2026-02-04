@@ -1,0 +1,117 @@
+%==================== Local--Global Information Barrier (FO^k) ====================
+
+\section{The Local--Global Information Barrier (FO$^k$ Formulation)}
+
+\subsection{FO$^k$-Definable Refinement Sequences}
+
+\begin{definition}[FO$^k$-definable refinement sequence]
+Fix integers $k\ge 1$ and $r\ge 0$. An \emph{FO$^k$-definable refinement sequence} on a graph $G=(V,E)$
+is a sequence of colorings
+\[
+\chi_0,\chi_1,\dots,\chi_T : V \to C
+\]
+for some finite color set $C$, such that for each step $t<T$ there exists a first-order formula
+\[
+\varphi_t(x;\, \bar y) \in \mathrm{FO}^k
+\]
+and a fixed encoding of the current colored radius-$r$ neighborhood of $x$ into parameters $\bar y$
+so that the update rule is \emph{uniform and isomorphism-invariant}:
+\[
+\chi_{t+1}(v) = F_t\big(\mathrm{type}^{\,\chi_t}_{r}(G,v)\big),
+\]
+where $\mathrm{type}^{\,\chi_t}_{r}(G,v)$ denotes the rooted isomorphism type of the radius-$r$
+neighborhood of $v$ in $G$ with vertices labeled by $\chi_t$, and $F_t$ is induced by $\varphi_t$
+(independent of $G$ and $v$).
+\end{definition}
+
+\subsection{Global Invariants Beyond FO$^k$}
+
+\begin{definition}[Global invariant (relative to FO$^k$)]
+A \emph{global invariant} (relative to FO$^k$) is an isomorphism-invariant graph property
+\[
+P:\mathcal{G}\to\{0,1\}
+\]
+such that $P$ is \emph{not} definable by any FO$^k$ sentence, i.e.
+\[
+P \notin \mathrm{FO}^k.
+\]
+Equivalently, there exist graphs $G,H$ with $G \equiv_{\mathrm{FO}^k} H$ but $P(G)\ne P(H)$.
+\end{definition}
+
+\subsection{Neighborhood Distributions}
+
+\begin{definition}[$r$-neighborhood distribution]
+For a graph $G=(V,E)$ and radius $r\ge 0$, let $\mathcal{N}_r(G,v)$ denote the rooted radius-$r$
+neighborhood of $v$. The \emph{$r$-neighborhood distribution} of $G$ is the multiset (or empirical measure)
+\[
+\mu_r(G) := \big\{\!\big\{\, [\mathcal{N}_r(G,v)] \;:\; v\in V \,\big\}\!\big\},
+\]
+where $[\mathcal{N}_r(G,v)]$ is the rooted isomorphism type.
+\end{definition}
+
+\subsection{CFI Local Homogeneity and FO$^k$ Indistinguishability}
+
+\begin{theorem}[CFI barrier: bounded-degree, connected, FO$^k$-indistinguishable pairs]
+For every fixed $k\ge 1$, there exists a family of pairs of graphs
+\[
+(G_k,H_k)
+\]
+such that:
+\begin{enumerate}
+\item $G_k$ and $H_k$ are finite, connected, and have maximum degree bounded by an absolute constant;
+\item $G_k \not\cong H_k$;
+\item $G_k \equiv_{\mathrm{FO}^k} H_k$ (equivalently, $k$-WL does not distinguish them);
+\item for every fixed radius $r\ge 0$,
+\[
+\mu_r(G_k) = \mu_r(H_k).
+\]
+\end{enumerate}
+\end{theorem}
+
+\subsection{Interpretation Closure}
+
+\begin{definition}[FO$^k$-interpretation]
+An \emph{FO$^k$-interpretation} $\mathcal{I}$ is a uniform construction that, from an input structure $G$,
+defines (by FO$^k$ formulas) a domain, relations, and equality on the output structure $\mathcal{I}(G)$.
+\end{definition}
+
+\begin{lemma}[No gain under composition of FO$^k$ interpretations]
+If $G \equiv_{\mathrm{FO}^k} H$ and $\mathcal{I}$ is any finite composition of FO$^k$-interpretations, then
+\[
+\mathcal{I}(G) \equiv_{\mathrm{FO}^k} \mathcal{I}(H).
+\]
+\end{lemma}
+
+\subsection{The Local--Global Information Barrier}
+
+\begin{theorem}[Local--Global Information Barrier (FO$^k$ form)]
+Fix $k\ge 1$. There exist finite connected bounded-degree graphs $G_k,H_k$ such that:
+\begin{enumerate}
+\item no FO$^k$-definable refinement sequence distinguishes $G_k$ from $H_k$ (at any finite depth);
+\item yet $G_k \not\cong H_k$;
+\item hence there exists a global invariant $P$ (relative to FO$^k$) with
+\[
+P(G_k)\ne P(H_k).
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $(G_k,H_k)$ be as in the CFI barrier theorem. Since $G_k \equiv_{\mathrm{FO}^k} H_k$, any FO$^k$-definable
+procedure (in particular any FO$^k$-definable refinement sequence, and any finite composition of FO$^k$-interpretations)
+produces indistinguishable outcomes on $G_k$ and $H_k$. Therefore no FO$^k$-definable refinement can separate them.
+However $G_k\not\cong H_k$, so some isomorphism-invariant property separates them; by definition such a property is not
+FO$^k$-definable and is a global invariant relative to FO$^k$.
+\end{proof}
+
+\begin{corollary}[Separation of knowledge modes]
+For fixed $k$,
+\[
+\mathrm{FO}^k\text{-extractable knowledge} \;\subsetneq\; \text{isomorphism-invariant knowledge}.
+\]
+In particular, there exist isomorphism-invariant properties not recoverable by any FO$^k$-definable refinement process,
+even on bounded-degree connected graphs.
+\end{corollary}
+
+%==================== End Local--Global Information Barrier (FO^k) ====================
+
