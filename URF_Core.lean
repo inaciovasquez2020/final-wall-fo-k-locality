@@ -24,8 +24,15 @@ def radius_ball (v : G) := sorry
 def F2_cycle_space := sorry
 
 -- Finite FO^k local type bound lemma
-lemma finite_local_types : sorry :=
-sorry
+lemma finite_local_types : 
+  ∃ (N : ℕ), ∀ v : G, (radius_ball v).F2_cycle_space.card ≤ N :=
+begin
+  -- Proof skeleton:
+  -- 1. There are finitely many rooted graphs of radius R and degree ≤ Δ
+  -- 2. FO^k formulas distinguish at most finitely many equivalence classes
+  -- 3. Conclude N := number of distinct FO^k types
+  sorry
+end
 
 -- Cycle-rank forces fan lemma
 lemma cycle_rank_forces_fan : sorry :=
