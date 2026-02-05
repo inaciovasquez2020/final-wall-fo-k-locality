@@ -1,4 +1,6 @@
-/.lake
-__pycache__/
-*.pyc
+papers/
+urc-minimal-blockchain/
+*.aux
+*.log
+*.swp
 .DS_Store
