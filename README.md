@@ -18,12 +18,10 @@ Scope:
 - Capacity–locality certification
 - No experimental or draft material
 
-<<<<<<< HEAD
 References:
 - URF Core: https://github.com/inaciovasquez2020/urf-core
 - Scientific Infrastructure: https://github.com/inaciovasquez2020/scientific-infrastructure
 - Website: https://www.vasquezresearch.com
-=======
 ---
 
 ## Technical Notes
@@ -31,9 +29,8 @@ References:
 * **Reproducibility:** For stable research results, ensure you are utilizing the specific version referenced in the Vasquez Index dashboard.
 * **Dependencies:** Refer to `scientific-infrastructure` for the standard execution environment.
 
-Scientific Infrastructure
-https://github.com/inaciovasquez2020/scientific-infrastructure
-Canonical environment, reproducibility, and deployment layer for all URF modules.
+Scientific Infrastructure (GitHub Pages)
+https://inaciovasquez2020.github.io/scientific-infrastructure/
 
 ## Citation
 If you utilize this core logic in your research, please cite it using the following entry:
@@ -45,4 +42,4 @@ If you utilize this core logic in your research, please cite it using the follow
   year   = {2026},
   url    = {[https://github.com/inaciovasquez2020/urf-core](https://github.com/inaciovasquez2020/urf-core)}
 }
->>>>>>> e914df3 (Cross-link scientific-infrastructure as canonical environment layer)
+ (Cross-link scientific-infrastructure as canonical environment layer)
