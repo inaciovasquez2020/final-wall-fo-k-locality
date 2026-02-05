@@ -5,3 +5,7 @@ urc-minimal-blockchain/
 *.swp
 .DS_Store
 .lake/
+!papers/
+!papers/ac0-csp/
+!papers/ac0-csp/**
+
