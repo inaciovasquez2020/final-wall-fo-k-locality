@@ -43,3 +43,21 @@ If $\dim_{\mathbb F_2} Z_1(B_{2R}(v))$ exceeds the FO$^k$ type bound, then there
 \]
 \end{theorem}
 
+\begin{proof}
+Assume for contradiction that all vertices $w$ satisfy
+$\tp^{\FO^k}_R(G,w)=\tp^{\FO^k}_R(G,v)$.
+
+By the cycle-rank hypothesis and Lemma (Cycle rank forces fan),
+there exists an $(m,R)$-cycle fan at $v$ with $m$ exceeding the
+maximum multiplicity realizable uniformly within a single FO$^k$
+radius-$R$ type.
+
+By Lemma (FO$^k$ fan expressibility), the existence of such an
+$(m,R)$-fan is an FO$^k$ property of $(B_R(v),v)$.
+Hence it must hold at every $w$ with the same FO$^k$ radius-$R$ type.
+
+This contradicts the finiteness bound on FO$^k$ local types.
+Therefore there exists $w$ with
+$\tp^{\FO^k}_R(G,w)\neq\tp^{\FO^k}_R(G,v)$.
+\end{proof}
+
