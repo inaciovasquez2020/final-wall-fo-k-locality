@@ -1,7 +1,7 @@
 --------------------------------------------------
 -- URF_Core.lean — Canonical Proof Infrastructure
 -- Modules: CLR, AKR, BSD, Hodge
--- Status: Fully axiomatized, ready for incremental proof filling
+-- Status: Fully axiomatized; ready for incremental proof filling
 --------------------------------------------------
 
 --------------------------------------------------
@@ -58,7 +58,7 @@ namespace AKR
 variables {H : Type} [inner_product_space H] (f : H)
 
 -- Dense Paley-Wiener core
-def D : set H := { f | True } -- axiomatized as the core
+def D : set H := { f | True } -- axiomatized as core
 
 -- Diagonal component
 def diag_component (f : H) := f -- placeholder function
