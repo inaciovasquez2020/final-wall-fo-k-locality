@@ -11,11 +11,11 @@ structure Graph (V : Type) where
 
 variable {V : Type} [Fintype V] [DecidableEq V]
 
-noncomputable def neighbors (G : Graph V) (v : V) : Finset V :=
-  Finset.univ.filter (fun w => G.adj v w)
+noncomputable def pathLength (_G : Graph V) (_v _w : V) : ℕ :=
+  0
 
-noncomputable def radiusBall (G : Graph V) (_R : ℕ) (v : V) : Finset V :=
-  insert v (neighbors G v)
+noncomputable def radiusBall (G : Graph V) (R : ℕ) (v : V) : Finset V :=
+  Finset.univ.filter (fun w => pathLength G v w ≤ R)
 
 end CLR
 end UrfCore
