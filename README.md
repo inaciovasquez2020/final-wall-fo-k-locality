@@ -13,6 +13,10 @@ This repository is a registered core module of the Vasquez Index. Stable version
 * **Repository Handle:** inaciovasquez2020/urf-core
 * **DOI Reference:** [10.5281/zenodo.18437927](https://doi.org/10.5281/zenodo.18437927)
 * **Status:** Operational / Core Library
+Proof Infrastructure
+
+See PROOF_INFRASTRUCTURE.md for standalone, scope-fenced proofs:
+CLR hardening, Archimedean Kernel density-coercivity, BSD curve-wise spectral gap, and admissible Hodge fixed-part.
 
 ---
 
