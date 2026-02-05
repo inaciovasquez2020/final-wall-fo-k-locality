@@ -31,3 +31,6 @@ If you utilize this core logic in your research, please cite it using the follow
   year   = {2026},
   url    = {[https://github.com/inaciovasquez2020/urf-core](https://github.com/inaciovasquez2020/urf-core)}
 }
+
+Status: executable Lean project. Canonical core referenced by active submissions including Foundations of Science: "Thermodynamic Limits on Empirical Discovery in Finite Information Systems".
+ (Update status to reflect active Foundations of Science submission)

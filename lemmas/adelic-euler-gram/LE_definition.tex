@@ -1,0 +1,22 @@
+\begin{definition}[Adelic Euler--Gram Kernel]
+Let $E/\mathbb{Q}$ be an elliptic curve with Néron--Tate height $\hat h$.
+Define the symmetric kernel
+\[
+K_E(P,Q) := \hat h(P+Q) - \hat h(P) - \hat h(Q),
+\quad P,Q \in E(\mathbb{Q}).
+\]
+\end{definition}
+
+\begin{definition}[Adelic Euler--Gram Operator]
+The Euler--Gram operator associated to $E$ is the linear operator
+\[
+(\mathcal L_E f)(P) := \sum_{Q \in E(\mathbb{Q})} K_E(P,Q)\, f(Q),
+\]
+acting on $\ell^2(E(\mathbb{Q}))$.
+\end{definition}
+
+\begin{remark}
+The kernel of $\mathcal L_E$ is exactly the real Mordell--Weil space
+$E(\mathbb{Q}) \otimes_{\mathbb{Z}} \mathbb{R}$.
+\end{remark}
+
