@@ -15,6 +15,15 @@ Large $\mathbb F_2$ cycle rank in $B_{2R}(v)$ forces an $(m,R)$ cycle fan at $v$
 \end{lemma}
 
 \begin{proof}
+The ball $B_{2R}(v)$ has $O(\Delta^{2R})$ edges.
+A cycle basis for $Z_1(B_{2R}(v))$ consists of simple cycles of length at most $2R$.
+If the $\mathbb F_2$-dimension exceeds the number of possible edge-disjoint anchor paths from $v$ of length $\le R$,
+then by pigeonhole there exists a vertex $u$ on such a path through which many independent cycles pass.
+These cycles share the initial segment $(v,u)$ and yield an $(m,R)$-fan with
+$m \ge \dim Z_1(B_{2R}(v))/\Delta^{O(R)}$.
+\end{proof}
+
+\begin{proof}
 Fix $k,\Delta,R$. Up to isomorphism, there are finitely many rooted graphs of radius $R$ and degree at most $\Delta$.
 FO$^k$ formulas of quantifier rank $\le R$ can distinguish at most finitely many equivalence classes on this finite set.
 Hence the number of FO$^k$ radius-$R$ pointed types is finite.
