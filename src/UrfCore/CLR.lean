@@ -17,15 +17,10 @@ noncomputable def pathLength (_G : Graph V) (_v _w : V) : ℕ :=
 noncomputable def radiusBall (G : Graph V) (R : ℕ) (v : V) : Finset V :=
   Finset.univ.filter (fun w => pathLength G v w ≤ R)
 
-lemma radiusBall_mono_R
-  (G : Graph V) {R₁ R₂ : ℕ} (h : R₁ ≤ R₂) (v : V) :
-  radiusBall G R₁ v ⊆ radiusBall G R₂ v :=
+lemma mem_radiusBall_self (G : Graph V) (R : ℕ) (v : V) :
+  v ∈ radiusBall G R v :=
 by
-  intro w hw
-  have hw' : pathLength G v w ≤ R₁ := by
-    simpa [radiusBall] using hw
-  have : pathLength G v w ≤ R₂ := le_trans hw' h
-  simpa [radiusBall] using this
+  simpa [radiusBall, pathLength]
 
 end CLR
 end UrfCore
