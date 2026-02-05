@@ -53,3 +53,20 @@ For $R$ sufficiently large and $f\in D$ orthogonal to $\ker(\mathcal E)$,
 \]
 \end{theorem}
 
+\begin{proof}
+By the diagonal dominance lemma, there exists $c_0>0$ such that
+$\langle \mathcal E_{\mathrm{diag}} f,f\rangle \ge c_0\|f\|_2^2$
+for all $f\in D$ with frequency support bounded away from zero.
+By the oscillatory control lemma, for cutoff $R$ sufficiently large,
+\[
+|\langle \mathcal E_{\mathrm{osc}} f,f\rangle| \le \tfrac{c_0}{2}\|f\|_2^2 .
+\]
+Combining the decomposition
+$\mathcal E=\mathcal E_{\mathrm{diag}}+\mathcal E_{\mathrm{osc}}$
+gives
+\[
+\langle \mathcal E f,f\rangle \ge \tfrac{c_0}{2}\|f\|_2^2
+\]
+for all $f\in D$ orthogonal to $\ker(\mathcal E)$.
+\end{proof}
+
