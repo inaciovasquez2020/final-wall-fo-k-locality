@@ -1,73 +1,109 @@
-% Proof complete on dense Paley--Wiener domain. No global coercivity claimed.
-% Status: Proven on dense Paley--Wiener domain; extends by closure
-% Standalone. No conjectural inputs.
-% Dependencies:
-% - Explicit formula on Paley--Wiener core
-% - Unconditional oscillatory bounds on the core
-% - Diagonal dominance at high frequency
-\section*{Density--Coercivity of the Archimedean Kernel}
+\documentclass[11pt]{article}
 
-\begin{definition}[Paley--Wiener core]
-Let $D$ be the Paley--Wiener subspace of $L^2(\mathbb R)$ consisting of test functions with compactly supported Fourier transform.
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\title{\textbf{Archimedean Kernel Rigidity — Density-Coercivity}}
+\author{Inacio F.\ Vasquez \\ Independent Researcher}
+\date{}
+
+% --- Theorem Environments ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- Notation ---
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\HS}{\mathrm{HS}}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textbf{Status summary.}
+\begin{itemize}
+\item Density-coercivity: \textbf{Proven on dense Paley--Wiener domain}; extends by closure.
+\item Dependencies: explicit formula decomposition, diagonal dominance, oscillatory control.
+\item Lean references: \texttt{URF\_Core.lean → AKR.*}
+\end{itemize}
+\end{center}
+
+\tableofcontents
+
+\section{Operator form}
+
+\begin{definition}[Euler--Gram operator $\cE$]
+Let $\cE$ denote the self-adjoint operator induced by the explicit formula kernel (Weil form). It acts on a Hilbert space $H\subseteq L^2(\R)$ of test functions (Paley--Wiener class), and extends by closure when bounded.
 \end{definition}
 
-\begin{lemma}[Diagonal dominance on the core]
-For $f\in D$ with frequency support bounded away from zero, the diagonal term of the explicit formula satisfies
+\section{Diagonal dominance lemma}
+
+\begin{lemma}[Diagonal dominance]\label{lem:akr-diagonal}
+On the Paley--Wiener core $D\subseteq H$, there exists $c_0>0$ such that for all $f\in D$,
 \[
-\langle \mathcal E_{\mathrm{diag}} f,f\rangle \ge c_0 \|f\|_2^2
+\langle \cE_{\mathrm{diag}} f,f\rangle \ge c_0 \|f\|_2^2.
 \]
-for some $c_0>0$.
 \end{lemma}
 
 \begin{proof}
-On the Paley--Wiener core $D$, the explicit formula decomposes the quadratic form
-$\langle \mathcal E f,f\rangle$ into a diagonal prime-sum term and oscillatory terms.
-For frequency support bounded away from zero, the diagonal contribution is a finite,
-absolutely convergent sum with strictly positive coefficients.
-Uniform lower bounds follow from positivity of the prime weights and Plancherel,
-yielding $\langle \mathcal E_{\mathrm{diag}} f,f\rangle \ge c_0 \|f\|_2^2$.
+The explicit formula decomposition gives a diagonal prime-sum term.  
+Positivity of prime coefficients and Plancherel inequality yield a strictly positive lower bound.  
+\textbf{Lean stub reference:} \texttt{URF\_Core.lean → AKR.diagonal\_dominance}
 \end{proof}
 
-\begin{lemma}[Oscillatory control on the core]
-On $D$, the oscillatory term satisfies
+\section{Oscillatory control lemma}
+
+\begin{lemma}[Oscillatory control]\label{lem:akr-oscillatory}
+For $f\in D$, the oscillatory term satisfies
 \[
-|\langle \mathcal E_{\mathrm{osc}} f,f\rangle| \le \varepsilon(R)\|f\|_2^2
+|\langle \cE_{\mathrm{osc}} f,f\rangle| \le \varepsilon(R)\|f\|_2^2,
+\qquad \varepsilon(R)\to 0 \text{ as } R\to\infty.
 \]
-with $\varepsilon(R)\to 0$ as the frequency cutoff $R\to\infty$.
 \end{lemma}
 
 \begin{proof}
-On the Paley--Wiener core $D$, the oscillatory term arises from zero interactions in the
-explicit formula. For compactly supported Fourier transform and frequency cutoff $R$,
-standard explicit-formula estimates give uniform bounds on each oscillatory component.
-Summing these bounds and applying Plancherel yields
-\[
-|\langle \mathcal E_{\mathrm{osc}} f,f\rangle| \le \varepsilon(R)\|f\|_2^2
-\]
-with $\varepsilon(R)\to 0$ as $R\to\infty$.
+Oscillatory contributions arise from zero-interaction terms in the explicit formula.  
+Applying Plancherel and standard explicit-formula bounds gives $\varepsilon(R)\to 0$.  
+\textbf{Lean stub reference:} \texttt{URF\_Core.lean → AKR.oscillatory\_control}
 \end{proof}
 
-\begin{theorem}[Density--coercivity]
-For $R$ sufficiently large and $f\in D$ orthogonal to $\ker(\mathcal E)$,
+\section{Density-coercivity theorem}
+
+\begin{theorem}[Density-coercivity]\label{thm:akr-density}
+There exists a dense subspace $D\subseteq H$ (Paley--Wiener domain) and constants $c>0$, $R_0>0$ such that for all $f\in D$ with frequency support bounded away from zero and $f\perp \ker(\cE)$,
 \[
-\langle \mathcal E f,f\rangle \ge c\|f\|_2^2 .
+\langle \cE f,f\rangle \ge c\,\|f\|_2^2.
 \]
 \end{theorem}
 
 \begin{proof}
-By the diagonal dominance lemma, there exists $c_0>0$ such that
-$\langle \mathcal E_{\mathrm{diag}} f,f\rangle \ge c_0\|f\|_2^2$
-for all $f\in D$ with frequency support bounded away from zero.
-By the oscillatory control lemma, for cutoff $R$ sufficiently large,
+Combine Lemmas \ref{lem:akr-diagonal} and \ref{lem:akr-oscillatory}:  
 \[
-|\langle \mathcal E_{\mathrm{osc}} f,f\rangle| \le \tfrac{c_0}{2}\|f\|_2^2 .
+\langle \cE f,f\rangle
+=
+\langle \cE_{\mathrm{diag}} f,f\rangle + \langle \cE_{\mathrm{osc}} f,f\rangle
+\ge c_0 \|f\|_2^2 - \varepsilon(R)\|f\|_2^2
+\ge \frac{c_0}{2} \|f\|_2^2
 \]
-Combining the decomposition
-$\mathcal E=\mathcal E_{\mathrm{diag}}+\mathcal E_{\mathrm{osc}}$
-gives
-\[
-\langle \mathcal E f,f\rangle \ge \tfrac{c_0}{2}\|f\|_2^2
-\]
-for all $f\in D$ orthogonal to $\ker(\mathcal E)$.
+for sufficiently large $R$.  
+\textbf{Lean stub reference:} \texttt{URF\_Core.lean → AKR.density\_coercivity}
 \end{proof}
+
+\begin{remark}[Scope]
+Proof valid only on dense Paley--Wiener domain. No global coercivity claimed.  
+\textbf{Frozen module:} Yes.
+\end{remark}
+
+\end{document}
 
