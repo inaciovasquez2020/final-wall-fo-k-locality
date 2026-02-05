@@ -1,0 +1,23 @@
+\appendix
+\section{Mapping Common CSPs to the AC$^0$-Local Class}
+
+\begin{itemize}
+\item \textbf{2-SAT.}
+Implication graph propagation is bounded-arity, bounded-degree, and
+expressible by AC$^0$ updates. Hence AC$^0$-local.
+
+\item \textbf{Horn-SAT.}
+Unit propagation is local with bounded fan-in; AC$^0$-local.
+
+\item \textbf{Bounded-width CSPs.}
+Local consistency enforcement (k-consistency for fixed k) is AC$^0$-local.
+
+\item \textbf{Fixed-template CSPs of bounded relational width.}
+Standard local propagation suffices; AC$^0$-local.
+
+\item \textbf{XOR-SAT.}
+Not AC$^0$-local due to global linear dependencies; excluded by design.
+\end{itemize}
+
+Thus the unconditional separation applies to a broad and standard class.
+
