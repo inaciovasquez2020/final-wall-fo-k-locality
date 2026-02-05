@@ -10,6 +10,13 @@
 For fixed $k,\Delta,R$ there are finitely many FO$^k$ radius-$R$ pointed types in $\Delta$-bounded graphs.
 \end{lemma}
 
+\begin{proof}
+A path of length at most $R$ is definable by an FO formula with $R$ existential quantifiers.
+Using at most $k$ variables, one can quantify a bounded tuple witnessing the anchor $u$ and
+$m\le k$ distinct neighbors $z_i$, together with bounded paths from each $z_i$ back to the root.
+All constraints are local to radius $R$, so the resulting FO$^k$ formula has quantifier rank $O(R)$.
+\end{proof}
+
 \begin{lemma}[Cycle rank forces fan]
 Large $\mathbb F_2$ cycle rank in $B_{2R}(v)$ forces an $(m,R)$ cycle fan at $v$ for $m$ exceeding the FO$^k$ uniform bound.
 \end{lemma}
