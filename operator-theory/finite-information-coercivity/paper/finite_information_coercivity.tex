@@ -22,6 +22,88 @@ complexity assumptions.
 To be completed.
 
 \section{Admissible Systems}
+
+Let $\mathcal H$ be a separable Hilbert space and let $\mathsf L$ be a
+densely defined, self-adjoint, nonnegative operator on $\mathcal H$.
+
+We assume $\mathsf L$ is \emph{local} in the following sense: there exists
+a decomposition of $\mathcal H$ into spatial degrees of freedom together
+with constants $R<\infty$ and $C>0$ such that the resolvent
+$(\mathsf L - z)^{-1}$ satisfies an exponential off-diagonal decay bound
+uniformly for $\operatorname{Im} z \neq 0$.
+
+Observation of the system is modeled by channels generated from bounded
+functions of $\mathsf L$ with finite spacetime support.
+
+\begin{definition}[Observation Capacity]
+The information capacity of the system is
+\[
+\mathrm{Cap}(\mathsf L)
+=
+\sup_{\mathcal O} I(\rho;\mathcal O),
+\]
+where the supremum ranges over all admissible observation channels
+$\mathcal O$ and normal states $\rho$.
+\end{definition}
+
+We say the system is \emph{finite-information observable} if
+$\mathrm{Cap}(\mathsf L)<\infty$.
+O
+
+\section{Capacity--Coercivity Inequality}
+
+Let
+\[
+N(\varepsilon;\mathsf L)
+=
+\dim \mathbf 1_{[0,\varepsilon)}(\mathsf L)\mathcal H
+\]
+denote the spectral counting function near zero.
+
+\begin{theorem}[Capacity--Coercivity Inequality]
+\label{thm:cci}
+Let $\mathsf L$ be a local self-adjoint operator in dimension $d$ with
+finite interaction range $R$. If $\mathrm{Cap}(\mathsf L)\le C<\infty$,
+then there exist constants $\alpha=\alpha(d,R)$ and $K=K(d,R)$ such that
+for all sufficiently small $\varepsilon>0$,
+\[
+N(\varepsilon;\mathsf L)
+\le
+K\, e^{C}\, \varepsilon^{-\alpha}.
+\]
+\end{theorem}
+
+The constants $\alpha$ and $K$ depend only on the geometric locality
+parameters and not on the particular state $\rho$ or channel $\mathcal O$.
+
+\section{Spectral Coercivity Modulo Finite Defect}
+
+\begin{theorem}[Unified Coercivity]
+\label{thm:coercivity}
+Under the assumptions of Theorem~\ref{thm:cci}, there exists a finite-rank
+projection $P$ and a constant $c>0$ such that
+\[
+\langle \psi, \mathsf L \psi \rangle
+\ge
+c \|\psi\|^2
+\quad
+\text{for all }
+\psi \perp \operatorname{Ran} P.
+\]
+\end{theorem}
+
+In particular, the defect space
+\[
+\mathcal D(\mathsf L)
+=
+\ker \mathsf L
+\oplus
+\bigcap_{\varepsilon>0}
+\operatorname{Ran}\mathbf 1_{[0,\varepsilon)}(\mathsf L)
+\]
+is finite dimensional.
+
+\section{Admissible Systems}
 To be completed.
 
 \section{Capacity--Coercivity Inequality}
