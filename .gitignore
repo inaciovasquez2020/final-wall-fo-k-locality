@@ -6,3 +6,5 @@ docs/.log
 docs/*.out
 docs/.aux
 docs/.log
+*.aux
+*.log
