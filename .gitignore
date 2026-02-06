@@ -4,3 +4,5 @@ docs/*.out
 docs/.aux
 docs/.log
 docs/*.out
+docs/.aux
+docs/.log
