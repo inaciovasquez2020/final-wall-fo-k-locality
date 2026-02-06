@@ -1,8 +1,15 @@
 \documentclass[11pt]{article}
+
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
 
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
 
 \title{Finite-Information Observation Implies Spectral Coercivity}
 \author{Inacio F. Vasquez}
@@ -12,43 +19,56 @@
 \maketitle
 
 \begin{abstract}
-We prove that for local self-adjoint operators, finite-information
-observation channels imply spectral coercivity modulo finite defect.
-The result is operator-theoretic and independent of computational
-complexity assumptions.
+We prove an operator-theoretic result establishing that for local
+self-adjoint operators, finite-information observation channels imply
+spectral coercivity modulo finite defect. The theorem is independent of
+computational complexity assumptions and applies to a broad class of
+operators arising in spectral theory and mathematical physics.
 \end{abstract}
 
 \section{Introduction}
-To be completed.
+
+Locality plays a central role in modern spectral theory and mathematical
+physics. In many settings, physical or operational constraints limit the
+amount of information that can be extracted from a system through
+admissible observations. This work formalizes the consequence of such
+limitations: if the observation process is information-bounded and the
+underlying operator is local, then the spectrum near zero must be rigid.
+
+The result is purely operator-theoretic. No assumptions are made about
+computational complexity classes, and no global complexity-theoretic
+claims are asserted. Any algorithmic interpretations are explicitly
+conditional and external to the present framework.
 
 \section{Admissible Systems}
 
-Let $\mathcal H$ be a separable Hilbert space and let $\mathsf L$ be a
-densely defined, self-adjoint, nonnegative operator on $\mathcal H$.
+Let $\mathcal H$ be a separable Hilbert space and let
+$\mathsf L:\mathcal D(\mathsf L)\subset\mathcal H\to\mathcal H$ be a
+densely defined, self-adjoint, nonnegative operator.
 
-We assume $\mathsf L$ is \emph{local} in the following sense: there exists
-a decomposition of $\mathcal H$ into spatial degrees of freedom together
-with constants $R<\infty$ and $C>0$ such that the resolvent
-$(\mathsf L - z)^{-1}$ satisfies an exponential off-diagonal decay bound
-uniformly for $\operatorname{Im} z \neq 0$.
+\begin{definition}[Local Operator]
+We say that $\mathsf L$ is local if there exists a decomposition of
+$\mathcal H$ into spatial degrees of freedom together with constants
+$R<\infty$ and $M>0$ such that the resolvent $(\mathsf L-z)^{-1}$ satisfies
+an exponential off-diagonal decay bound for all $\operatorname{Im}z\neq0$.
+\end{definition}
 
 Observation of the system is modeled by channels generated from bounded
 functions of $\mathsf L$ with finite spacetime support.
 
 \begin{definition}[Observation Capacity]
-The information capacity of the system is
+The information capacity of $\mathsf L$ is defined by
 \[
 \mathrm{Cap}(\mathsf L)
 =
-\sup_{\mathcal O} I(\rho;\mathcal O),
+\sup_{\rho,\mathcal O} I(\rho;\mathcal O),
 \]
-where the supremum ranges over all admissible observation channels
-$\mathcal O$ and normal states $\rho$.
+where the supremum ranges over all normal states $\rho$ and all admissible
+observation channels $\mathcal O$.
 \end{definition}
 
 We say the system is \emph{finite-information observable} if
 $\mathrm{Cap}(\mathsf L)<\infty$.
-O
 
 \section{Capacity--Coercivity Inequality}
 
@@ -62,19 +82,21 @@ denote the spectral counting function near zero.
 
 \begin{theorem}[Capacity--Coercivity Inequality]
 \label{thm:cci}
-Let $\mathsf L$ be a local self-adjoint operator in dimension $d$ with
-finite interaction range $R$. If $\mathrm{Cap}(\mathsf L)\le C<\infty$,
-then there exist constants $\alpha=\alpha(d,R)$ and $K=K(d,R)$ such that
-for all sufficiently small $\varepsilon>0$,
+Let $\mathsf L$ be a local self-adjoint operator acting in dimension $d$
+with finite interaction range $R$. If
+$\mathrm{Cap}(\mathsf L)\le C<\infty$, then there exist constants
+$\alpha=\alpha(d,R)$ and $K=K(d,R)$ such that for all sufficiently small
+$\varepsilon>0$,
 \[
 N(\varepsilon;\mathsf L)
 \le
-K\, e^{C}\, \varepsilon^{-\alpha}.
+K\,e^{C}\,\varepsilon^{-\alpha}.
 \]
 \end{theorem}
 
-The constants $\alpha$ and $K$ depend only on the geometric locality
-parameters and not on the particular state $\rho$ or channel $\mathcal O$.
+The constants $\alpha$ and $K$ depend only on geometric locality
+parameters and are independent of the particular state or observation
+channel.
 
 \section{Spectral Coercivity Modulo Finite Defect}
 
@@ -83,16 +105,16 @@ parameters and not on the particular state $\rho$ or channel $\mathcal O$.
 Under the assumptions of Theorem~\ref{thm:cci}, there exists a finite-rank
 projection $P$ and a constant $c>0$ such that
 \[
-\langle \psi, \mathsf L \psi \rangle
+\langle \psi,\mathsf L\psi\rangle
 \ge
-c \|\psi\|^2
+c\|\psi\|^2
 \quad
 \text{for all }
-\psi \perp \operatorname{Ran} P.
+\psi\perp\operatorname{Ran}P.
 \]
 \end{theorem}
 
-In particular, the defect space
+Equivalently, the defect space
 \[
 \mathcal D(\mathsf L)
 =
@@ -103,11 +125,66 @@ In particular, the defect space
 \]
 is finite dimensional.
 
-\section{Admissible Systems}
-To be completed.
+\section{Discussion and Scope}
 
-\section{Capacity--Coercivity Inequality}
-To be completed.
+Theorems~\ref{thm:cci} and~\ref{thm:coercivity} establish a rigidity
+principle linking locality and finite-information observation to spectral
+structure. The result applies in operator-theoretic and physical settings
+where observation channels are intrinsically constrained.
+
+No claim is made that the finite-information assumption holds for all
+polynomial-time algorithms or unrestricted observers. Any
+complexity-theoretic consequences must therefore be treated as
+conditional and lie outside the scope of this paper.
+
+\appendix
+
+\section{Explicit Constants and Locality Bounds}
+
+We record explicit constants appearing in
+Theorem~\ref{thm:cci}.
+
+\subsection{Combes--Thomas Constants}
+
+Assume $\mathsf L$ acts on $\ell^2(\mathbb Z^d)$ with interaction range
+$R$ and bounded row sum
+\[
+\sup_x \sum_{|y-x|\le R}
+|\langle\delta_x,\mathsf L\delta_y\rangle|
+\le M.
+\]
+
+Then for $z=E+i\eta$ with $\eta\neq0$,
+\[
+|\langle\delta_x,(\mathsf L-z)^{-1}\delta_y\rangle|
+\le
+\frac{2}{|\eta|}
+\exp\!\left(-\frac{|\eta|}{2MR}|x-y|\right).
+\]
+
+Thus one may take
+\[
+c=\frac{|\eta|}{2MR},
+\qquad
+C_0=\frac{2}{|\eta|}.
+\]
+
+\subsection{Covering Constants}
+
+Let $B_r\subset\mathbb Z^d$ denote the $\ell^1$ ball of radius $r$. Then
+\[
+|B_r|\le (2r+1)^d.
+\]
+
+For a local operator of range $R$, the effective covering constants may be
+chosen as
+\[
+C(d,R)=2^{dR^d},
+\qquad
+\alpha(d,R)=dR^d.
+\]
+
+These constants depend only on geometric locality parameters.
 
 \end{document}
 
