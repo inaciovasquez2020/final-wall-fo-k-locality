@@ -8,3 +8,4 @@ docs/.aux
 docs/.log
 *.aux
 *.log
+*.out
