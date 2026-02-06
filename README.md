@@ -1,5 +1,7 @@
 # URF Prefab System
 
+[Referee Map](REFEREE.md) · [Claims Policy](CLAIMS.md) · Explicit Claims Classification
+[Status](STATUS.md) · Stable · Referee bundle frozen (referee-v1.0)
 Canonical prefab layer for the Unified Rigidity Framework (URF).
 
 This repository provides:
