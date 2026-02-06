@@ -27,16 +27,6 @@ jobs:
       - name: Check Lean toolchain consistency
         run: ./scripts/check-lean-toolchain.sh
 
-      - name: Cache Lean and Lake
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.elan
-            .lake
-          key: ${{ runner.os }}-lean-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
-          restore-keys: |
-            ${{ runner.os }}-lean-
-
       - name: Update Lake dependencies
         run: lake update
 
