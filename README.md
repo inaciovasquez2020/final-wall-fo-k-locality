@@ -23,4 +23,10 @@ Status
 This repository is frozen as a record of the Final Wall.
 Extensions, resolutions, or breakthroughs must occur elsewhere.
 
+## Project Context
+This repository addresses the terminal locality obstruction (“Final Wall”) in FOᵏ rigidity.
+
+- Framework context: https://inaciovasquez2020.github.io
+- Status tracking: https://inaciovasquez2020.github.io/vasquez-index/dashboard.html
+
 See STATUS.md for the authoritative boundary.
