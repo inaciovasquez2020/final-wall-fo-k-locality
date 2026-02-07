@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\title{\textbf{Infinity Wall: VCDI Instantiation and Directed-Limit Rigidity}}
+\author{Inacio F.\ Vasquez \\ Independent Researcher}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ED}{\mathrm{ED}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\R}{\mathbb{R}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We record a canonical instantiation of the Vasquez Capacity--Depth Inequality (VCDI) on expander-like and random-lift graph families, yielding an ``infinity wall'' statement: under URF admissibility with finite per-step transcript capacity, any exhaustion with unbounded entropy demand forces unbounded entropy depth, hence rigidity in the directed limit.
+\end{abstract}
+
+\section{Admissible class and capacity}
+Fix an admissible refinement class \(\mathcal{A}\) with finite per-step transcript capacity bound \(C_{\max}\in(0,\infty)\).
+For each finite instance \(P\in\mathcal{A}\), let \(H(P)\) denote its entropy demand and \(\ED(P)\) its entropy depth.
+
+\section{VCDI (canonical form)}
+\begin{theorem}[Vasquez Capacity--Depth Inequality (VCDI)]
+\label{thm:vcdi}
+For every admissible process \(P\in\mathcal{A}\),
+\[
+\ED(P)\ \ge\ \frac{H(P)}{C_{\max}}.
+\]
+\end{theorem}
+
+\section{Concrete instances from graph families}
+
+\subsection{Cycle-rank invariant}
+Let \(G\) be a finite connected graph. Write \(Z_1(G;\F_2)\) for the \(\F_2\)-cycle space and define the global invariant
+\[
+I(G)\ :=\ \dim_{\F_2} Z_1(G;\F_2).
+\]
+For a connected graph with \(n\) vertices and \(m\) edges, \(I(G)=m-n+1\).
+
+\subsection{Expander / high cycle-rank families}
+Let \((G_n)_{n\ge 1}\) be a family of connected \(d\)-regular graphs (\(d\ge 3\)) with \(|V(G_n)|=n\).
+Then \(m=\tfrac{dn}{2}\) and hence
+\[
+I(G_n)\ =\ m-n+1\ =\ \Big(\frac d2-1\Big)n+1\ =\ \Theta(n).
+\]
+
+\begin{definition}[Expander-instantiated process]
+For each \(n\), let \(P_n\in\mathcal{A}\) be a URF-admissible refinement process whose entropy demand includes the uncertainty of a uniform parity state on \(Z_1(G_n;\F_2)\).
+\end{definition}
+
+\begin{lemma}[Linear entropy demand from cycle parity]
+\label{lem:linearH}
+Under the above definition,
+\[
+H(P_n)\ \ge\ I(G_n)\ =\ \Theta(n).
+\]
+\end{lemma}
+
+\begin{corollary}[Linear depth lower bound on \(d\)-regular families]
+\label{cor:linearED}
+For such \((P_n)\subset\mathcal{A}\),
+\[
+\ED(P_n)\ \ge\ \frac{H(P_n)}{C_{\max}}\ \ge\ \frac{I(G_n)}{C_{\max}}\ =\ \Theta(n).
+\]
+\end{corollary}
+
+\subsection{Random lifts}
+Let \(B\) be a fixed connected base graph with minimum degree \(\ge 3\). Let \(G_n\) be an \(n\)-lift of \(B\).
+Since \(|E(G_n)|=n|E(B)|\) and \(|V(G_n)|=n|V(B)|\),
+\[
+I(G_n)\ =\ |E(G_n)|-|V(G_n)|+1\ =\ n(|E(B)|-|V(B)|)+1\ =\Theta(n)
+\]
+provided \(|E(B)|-|V(B)|>0\) (equivalently \(B\) is not a tree).
+
+\begin{corollary}[Random-lift instantiation]
+\label{cor:lifts}
+For any admissible \(P_n\in\mathcal{A}\) whose demand includes uniform cycle-parity uncertainty on \(Z_1(G_n;\F_2)\),
+\[
+H(P_n)=\Theta(n),
+\qquad
+\ED(P_n)\ge \Theta(n).
+\]
+\end{corollary}
+
+\section{Sharp constant for fixed admissible class}
+\begin{proposition}[Sharpness of \(1/C_{\max}\) for a fixed class]
+\label{prop:sharp}
+Assume \(\mathcal{A}\) is specified so that for every \(P\in\mathcal{A}\) and every step \(t\),
+\[
+\Delta H_t(P)\le C_{\max}.
+\]
+Then Theorem~\ref{thm:vcdi} holds, and the factor \(1/C_{\max}\) is sharp in the sense that equality is achieved by processes satisfying \(\Delta H_t(P)=C_{\max}\) at every step until termination.
+\end{proposition}
+
+\section{Global invariant separator}
+\begin{proposition}[Computability separation witness]
+\label{prop:sep}
+The invariant \(I(G)=\dim_{\F_2}Z_1(G;\F_2)\) is computable by global aggregation. Any regime that terminates by explicitly computing \(I(G_n)\) is non-URF, in that it violates locality (FO\(^k\)-local refinement with fixed \(k\)) when used as a termination-critical quantity.
+\end{proposition}
+
+\section{Directed-limit dichotomy (Infinity Wall)}
+Let \((P_n)_{n\ge 1}\subset\mathcal{A}\) be any exhaustion such that \(H(P_n)\uparrow\infty\).
+
+\begin{theorem}[Infinity Wall]
+\label{thm:infwall}
+If \(C_{\max}<\infty\) and VCDI holds in the form of Theorem~\ref{thm:vcdi}, then
+\[
+\lim_{n\to\infty}\ED(P_n)\ =\ \infty.
+\]
+Define a directed limit object \(P_\infty:=\varinjlim P_n\). Then \(\ED(P_\infty)=\infty\); i.e.\ the limit is rigid (non-terminating) within the admissible refinement regime.
+\end{theorem}
+
+\begin{proof}
+By VCDI, \(\ED(P_n)\ge H(P_n)/C_{\max}\). Since \(H(P_n)\uparrow\infty\) and \(C_{\max}<\infty\), the right-hand side diverges, hence \(\ED(P_n)\to\infty\). The final assertion is the definition of \(\ED(P_\infty)\) as the directed-limit divergence of \(\ED(P_n)\).
+\end{proof}
+
+\section{Classification rule}
+An ``infinite'' method that succeeds must exit URF by at least one of:
+\begin{itemize}
+\item capacity violation: \(C_{\max}=\infty\) (unbounded transcript per step),
+\item locality violation: reliance on global invariants (e.g.\ \(I(G)\), spectrum, global homology).
+\end{itemize}
+Otherwise (URF-admissible with \(C_{\max}<\infty\)), Theorem~\ref{thm:infwall} forces rigidity.
+
+\end{document}
+
