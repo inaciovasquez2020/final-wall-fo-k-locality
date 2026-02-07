@@ -26,6 +26,11 @@ References:
 - Website: https://www.vasquezresearch.com
 ---
 
+## Documentation & Navigation
+- Framework overview: https://inaciovasquez2020.github.io
+- Project index: https://inaciovasquez2020.github.io/vasquez-index/
+- Infrastructure hub: https://github.com/inaciovasquez2020/scientific-infrastructure
+
 ## Technical Notes
 * **Integration:** This library is designed to be imported by other repositories within the inaciovasquez2020 organization.
 * **Reproducibility:** For stable research results, ensure you are utilizing the specific version referenced in the Vasquez Index dashboard.
