@@ -1,33 +1,26 @@
-# final-wall-fo-k-locality
+Final Wall: FO^k Locality Obstruction
 
-This repository contains the research implementation and analysis for Final Wall FO-k-Locality within the Universal Reference Frame (URF) framework. It is an indexed component of the Vasquez research ecosystem.
+This repository records the terminal obstruction ("Final Wall") encountered by FO^k-local, bounded-degree, and refinement-based methods.
 
-## Overview
-The `final-wall-fo-k-locality` module provides the computational logic and mathematical proofs for locality constraints and "Final Wall" boundaries as part of the broader URF research suite.
+Contents
+- README.md: scope and interpretation
+- STATUS.md: authoritative claim boundary
+- ARCHIVE.md: historical notes and deprecated paths
+- Oblivion_Final_Wall.tex: canonical technical manuscript
+- docs/: supporting technical notes
+- operator-theory/: supporting reductions
 
-## Canonical Registry
-This repository is a registered module of the Vasquez Index. Stable references, archival DOIs, and reproducibility links are maintained at:
-* [Vasquez Index Dashboard](https://inaciovasquez2020.github.io/vasquez-index/dashboard.html)
+What this repository establishes
+- A precise reduction of a broad class of locality-based methods to a single terminal obstruction
+- Identification of the obstruction as structural, not algorithmic
 
-## Repository Status
-* **Repository Handle:** inaciovasquez2020/final-wall-fo-k-locality
-* **Stability:** Refer to the Vasquez Index for the latest stable DOI and version history.
-* **Infrastructure:** [scientific-infrastructure](https://github.com/inaciovasquez2020/scientific-infrastructure)
+What this repository does NOT claim
+- No solution to P vs NP or related decision problems
+- No resolution of the terminal rigidity obstruction
+- No claims beyond those listed in STATUS.md
 
----
+Status
+This repository is frozen as a record of the Final Wall.
+Extensions, resolutions, or breakthroughs must occur elsewhere.
 
-## Technical Notes
-* **Integration:** This module is designed to interface with `urf-core` and `urf-axioms` to ensure theoretical consistency across the ecosystem.
-* **Reproducibility:** To ensure consistent computational results, utilize the environment configurations defined in the `scientific-infrastructure` module.
-* **Scope:** This repository focuses on the formal logic and spatial-temporal constraints of k-locality within the defined framework.
-
-## Citation
-If you use this research or implementation in your work, please cite it as follows:
-
-```bibtex
-@manual{Vasquez_Final_Wall_Locality_2026,
-  author = {Vasquez, Inacio F.},
-  title  = {final-wall-fo-k-locality: Research Implementation and Analysis},
-  year   = {2026},
-  url    = {[https://github.com/inaciovasquez2020/final-wall-fo-k-locality](https://github.com/inaciovasquez2020/final-wall-fo-k-locality)}
-}
+See STATUS.md for the authoritative boundary.
