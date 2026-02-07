@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URF Regression A–E",
+  "type": "object",
+  "required": ["kind","version","lift_certificate","results","pass","sha256"],
+  "properties": {
+    "kind": { "const": "URF_REGRESSION_AE" },
+    "version": { "type": "string" },
+    "lift_certificate": {
+      "type": "object",
+      "required": ["base_graph","lift","checks"],
+      "properties": {
+        "base_graph": {
+          "type": "object",
+          "required": ["n_vertices","oriented_edges"],
+          "properties": {
+            "n_vertices": { "type": "integer", "minimum": 1 },
+            "oriented_edges": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        },
+        "lift": {
+          "type": "object",
+          "required": ["n_sheets","seed","edge_perms"],
+          "properties": {
+            "n_sheets": { "type": "integer", "minimum": 1 },
+            "seed": { "type": "integer", "minimum": 0 },
+            "edge_perms": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["edge","perm"],
+                "properties": {
+                  "edge": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "items": { "type": "integer", "minimum": 0 }
+                  },
+                  "perm": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "type": "integer", "minimum": 0 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "checks": {
+          "type": "object",
+          "required": ["inv_rule","bijective"],
+          "properties": {
+            "inv_rule": { "type": "boolean" },
+            "bijective": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "results": {
+      "type": "object",
+      "required": ["A","B","C","D","E"],
+      "properties": {
+        "A": { "type": "boolean" },
+        "B": { "type": "boolean" },
+        "C": { "type": "boolean" },
+        "D": { "type": "boolean" },
+        "E": { "type": "boolean" }
+      }
+    },
+    "pass": { "type": "boolean" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
+
