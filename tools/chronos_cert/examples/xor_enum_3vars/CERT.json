@@ -1,0 +1,33 @@
+{
+  "instance": {
+    "name": "xor_enum_3vars",
+    "n_states": 2,
+    "H0_lower": 1.0
+  },
+  "bound": {
+    "C": 1.0,
+    "epsilon": 0.0
+  },
+  "trace": {
+    "posteriors": [
+      {
+        "p": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "p": [
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "p": [
+          1.0,
+          0.0
+        ]
+      }
+    ]
+  }
+}
