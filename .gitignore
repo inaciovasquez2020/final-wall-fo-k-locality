@@ -13,3 +13,5 @@ urf-cli/dist/
 
 # rolecheck local helpers (do not track)
 tools/rolecheck/git_tracked.py
+.lake
+**/.lake
