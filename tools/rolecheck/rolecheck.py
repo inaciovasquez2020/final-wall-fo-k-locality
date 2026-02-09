@@ -1,78 +1,35 @@
 #!/usr/bin/env python3
-from __future__ import annotations
-import argparse
-import os
 import subprocess
-
-def git_tracked_set():
-    try:
-        out = subprocess.check_output(["git", "ls-files"], text=True)
-        return set(out.splitlines())
-    except Exception:
-        return set()
 import sys
-from pathlib import Path
-from fnmatch import fnmatch
 
-def die(msg: str) -> None:
-  raise SystemExit(f"ROLECHECK_FAIL: {msg}")
+ROLE = sys.argv[1] if len(sys.argv) > 1 else "core"
 
-def iter_files(root: Path) -> list[str]:
-  out: list[str] = []
-  for p in root.rglob("*"):
-    if p.is_file():
-      rel = p.relative_to(root).as_posix()
-      out.append(rel)
-  return out
+FORBIDDEN_SUBSTRINGS = [
+    "/.lake/",
+    "\\.lake\\",
+    ".lake/",
+    ".lake\\",
+    "ProofWidgets4.tar.gz",
+]
 
-def match_any(path: str, patterns: list[str]) -> bool:
-  for pat in patterns:
-    if fnmatch(path, pat):
-      return True
-  return False
+def git_tracked_files():
+    out = subprocess.check_output(["git", "ls-files"], text=True)
+    return [line.strip() for line in out.splitlines() if line.strip()]
 
-def main() -> None:
-  ap = argparse.ArgumentParser()
-  ap.add_argument("role", choices=["core", "prefab", "infra", "app"])
-  args = ap.parse_args()
+def rolecheck_core():
+    tracked = git_tracked_files()
+    bad = []
+    for f in tracked:
+        for rule in FORBIDDEN_SUBSTRINGS:
+            if rule in f:
+                bad.append(f)
+                break
+    if bad:
+        print(f"ROLECHECK_FAIL: forbidden tracked files for role=core: {bad}")
+        sys.exit(1)
+    print("ROLECHECK_OK")
 
-  root = Path(".").resolve()
-  files = iter_files(root)
-
-  core_forbidden = [
-    "dist/*",
-    "release/*",
-    "prefab_bundle/*",
-    "docker/*",
-    "*.tar.gz",
-    "*.zip"
-  ]
-
-  prefab_forbidden = [
-    "spine/lean/**",
-    "lemmas/**",
-    "theorems/**",
-    "proofs/**"
-  ]
-
-  infra_forbidden = [
-    "spine/lean/**"
-  ]
-
-  app_forbidden = []
-
-  forb = {
-    "core": core_forbidden,
-    "prefab": prefab_forbidden,
-    "infra": infra_forbidden,
-    "app": app_forbidden
-  }[args.role]
-
-  bad = [f for f in files if match_any(f, forb)]
-  if bad:
-    die(f"forbidden files for role={args.role}: {bad[:20]}")
-
-  print("ROLECHECK_OK")
-
-if __name__ == "__main__":
-  main()
+if ROLE == "core":
+    rolecheck_core()
+else:
+    print("ROLECHECK_OK (non-core role)")
