@@ -1,7 +1,9 @@
-name: Provenance (SLSA)
+name: Provenance (SLSA) — attest release artifacts
 
 on:
   workflow_dispatch:
+  push:
+    tags: ["v*"]
   release:
     types: [published]
 
@@ -15,8 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Attest build provenance (repo)
+
+      - name: Ensure merkle root exists (tracked build)
+        run: |
+          chmod +x scripts/build-merkle.sh || true
+          ./scripts/build-merkle.sh
+
+      - name: Attest build provenance (key artifacts)
         uses: actions/attest-build-provenance@v1
         with:
           subject-path: |
-            .
+            transparency/merkle.root
+            transparency/files.sha256
+            sigstore/image.digest
+            sigstore/cosign.bundle.json
