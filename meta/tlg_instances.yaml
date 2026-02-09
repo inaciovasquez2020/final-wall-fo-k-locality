@@ -1,0 +1,23 @@
+version: 1
+instances:
+  - id: TLG.INSTANCE.001
+    target_statement: URF.THM.ChronosEDLower
+    parameters:
+      k: "fixed"
+      Delta: "bounded"
+      R: "fixed"
+      B: "fixed"
+    local_witness:
+      kind: "FO^k_patch_separation"
+      hooks: [LG.HOOK.Locality, LG.HOOK.Compilation]
+      description: "EF^k-visible local separation compiled to FO^k observable supported on ≤B radius-R patches."
+    transfer:
+      kind: "capacity_entropydepth"
+      hooks: [LG.HOOK.Glue]
+      constants: [URF.CONST.CHRONOS.c_ed, URF.CONST.VCDI.c_step]
+      produces: ["ED lower bound in refinement regime"]
+    jurisdiction:
+      requires: [URF.AX.Admissibility]
+      excluded_by_counterexamples: [ATLAS.001]
+    dag_links:
+      nodes: [URF.THM.ChronosEDLower, URF.THM.VCDI, URF.LEM.StepCapacity, URF.DEF.TranscriptCapacity]

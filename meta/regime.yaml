@@ -1,0 +1,25 @@
+version: 1
+items:
+  - id: ATLAS.003
+    regime: hybrid
+    rationale: "Violation of locality premise; witness uses non-local information, outside FO^k patch compilation."
+
+  - id: ATLAS.002
+    regime: global_algebraic
+    rationale: "Violation of bounded-degree (Δ) assumption; outside uniform FO^k locality regime."
+
+  - id: URF.THM.VCDI
+    regime: refinement
+    rationale: "Derived from step-bounded transcript capacity; valid only inside refinement admissibility."
+    allowed_moves: ["finite-state transcript update", "local queries"]
+    disallowed_moves: ["global preprocessing", "global algebraic elimination"]
+
+  - id: URF.THM.ChronosEDLower
+    regime: refinement
+    rationale: "Reduction through VCDI; inherits refinement jurisdiction."
+    allowed_moves: ["local refinement", "patch-local observables"]
+    disallowed_moves: ["global encoding outside transcript accounting"]
+
+  - id: ATLAS.001
+    regime: global_algebraic
+    rationale: "Witness explicitly permits global preprocessing; used only to show necessity of admissibility."

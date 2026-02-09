@@ -1,0 +1,22 @@
+version: 1
+schema: constants
+required_top_level: [version, constants]
+constant_fields:
+  tightness: {type: enum, required: false, values: [loose, moderate, sharp, optimal, unknown]}
+  id: {type: string, required: true, pattern: "^[A-Z0-9][A-Z0-9_.-]{2,63}$"}
+  statement_id: {type: string, required: true}
+  role: {type: enum, required: true, values: [lower_bound, upper_bound, equivalence, threshold]}
+  quantity: {type: string, required: true}          # e.g. "ED(P_n)", "H(X)", "C_step"
+  bound_form: {type: enum, required: true, values: [Omega, O, Theta, Ge, Le, Eq]}
+  constant_symbol: {type: string, required: true}   # e.g. "c0", "C1", "R*"
+  constant_value: {type: string, required: false}   # allow "explicit: 1/128" or "computed: ..."
+  dependencies: {type: list, required: false, elem_type: string}
+  derivation:
+    type: list
+    required: true
+    elem_fields:
+      step: {type: integer, required: true}
+      claim: {type: string, required: true}
+      cites: {type: list, required: false, elem_type: string}
+notes:
+  - "Every asymptotic claim should map to >=1 constant rows."

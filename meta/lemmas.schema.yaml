@@ -1,0 +1,19 @@
+version: 1
+schema: lemmas
+required_top_level: [version, lemmas]
+lemma_fields:
+  id: {type: string, required: true, pattern: "^[A-Z0-9][A-Z0-9_.-]{2,63}$"}
+  title: {type: string, required: true, min_len: 3}
+  type: {type: enum, required: true, values: [axiom, definition, lemma, proposition, theorem, corollary]}
+  status: {type: enum, required: true, values: [proved, conditional, conjecture, deprecated]}
+  tags: {type: list, required: false, elem_type: string}
+  locations:
+    type: list
+    required: false
+    elem_fields:
+      repo: {type: string, required: true}
+      path: {type: string, required: true}
+      anchor: {type: string, required: false}
+notes:
+  - "IDs are stable, globally unique within your corpus."
+  - "status=conditional requires an explicit 'depends_on' entry in deps.yaml for the missing object."

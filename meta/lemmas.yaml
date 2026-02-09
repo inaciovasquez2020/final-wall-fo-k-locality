@@ -1,0 +1,100 @@
+version: 1
+lemmas:
+  - id: LG.THM.Composition
+    title: "T_LG Composition Law"
+    type: lemma
+    status: proved
+    tags: [lg, composition]
+    locations:
+      - repo: flagship-lean
+        path: meta/tlg_composition.md
+
+  - id: URF.AX.Admissibility
+    title: "Admissibility Axioms (Refinement Regime)"
+    type: axiom
+    status: proved
+    tags: [urf, admissibility, refinement]
+    locations:
+      - repo: urf-core
+        path: papers/admissibility/main.tex
+
+  - id: URF.DEF.Capacity
+    title: "Operational Capacity (Definition)"
+    type: definition
+    status: proved
+    tags: [urf, capacity]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: URF.DEF.TranscriptCapacity
+    title: "Transcript Capacity (Definition)"
+    type: definition
+    status: proved
+    tags: [urf, transcript, capacity]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: URF.LEM.StepCapacity
+    title: "Per-step Information Gain Bound"
+    type: lemma
+    status: proved
+    tags: [urf, capacity, step_bound]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: URF.THM.VCDI
+    title: "Vasquez Capacity–Depth Inequality (VCDI)"
+    type: theorem
+    status: proved
+    tags: [urf, chronos, entropydepth, capacity]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: URF.THM.ChronosEDLower
+    title: "Chronos Lower Bound (ED from Capacity)"
+    type: theorem
+    status: proved
+    tags: [urf, chronos, entropydepth]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: LG.HOOK.Locality
+    title: "FO^k Locality Hook"
+    type: lemma
+    status: proved
+    tags: [lg, locality, fok]
+    locations:
+      - repo: final-wall-fo-k-locality
+        path: main.tex
+
+  - id: LG.HOOK.Compilation
+    title: "EF^k / FO^k Witness Compilation Hook"
+    type: lemma
+    status: proved
+    tags: [lg, ef_game, compilation]
+    locations:
+      - repo: final-wall-fo-k-locality
+        path: main.tex
+
+  - id: LG.HOOK.Glue
+    title: "Patch-Union Glue Hook"
+    type: lemma
+    status: proved
+    tags: [lg, patch, glue]
+    locations:
+      - repo: urf-core
+        path: papers/chronos/main.tex
+
+  - id: URF.NOTE.RegimeSeparation
+    title: "Regime Separation Note (Refinement vs Global Algebraic)"
+    type: proposition
+    status: proved
+    tags: [urf, jurisdiction, regime]
+    locations:
+      - repo: urf-core
+        path: docs/spine/jurisdiction.md

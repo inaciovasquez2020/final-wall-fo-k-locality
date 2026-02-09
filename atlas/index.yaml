@@ -1,0 +1,29 @@
+version: 1
+entries:
+  - id: ATLAS.002
+    target_statement: LG.HOOK.Locality
+    dropped_assumption: "bounded_degree"
+    witness:
+      kind: "unbounded_degree_family"
+      size: "parameterized"
+      description: "Unbounded-degree defeats uniform FO^k local-type control."
+    verifies:
+      method: "necessity"
+      references: []
+    locations:
+      - repo: flagship-lean
+        path: atlas/counterexamples/ATLAS.002.md
+
+  - id: ATLAS.001
+    target_statement: URF.THM.VCDI
+    dropped_assumption: URF.AX.Admissibility
+    witness:
+      kind: "global_preprocessing"
+      size: "finite (jurisdictional witness)"
+      description: "Global algebraic preprocessing permitted; exits refinement regime, voiding step-capacity accounting."
+    verifies:
+      method: "jurisdiction"
+      references: [URF.NOTE.RegimeSeparation]
+    locations:
+      - repo: flagship-lean
+        path: atlas/counterexamples/ATLAS.001.md

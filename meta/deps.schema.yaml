@@ -1,0 +1,12 @@
+version: 1
+schema: deps
+required_top_level: [version, edges]
+edge_fields:
+  from: {type: string, required: true}
+  to: {type: string, required: true}
+  kind: {type: enum, required: true, values: [uses, reduces_to, equivalent_to]}
+  note: {type: string, required: false}
+constraints:
+  - "Edges are directed: from -> to means 'to depends on from'."
+  - "No self-loops."
+  - "Graph must be acyclic when restricted to kind=uses (equivalences may be cyclic but must be explicitly tagged)."

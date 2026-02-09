@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "schema": "dag",
+  "required_top_level": ["version", "nodes", "edges", "build"],
+  "node": {
+    "required": ["id", "title", "type", "status"],
+    "properties": {
+      "id": {"type": "string"},
+      "title": {"type": "string"},
+      "type": {"type": "string"},
+      "status": {"type": "string"},
+      "tags": {"type": "array", "items": {"type": "string"}},
+      "locations": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["repo", "path"],
+          "properties": {
+            "repo": {"type": "string"},
+            "path": {"type": "string"},
+            "anchor": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+  "edge": {
+    "required": ["from", "to", "kind"],
+    "properties": {
+      "from": {"type": "string"},
+      "to": {"type": "string"},
+      "kind": {"type": "string"},
+      "note": {"type": "string"}
+    }
+  },
+  "build": {
+    "required": ["timestamp", "inputs"],
+    "properties": {
+      "timestamp": {"type": "string"},
+      "inputs": {"type": "array", "items": {"type": "string"}},
+      "tool": {"type": "string"}
+    }
+  }
+}

@@ -1,0 +1,45 @@
+version: 1
+edges:
+  - from: LG.HOOK.Glue
+    to: LG.THM.Composition
+    kind: uses
+  - from: URF.AX.Admissibility
+    to: LG.THM.Composition
+    kind: uses
+
+  # core spine: Admissibility → StepCapacity → TranscriptCapacity → VCDI → ChronosEDLower
+  - from: URF.AX.Admissibility
+    to: URF.LEM.StepCapacity
+    kind: uses
+
+  - from: URF.DEF.Capacity
+    to: URF.DEF.TranscriptCapacity
+    kind: uses
+
+  - from: URF.DEF.TranscriptCapacity
+    to: URF.LEM.StepCapacity
+    kind: uses
+
+  - from: URF.LEM.StepCapacity
+    to: URF.THM.VCDI
+    kind: uses
+
+  - from: URF.AX.Admissibility
+    to: URF.THM.VCDI
+    kind: uses
+
+  - from: URF.THM.VCDI
+    to: URF.THM.ChronosEDLower
+    kind: reduces_to
+
+  - from: LG.HOOK.Locality
+    to: URF.THM.ChronosEDLower
+    kind: uses
+
+  - from: LG.HOOK.Compilation
+    to: URF.THM.ChronosEDLower
+    kind: uses
+
+  - from: LG.HOOK.Glue
+    to: URF.THM.ChronosEDLower
+    kind: uses

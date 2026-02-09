@@ -1,0 +1,32 @@
+version: 1
+constants:
+  - id: URF.CONST.VCDI.c_step
+    statement_id: URF.THM.VCDI
+    role: lower_bound
+    quantity: "T"
+    bound_form: Ge
+    constant_symbol: "c_step"
+    constant_value: "symbolic: 1/C_step"
+    tightness: unknown
+    dependencies: [URF.LEM.StepCapacity, URF.DEF.TranscriptCapacity, URF.AX.Admissibility]
+    derivation:
+      - step: 1
+        claim: "Per-step mutual information ≤ C_step (step capacity bound)."
+        cites: [URF.LEM.StepCapacity]
+      - step: 2
+        claim: "Total acquired information ≤ T·C_step; to resolve entropy H_target requires T ≥ H_target/C_step."
+        cites: [URF.THM.VCDI]
+
+  - id: URF.CONST.CHRONOS.c_ed
+    statement_id: URF.THM.ChronosEDLower
+    role: lower_bound
+    quantity: "ED"
+    bound_form: Ge
+    constant_symbol: "c_ed"
+    constant_value: "symbolic: 1/C_ref"
+    tightness: unknown
+    dependencies: [URF.THM.VCDI, URF.AX.Admissibility]
+    derivation:
+      - step: 1
+        claim: "Apply VCDI to refinement transcript budget; ED lower-bounds required refinement time in capacity regime."
+        cites: [URF.THM.VCDI]

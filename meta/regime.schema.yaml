@@ -1,0 +1,18 @@
+version: 1
+schema: regime_classifier
+required_top_level: [version, items]
+item_fields:
+  id: {type: string, required: true}          # statement or component id
+  regime: {type: enum, required: true, values: [refinement, global_algebraic, hybrid]}
+  rationale: {type: string, required: true}
+  disallowed_moves:
+    type: list
+    required: false
+    elem_type: string
+  allowed_moves:
+    type: list
+    required: false
+    elem_type: string
+notes:
+  - "Use refinement when information gain is step-bounded and local."
+  - "Use global_algebraic for preprocessing/encoding/invariants outside refinement jurisdiction."

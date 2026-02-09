@@ -1,0 +1,256 @@
+{
+  "build": {
+    "inputs": [
+      "meta/lemmas.yaml",
+      "meta/deps.yaml"
+    ],
+    "timestamp": "2026-02-09T14:53:51Z",
+    "tool": "tools/compile_dag.py"
+  },
+  "edges": [
+    {
+      "from": "LG.HOOK.Glue",
+      "kind": "uses",
+      "to": "LG.THM.Composition"
+    },
+    {
+      "from": "URF.AX.Admissibility",
+      "kind": "uses",
+      "to": "LG.THM.Composition"
+    },
+    {
+      "from": "URF.AX.Admissibility",
+      "kind": "uses",
+      "to": "URF.LEM.StepCapacity"
+    },
+    {
+      "from": "URF.DEF.Capacity",
+      "kind": "uses",
+      "to": "URF.DEF.TranscriptCapacity"
+    },
+    {
+      "from": "URF.DEF.TranscriptCapacity",
+      "kind": "uses",
+      "to": "URF.LEM.StepCapacity"
+    },
+    {
+      "from": "URF.LEM.StepCapacity",
+      "kind": "uses",
+      "to": "URF.THM.VCDI"
+    },
+    {
+      "from": "URF.AX.Admissibility",
+      "kind": "uses",
+      "to": "URF.THM.VCDI"
+    },
+    {
+      "from": "URF.THM.VCDI",
+      "kind": "reduces_to",
+      "to": "URF.THM.ChronosEDLower"
+    },
+    {
+      "from": "LG.HOOK.Locality",
+      "kind": "uses",
+      "to": "URF.THM.ChronosEDLower"
+    },
+    {
+      "from": "LG.HOOK.Compilation",
+      "kind": "uses",
+      "to": "URF.THM.ChronosEDLower"
+    },
+    {
+      "from": "LG.HOOK.Glue",
+      "kind": "uses",
+      "to": "URF.THM.ChronosEDLower"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "LG.THM.Composition",
+      "locations": [
+        {
+          "path": "meta/tlg_composition.md",
+          "repo": "flagship-lean"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "lg",
+        "composition"
+      ],
+      "title": "T_LG Composition Law",
+      "type": "lemma"
+    },
+    {
+      "id": "URF.AX.Admissibility",
+      "locations": [
+        {
+          "path": "papers/admissibility/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "admissibility",
+        "refinement"
+      ],
+      "title": "Admissibility Axioms (Refinement Regime)",
+      "type": "axiom"
+    },
+    {
+      "id": "URF.DEF.Capacity",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "capacity"
+      ],
+      "title": "Operational Capacity (Definition)",
+      "type": "definition"
+    },
+    {
+      "id": "URF.DEF.TranscriptCapacity",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "transcript",
+        "capacity"
+      ],
+      "title": "Transcript Capacity (Definition)",
+      "type": "definition"
+    },
+    {
+      "id": "URF.LEM.StepCapacity",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "capacity",
+        "step_bound"
+      ],
+      "title": "Per-step Information Gain Bound",
+      "type": "lemma"
+    },
+    {
+      "id": "URF.THM.VCDI",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "chronos",
+        "entropydepth",
+        "capacity"
+      ],
+      "title": "Vasquez Capacity\u2013Depth Inequality (VCDI)",
+      "type": "theorem"
+    },
+    {
+      "id": "URF.THM.ChronosEDLower",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "chronos",
+        "entropydepth"
+      ],
+      "title": "Chronos Lower Bound (ED from Capacity)",
+      "type": "theorem"
+    },
+    {
+      "id": "LG.HOOK.Locality",
+      "locations": [
+        {
+          "path": "main.tex",
+          "repo": "final-wall-fo-k-locality"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "lg",
+        "locality",
+        "fok"
+      ],
+      "title": "FO^k Locality Hook",
+      "type": "lemma"
+    },
+    {
+      "id": "LG.HOOK.Compilation",
+      "locations": [
+        {
+          "path": "main.tex",
+          "repo": "final-wall-fo-k-locality"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "lg",
+        "ef_game",
+        "compilation"
+      ],
+      "title": "EF^k / FO^k Witness Compilation Hook",
+      "type": "lemma"
+    },
+    {
+      "id": "LG.HOOK.Glue",
+      "locations": [
+        {
+          "path": "papers/chronos/main.tex",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "lg",
+        "patch",
+        "glue"
+      ],
+      "title": "Patch-Union Glue Hook",
+      "type": "lemma"
+    },
+    {
+      "id": "URF.NOTE.RegimeSeparation",
+      "locations": [
+        {
+          "path": "docs/spine/jurisdiction.md",
+          "repo": "urf-core"
+        }
+      ],
+      "status": "proved",
+      "tags": [
+        "urf",
+        "jurisdiction",
+        "regime"
+      ],
+      "title": "Regime Separation Note (Refinement vs Global Algebraic)",
+      "type": "proposition"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,40 @@
+version: 1
+schema: tlg_instances
+required_top_level: [version, instances]
+instance_fields:
+  id: {type: string, required: true}
+  target_statement: {type: string, required: true}
+  parameters:
+    type: object
+    required: true
+    keys:
+      k: {type: string, required: true}
+      Delta: {type: string, required: true}
+      R: {type: string, required: true}
+      B: {type: string, required: true}
+  local_witness:
+    type: object
+    required: true
+    keys:
+      kind: {type: string, required: true}
+      hooks: {type: list, required: true, elem_type: string}
+      description: {type: string, required: true}
+  transfer:
+    type: object
+    required: true
+    keys:
+      kind: {type: string, required: true}
+      hooks: {type: list, required: true, elem_type: string}
+      constants: {type: list, required: true, elem_type: string}
+      produces: {type: list, required: true, elem_type: string}
+  jurisdiction:
+    type: object
+    required: true
+    keys:
+      requires: {type: list, required: true, elem_type: string}
+      excluded_by_counterexamples: {type: list, required: true, elem_type: string}
+  dag_links:
+    type: object
+    required: true
+    keys:
+      nodes: {type: list, required: true, elem_type: string}
