@@ -1,0 +1,7 @@
+{
+  "instance": {
+    "name": "unsat_enum_unit_conflict",
+    "n_vars": 1,
+    "cnf": [[1], [-1]]
+  }
+}
