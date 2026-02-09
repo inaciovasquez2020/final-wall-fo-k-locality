@@ -1,0 +1,53 @@
+name: Lean Repro (binary hash equality)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean_repro:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout A
+        uses: actions/checkout@v4
+        with:
+          path: A
+          fetch-depth: 0
+
+      - name: Checkout B
+        uses: actions/checkout@v4
+        with:
+          path: B
+          fetch-depth: 0
+
+      - name: Install Lean (A)
+        uses: leanprover/lean-action@v1
+        with:
+          workdir: A
+
+      - name: Build (A)
+        run: |
+          cd A
+          lake update
+          lake build
+          find .lake/build -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 256 > /tmp/lean.A.sha256
+
+      - name: Install Lean (B)
+        uses: leanprover/lean-action@v1
+        with:
+          workdir: B
+
+      - name: Build (B)
+        run: |
+          cd B
+          lake update
+          lake build
+          find .lake/build -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 256 > /tmp/lean.B.sha256
+
+      - name: Compare Lean build hashes
+        run: |
+          diff -u /tmp/lean.A.sha256 /tmp/lean.B.sha256
