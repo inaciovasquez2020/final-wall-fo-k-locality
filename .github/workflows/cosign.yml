@@ -1,0 +1,59 @@
+name: Sigstore (cosign) — sign container + Rekor bundle
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set vars
+        id: vars
+        run: |
+          echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+          echo "sha=${GITHUB_SHA}" >> $GITHUB_OUTPUT
+          echo "date=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_OUTPUT
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Build image (local) and capture digest
+        run: |
+          docker build \
+            --pull --no-cache \
+            --build-arg VCS_REF=${{ steps.vars.outputs.sha }} \
+            --build-arg BUILD_DATE=${{ steps.vars.outputs.date }} \
+            -t urf-core:${{ steps.vars.outputs.tag }} .
+          digest="$(docker images --digests --format '{{.Repository}}:{{.Tag}}@{{.Digest}}' | grep '^urf-core:${{ steps.vars.outputs.tag }}@' | head -n1)"
+          echo "$digest" | tee sigstore/image.digest
+
+      - name: Cosign sign (keyless) + Rekor bundle
+        env:
+          COSIGN_EXPERIMENTAL: "true"
+        run: |
+          img="$(cat sigstore/image.digest)"
+          cosign sign --yes --bundle sigstore/cosign.bundle.json "$img"
+
+      - name: Verify (bundle + Rekor inclusion)
+        env:
+          COSIGN_EXPERIMENTAL: "true"
+        run: |
+          img="$(cat sigstore/image.digest)"
+          cosign verify --bundle sigstore/cosign.bundle.json "$img" >/dev/null
+
+      - name: Commit signature artifacts to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sigstore/image.digest sigstore/cosign.bundle.json
+          git commit -m "sigstore: cosign keyless signature bundle for ${GITHUB_REF_NAME}" || exit 0
+          git push origin HEAD:main
