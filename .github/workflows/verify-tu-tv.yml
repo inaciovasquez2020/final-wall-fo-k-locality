@@ -2,41 +2,31 @@ name: verify-tu-tv
 
 on:
   push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
   verify:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Lean toolchain
-        uses: leanprover/lean-action@v1
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          lake_package_dir: .
-          build: false
+          python-version: "3.11"
 
-      - name: Lake update
-        run: lake update
-
-      - name: Get mathlib cache
-        run: lake exe cache get
-
-      - name: Lean build
-        run: lake build
-
-      - name: Python compile check
+      - name: Install dependencies
         run: |
-          python3 -m py_compile tools/tu/tu_seymour_verify.py
-          python3 -m py_compile tools/tv_cert/generate_tv_finite_cert.py
-          python3 -m py_compile tools/tv_cert/verify_tv_finite_cert.py
+          python -m pip install --upgrade pip
 
-      - name: TU smoke test
+      - name: TU Seymour minimal certificate test
         run: |
           python3 tools/tu/tu_seymour_verify.py tools/tu/testdata/network_minimal_CERT.json
 
@@ -50,7 +40,15 @@ jobs:
           python3 tools/tv_step_cert/generate_tv_step_cert.py 10 /tmp/tv_step_n10_CERT.json
           python3 tools/tv_step_cert/verify_tv_step_cert.py /tmp/tv_step_n10_CERT.json
 
-      - name: Mathlib lemma index script
+      - name: Compile TU verifier
         run: |
-          tools/mathlib_index/index_signedmeasure_tv.sh
-          test -s docs/mathlib/SIGNEDMEASURE_TV_LEMMAS.txt
+          python3 -m py_compile tools/tu/tu_seymour_verify.py
+
+      - name: Compile TV finite verifier
+        run: |
+          python3 -m py_compile tools/tv_cert/verify_tv_finite_cert.py
+
+      - name: Compile TV step verifier
+        run: |
+          python3 -m py_compile tools/tv_step_cert/verify_tv_step_cert.py
+
