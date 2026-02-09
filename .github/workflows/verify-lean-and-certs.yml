@@ -1,0 +1,53 @@
+name: verify-lean-and-certs
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  lean_and_certs:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Lean build
+        uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          test: false
+
+      - name: TV finite certificate test
+        run: |
+          python3 tools/tv_cert/generate_tv_finite_cert.py 8 /tmp/tv_finite_n8_CERT.json
+          python3 tools/tv_cert/verify_tv_finite_cert.py /tmp/tv_finite_n8_CERT.json
+
+      - name: TV step certificate test
+        run: |
+          python3 tools/tv_step_cert/generate_tv_step_cert.py 10 /tmp/tv_step_n10_CERT.json
+          python3 tools/tv_step_cert/verify_tv_step_cert.py /tmp/tv_step_n10_CERT.json
+
+      - name: TU Seymour certificate test
+        run: |
+          python3 tools/tu/tu_seymour_verify.py tools/tu/testdata/network_minimal_CERT.json
+
+      - name: Role contract check
+        run: |
+          python3 tools/rolecheck/rolecheck.py core
+
+      - name: Referee bundle verifier
+        env:
+          URF_REFEREE_RUN_LEAN: "0"
+        run: |
+          python3 tools/referee_bundle/verify_referee_bundle.py
