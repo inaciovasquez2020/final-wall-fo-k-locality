@@ -2,25 +2,36 @@ name: Lean CI
 
 on:
   push:
-    branches: [ main ]
   pull_request:
+  workflow_dispatch:
 
 jobs:
-  lean-build:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Lean toolchain
-        uses: leanprover/lean-action@v1
-        with:
-          lake-package-directory: .
-          use-mathlib-cache: true
-
-      - name: Build URF (includes regression checks)
+      - name: Install Lean toolchain (retry hardened)
         run: |
-          lake update
-          lake build
+          set -e
+          for i in 1 2 3 4 5; do
+            curl -L https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+            sh elan-init.sh -y && break
+            echo "Retry elan install $i"
+            sleep 15
+          done
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
+      - name: Show Lean version
+        run: lean --version
+
+      - name: Lake update
+        run: lake update
+
+      - name: Try mathlib cache (non-fatal)
+        run: lake exe cache get || true
+
+      - name: Build
+        run: lake build
