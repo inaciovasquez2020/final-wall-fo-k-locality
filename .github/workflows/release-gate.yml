@@ -1,0 +1,17 @@
+name: Release Gate
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Release gate: require SLSA verify + cosign + repro + lean-repro to be green."
+          echo "Configure GitHub Ruleset -> Required status checks -> add this workflow name + the underlying ones."
