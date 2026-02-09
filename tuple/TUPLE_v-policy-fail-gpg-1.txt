@@ -1,0 +1,6 @@
+tag: v-policy-fail-gpg-1
+commit: e99c97f136ae89e730973a03ff85148b532f86af
+tree: 425300d80ae57ee8d2285509705597a77cdae1cb
+artifacts_sha256_root: 710744fd201704e030d07c3be649365b65d0efdf4079c06bbe2b8b694957eab4
+artifacts_list: tuple/ARTIFACTS.sha256
+ci_run_url: https://github.com/inaciovasquez2020/urf-core/actions/runs/21845031089
