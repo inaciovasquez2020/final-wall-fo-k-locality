@@ -1,24 +1,7 @@
 #!/usr/bin/env python3
-import json, math, sys
+import json, sys
 from typing import List, Dict, Any
 
-TOL = 1e-9
-
-def shannon_entropy(p: List[float]) -> float:
-    s = 0.0
-    for x in p:
-        if x < -TOL:
-            raise ValueError(f"negative prob {x}")
-        if x <= 0.0:
-            continue
-        s -= x * math.log2(x)
-    return s
-
-def normalize(p: List[float]) -> List[float]:
-    z = sum(p)
-    if z <= 0:
-        raise ValueError("sum(p) <= 0")
-    return [x / z for x in p]
 
 def load_cert(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
@@ -45,10 +28,12 @@ def verify(cert: Dict[str, Any]) -> int:
         p = obj["p"]
         if len(p) != M:
             raise ValueError(f"posterior {i} has len {len(p)} != {M}")
+        from entropy_utils import normalize
         p = normalize([float(x) for x in p])
         Ps.append(p)
 
-    Hs = [shannon_entropy(p) for p in Ps]
+    from entropy_utils import entropy_bits
+    Hs = [entropy_bits(p) for p in Ps]
     drops = [Hs[t] - Hs[t+1] for t in range(len(Hs)-1)]
     max_drop = max(drops)
 
