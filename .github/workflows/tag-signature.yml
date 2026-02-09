@@ -1,0 +1,22 @@
+name: Tag Signature Check (GPG)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify tag is GPG-signed
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          git tag -v "$tag"
