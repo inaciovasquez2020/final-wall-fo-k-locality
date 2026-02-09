@@ -9,3 +9,4 @@ papers/**/arxiv/
 ip/
 ip/
 urf-cli/dist/
+**/.lake/
