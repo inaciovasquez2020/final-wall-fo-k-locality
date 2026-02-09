@@ -23,6 +23,12 @@ jobs:
             sleep 15
           done
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
+          source "$HOME/.elan/env"
+
+      - name: Pin Lean toolchain
+        run: |
+          elan toolchain install leanprover/lean4:v4.27.0
+          elan default leanprover/lean4:v4.27.0
 
       - name: Show Lean version
         run: lean --version
