@@ -1,0 +1,43 @@
+name: Repro Check (Merkle root)
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  merkle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout A
+        uses: actions/checkout@v4
+        with:
+          path: A
+          fetch-depth: 0
+
+      - name: Checkout B
+        uses: actions/checkout@v4
+        with:
+          path: B
+          fetch-depth: 0
+
+      - name: Build merkle in A
+        run: |
+          cd A
+          chmod +x scripts/build-merkle.sh
+          ./scripts/build-merkle.sh
+          cp transparency/merkle.root /tmp/merkle.A
+
+      - name: Build merkle in B
+        run: |
+          cd B
+          chmod +x scripts/build-merkle.sh
+          ./scripts/build-merkle.sh
+          cp transparency/merkle.root /tmp/merkle.B
+
+      - name: Compare
+        run: |
+          diff -u /tmp/merkle.A /tmp/merkle.B
