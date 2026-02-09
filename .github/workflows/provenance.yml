@@ -1,0 +1,24 @@
+name: Provenance (SLSA)
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Attest the repository state for this run (OIDC-signed)
+      - name: Attest build provenance (repo)
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: |
+            .
