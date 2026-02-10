@@ -78,3 +78,19 @@ jobs:
              | .ci.gh_rate_limit_sha256 = $gh_rate_hash' \
             PROVENANCE.json > PROVENANCE.tmp
           mv PROVENANCE.tmp PROVENANCE.json
+      - name: Audit trace: hash gh rate_limit response
+        run: |
+          set -euo pipefail
+          gh api rate_limit > GH_RATE_LIMIT.json
+          sha256sum GH_RATE_LIMIT.json | awk '{print $1}' > GH_RATE_LIMIT.sha256
+
+      - name: Bind token-use event into provenance
+        run: |
+          set -euo pipefail
+          jq \
+            --arg gh_rate_hash "$(cat GH_RATE_LIMIT.sha256)" \
+            '.ci = (.ci // {})
+             | .ci.gh_token_used = true
+             | .ci.gh_rate_limit_sha256 = $gh_rate_hash' \
+            PROVENANCE.json > PROVENANCE.tmp
+          mv PROVENANCE.tmp PROVENANCE.json
