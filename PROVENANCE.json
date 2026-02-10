@@ -1,0 +1,18 @@
+{
+  "commit": "e81cfb868a7a7e6c88986c0db94fe008d7dff2da",
+  "image_digest": "",
+  "merkle": {
+    "root": ""
+  },
+  "tags": [
+    "urf-tu-tvduality-main-v1",
+    "urf-tu-tests-green-v1",
+    "urf-tu-ci-nightly-v1",
+    "urf-tu-stack-release-v1",
+    "urf-tu-stack-signed-v1",
+    "urf-tu-stack-freeze-v1",
+    "urf-tu-stack-attested-v1",
+    "urf-tu-stack-provenance-v1"
+  ],
+  "toolchain": "leanprover/lean4:v4.28.0-rc1"
+}
