@@ -75,3 +75,9 @@ jobs:
           else
             echo "SKIP: no cache executable"
           fi
+
+      - name: Assert lake-cache-tool directory exists
+        run: |
+          set -euo pipefail
+          test -d tools/lake-cache-tool
+          test -f tools/lake-cache-tool/lakefile.lean
