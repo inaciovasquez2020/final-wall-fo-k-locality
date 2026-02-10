@@ -1,0 +1,19 @@
+name: tu-nightly
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  tu-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Run TU tests
+        run: |
+          python3 tools/tu/tu_seymour_verify.py tools/tu/tests/network_minimal_2x1.json
+          bash tools/tu/tests/run_all_tests.sh
