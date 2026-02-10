@@ -8,14 +8,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
       - run: bash tools/ci/install_lean.sh
-      - run: bash tools/ci/assert_path.sh
-      - run: bash tools/ci/verify_toolchain.sh
-      - run: bash tools/ci/assert_lake.sh
-
-      - run: lake update
-      - run: lake build
+      - run: bash tools/ci/capture_env.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-env
+          path: ci-artifacts/
+      - run: source "$HOME/.elan/env" && lake update
+      - run: source "$HOME/.elan/env" && lake build

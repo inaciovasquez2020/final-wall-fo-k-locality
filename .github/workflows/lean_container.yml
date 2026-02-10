@@ -1,0 +1,23 @@
+name: lean_container
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build CI image
+        run: |
+          docker build -f Dockerfile.ci -t urf-ci:local .
+          docker image inspect urf-ci:local --format='{{.Id}}' | tee ci-image.id
+      - name: Run build in container
+        run: |
+          docker run --rm -v "$PWD:/work" -w /work urf-ci:local bash -lc "lake update && lake build"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-image-id
+          path: ci-image.id
