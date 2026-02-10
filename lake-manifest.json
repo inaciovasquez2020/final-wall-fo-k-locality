@@ -1,5 +1,12 @@
 {"version": "1.1.0",
  "packagesDir": ".lake/packages",
- "packages": [],
+ "packages":
+ [{"type": "path",
+   "scope": "",
+   "name": "lake_cache_tool",
+   "manifestFile": "lake-manifest.json",
+   "inherited": false,
+   "dir": "tools/lake-cache-tool",
+   "configFile": "lakefile.lean"}],
  "name": "urf_core",
  "lakeDir": ".lake"}

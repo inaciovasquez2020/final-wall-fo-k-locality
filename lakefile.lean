@@ -6,3 +6,6 @@ package urf_core where
 
 lean_lib URFCore where
   -- add src dirs later if needed
+
+
+require lake_cache_tool from "." / "tools" / "lake-cache-tool"
