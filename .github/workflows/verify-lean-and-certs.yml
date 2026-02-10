@@ -25,7 +25,7 @@ jobs:
       - name: Lean build
         uses: leanprover/lean-action@v1
         with:
-          use-mathlib-cache: true
+          use-mathlib-cache: false
           test: false
 
       - name: TV finite certificate test
