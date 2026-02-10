@@ -1,0 +1,39 @@
+name: provenance-assert
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install deps
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Assert lean_deps_hash
+        run: |
+          H=$(cat lean-toolchain lake-manifest.json lakefile.lean | sha256sum | awk '{print $1}')
+          P=$(jq -r '.lean_deps_hash' PROVENANCE.json)
+          test "$H" = "$P"
+
+      - name: Build once
+        run: lake build
+
+      - name: Assert build_merkle_root
+        run: |
+          R=$(find .lake/build -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')
+          P=$(jq -r '.build_merkle_root' PROVENANCE.json)
+          test "$R" = "$P"
+
+      - name: Double build determinism
+        run: |
+          rm -rf .lake/build
+          lake build
+          R1=$(find .lake/build -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')
+          rm -rf .lake/build
+          lake build
+          R2=$(find .lake/build -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')
+          test "$R1" = "$R2"
