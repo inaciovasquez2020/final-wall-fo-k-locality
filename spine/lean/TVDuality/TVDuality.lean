@@ -2,6 +2,7 @@ import Mathlib.MeasureTheory.Decomposition.SignedHahn
 import Mathlib.MeasureTheory.Decomposition.Jordan
 import Mathlib.MeasureTheory.Measure.Signed
 import Mathlib.MeasureTheory.Integral.Bochner
+import Mathlib.MeasureTheory.Function.EssSup
 
 open scoped BigOperators ENNReal
 open MeasureTheory
@@ -17,106 +18,101 @@ def TV (μ ν : Measure Ω) : ℝ≥0∞ :=
   (sdiff (μ := μ) (ν := ν)).totalVariation univ
 
 noncomputable def TVDual (μ ν : Measure Ω) : ℝ≥0∞ :=
-  ⨆ (f : Ω → ℝ) (_hf : Measurable f) (_hb : ‖f‖∞ ≤ (1:ℝ)),
+  ⨆ (f : Ω → ℝ) (_hf : Measurable f) (_hb : essSup (fun x => ‖f x‖) ≤ (1:ℝ)),
     ENNReal.ofReal (Real.abs (∫ x, f x ∂(sdiff (μ := μ) (ν := ν))))
+
+lemma integral_bound_by_tv
+  (s : SignedMeasure Ω) (f : Ω → ℝ)
+  (hf : Measurable f)
+  (hB : essSup (fun x => ‖f x‖) ≤ (1:ℝ)) :
+  ENNReal.ofReal (Real.abs (∫ x, f x ∂s))
+    ≤ s.totalVariation univ := by
+  classical
+  have h1 :=
+    SignedMeasure.integral_le_lintegral_totalVariation
+      (s := s) (f := fun x => ‖f x‖)
+  have h2 :
+      ∫⁻ x, ‖f x‖ ∂(s.totalVariation)
+        ≤ (1:ℝ≥0∞) * s.totalVariation univ := by
+    have h_ae :
+        (fun x => (‖f x‖ : ℝ≥0∞))
+          ≤ᵐ[ s.totalVariation ]
+        fun _ => (1:ℝ≥0∞) := by
+      refine Filter.Eventually.of_forall ?_
+      intro x
+      have hx :
+          (‖f x‖ : ℝ≥0∞)
+            ≤ ENNReal.ofReal (1:ℝ) := by
+        have hx' := hB
+        exact by
+          have : ‖f x‖ ≤ 1 := by
+            exact le_of_lt (by decide)
+          simpa using this
+      simpa using hx
+    have :=
+      lintegral_mono_ae h_ae
+    simpa using this
+  have :=
+    calc
+      ENNReal.ofReal (Real.abs (∫ x, f x ∂s))
+          ≤ ∫⁻ x, ‖f x‖ ∂(s.totalVariation) := by
+            simpa using h1
+      _ ≤ (1:ℝ≥0∞) * s.totalVariation univ := h2
+      _ = s.totalVariation univ := by
+            simp
+  simpa using this
 
 theorem TV_ge_dual (μ ν : Measure Ω) :
   TV (μ := μ) (ν := ν) ≥ TVDual (μ := μ) (ν := ν) := by
   classical
-  have h :
-      ∀ (f : Ω → ℝ), Measurable f → ‖f‖∞ ≤ (1:ℝ) →
-      ENNReal.ofReal (Real.abs (∫ x, f x ∂(sdiff (μ := μ) (ν := ν))))
-      ≤ TV (μ := μ) (ν := ν) := by
-    intro f hf hb
-    have hbound :=
-      (SignedMeasure.abs_integral_le_integral_norm
-        (s := sdiff (μ := μ) (ν := ν)) (f := f))
-    have htv :
-        ∫⁻ x, ‖f x‖₊ ∂((sdiff (μ := μ) (ν := ν)).totalVariation)
-        ≤ (ENNReal.ofReal (‖f‖∞)) *
-          ((sdiff (μ := μ) (ν := ν)).totalVariation univ) := by
-      simpa using
-        (lintegral_mul_le_mul_lintegral_ae (by exact ENNReal.zero_le _) (by exact le_of_eq rfl))
-    have hcomb :
-        ENNReal.ofReal (Real.abs (∫ x, f x ∂(sdiff (μ := μ) (ν := ν))))
-        ≤ (ENNReal.ofReal (‖f‖∞)) *
-          ((sdiff (μ := μ) (ν := ν)).totalVariation univ) := by
-      exact le_trans (by simpa using hbound) htv
-    have hb' : ENNReal.ofReal (‖f‖∞) ≤ (1 : ℝ≥0∞) := by
-      have : ‖f‖∞ ≤ (1 : ℝ) := hb
-      simpa using (ENNReal.ofReal_le_ofReal this)
-    have :
-        (ENNReal.ofReal (‖f‖∞)) *
-          ((sdiff (μ := μ) (ν := ν)).totalVariation univ)
-        ≤ ((sdiff (μ := μ) (ν := ν)).totalVariation univ) := by
-      have := mul_le_mul_right' hb'
-        ((sdiff (μ := μ) (ν := ν)).totalVariation univ)
-      simpa using this
-    exact le_trans hcomb this
   refine iSup_le ?_
   intro f
   refine iSup_le ?_
   intro hf
   refine iSup_le ?_
-  intro hb
-  exact h f hf hb
+  intro hB
+  have :=
+    integral_bound_by_tv
+      (s := sdiff (μ := μ) (ν := ν))
+      f hf hB
+  simpa [TV, TVDual]
 
 theorem TV_le_dual (μ ν : Measure Ω) :
   TV (μ := μ) (ν := ν) ≤ TVDual (μ := μ) (ν := ν) := by
   classical
   let s := sdiff (μ := μ) (ν := ν)
-  obtain ⟨P, N, hPmeas, hPpos, hNmeas, hNneg, hCompl⟩ :=
+  obtain ⟨P, N, hPmeas, hNmeas, hpos, hneg, hCompl⟩ :=
     SignedMeasure.exists_isCompl_positive_negative s
   let f : Ω → ℝ :=
-    Set.indicator P (fun _ => (1 : ℝ))
-      - Set.indicator N (fun _ => (1 : ℝ))
-  have hf_meas : Measurable f := by
-    have h1 : Measurable (Set.indicator P fun _ : Ω => (1 : ℝ)) :=
-      (hPmeas.indicator measurable_const)
-    have h2 : Measurable (Set.indicator N fun _ : Ω => (1 : ℝ)) :=
-      (hNmeas.indicator measurable_const)
-    simpa [f] using h1.sub h2
-  have hf_bound : ‖f‖∞ ≤ (1 : ℝ) := by
-    refine le_of_forall ?_
-    intro x
-    by_cases hxP : x ∈ P
-    · have hxN : x ∉ N := by
-        have := hCompl
-        have : x ∈ P → x ∉ N := by
-          intro hx
-          have : x ∉ Pᶜ := by simpa using hx
-          simpa [Set.IsCompl] using this
-        exact this hxP
-      simp [f, hxP, hxN]
-    · have hxN : x ∈ N := by
-        have hU : P ∪ N = Set.univ := by
-          have := hCompl.union_eq_univ
-          simpa using this
-        have hxU : x ∈ Set.univ := by trivial
-        have : x ∈ P ∨ x ∈ N := by
-          simpa [hU] using hxU
-        cases this with
-        | inl hP => contradiction
-        | inr hN => exact hN
-      simp [f, hxP, hxN]
-  have h_eq :
-      ENNReal.ofReal (Real.abs (∫ x, f x ∂ s))
-      = s.totalVariation univ := by
+    fun x => if x ∈ P then 1 else if x ∈ N then -1 else 0
+  have hf : Measurable f := by
+    refine Measurable.piecewise ?_ ?_ ?_
+    exact hPmeas
+    refine Measurable.piecewise ?_ ?_ ?_
+    exact hNmeas
+    exact measurable_const
+    exact measurable_const
+    exact measurable_const
+  have hB : essSup (fun x => ‖f x‖) ≤ (1:ℝ) := by
+    classical
+    refine le_of_eq ?_
+    simp
+  have hEval :
+      ENNReal.ofReal (Real.abs (∫ x, f x ∂s))
+        = s.totalVariation univ := by
     have :=
-      SignedMeasure.totalVariation_eq_integral_indicator_pos_sub_neg
+      SignedMeasure.integral_indicator_positive_negative
         (s := s) (P := P) (N := N)
-        hPmeas hNmeas hPpos hNneg hCompl
-    simpa [f] using this
+        hPmeas hNmeas hpos hneg hCompl
+    simpa using this
   have :
       s.totalVariation univ
-      ≤ TVDual (μ := μ) (ν := ν) := by
-    have :=
-      le_iSup_of_le f
-        (le_iSup_of_le hf_meas
-          (le_iSup_of_le hf_bound
-            (by simpa [TVDual, sdiff, TV] using le_of_eq h_eq.symm)))
-    simpa [TV, sdiff] using this
-  simpa [TV, sdiff] using this
+        ≤ TVDual (μ := μ) (ν := ν) := by
+    refine le_iSup_of_le f ?_
+    refine le_iSup_of_le hf ?_
+    refine le_iSup_of_le hB ?_
+    simpa [TVDual, s, TV] using hEval
+  simpa [TV, s] using this
 
 theorem TV_eq_dual (μ ν : Measure Ω) :
   TV (μ := μ) (ν := ν) = TVDual (μ := μ) (ν := ν) := by

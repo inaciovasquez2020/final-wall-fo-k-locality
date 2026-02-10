@@ -1,97 +1,61 @@
-Schur dual stability normal B plus small perturbation
+Schur-dual stability
 
-Let B be normal on C^n. Let E satisfy norm E ≤ η and define Bprime = B + E.
+Let B be normal on ℂⁿ, ‖E‖ ≤ η, and B′ = B + E. For the dual constraint set
 
-Define the dual feasible set
+F(B) := { λ : ‖Bᵀ λ‖∞ ≤ w },
 
-F(B) = { λ : || B^T λ ||_∞ ≤ w }
+assume Bᵀ is injective on the relevant subspace and admits a bounded right-inverse R with ‖R‖ ≤ γ. Then
 
-Assume B^T is injective on the active subspace and admits a bounded right inverse R with ||R|| ≤ γ.
+d_H(F(B), F(B′)) ≤ w γ² η + O(η²),
 
-Then the Hausdorff distance satisfies
+via
 
-d_H(F(B), F(Bprime)) ≤ w γ^2 η + O(η^2)
-
-Derivation sketch
-
-|| Bprime^T λ ||_∞ ≤ || B^T λ ||_∞ + ||E^T|| ||λ||
+‖B′ᵀ λ‖∞ ≤ ‖Bᵀ λ‖∞ + ‖Eᵀ‖ ‖λ‖
 
 and
 
-||λ|| ≤ γ || B^T λ ||
+‖λ‖ ≤ γ ‖Bᵀ λ‖
 
-For normal B one can take
-
-γ = 1 / σ_min(B^T)
-
-on the active subspace.
+(normal B gives γ = 1/σ_min(Bᵀ) on the active subspace).
 
 For the strongly concave quadratic dual objective
 
-Φ(λ) = − b^T λ − (1 / (2ρ)) ||λ||^2
+Φ(λ) = −bᵀ λ − (1/(2ρ)) ‖λ‖²,
 
-the optimizer map obeys
+the optimizer map satisfies
 
-|| λ_star(B) − λ_star(Bprime) || ≤ ρ d_H(F(B), F(Bprime))
-≤ ρ w γ^2 η + O(η^2)
+‖λ*(B) − λ*(B′)‖ ≤ ρ d_H(F(B), F(B′)) ≤ ρ w γ² η + O(η²).
 
+Equality example for p ≠ 2
 
-Translation invariant Gaussian Wasserstein equality for all p ≥ 1
+Let μ = N(m₀, Σ), ν = N(m₁, Σ). For any p ≥ 1,
 
-Let
+W_p(μ, ν) = ‖m₀ − m₁‖
 
-μ = N(m0, Σ)
-ν = N(m1, Σ)
+because the coupling X ∼ μ, Y = X + (m₁ − m₀) yields cost ‖m₁ − m₀‖^p and is optimal by translation invariance of W_p. Hence for
 
-Then for every p ≥ 1
+ρ(μ) = ∫ ⟨a, x⟩ dμ = ⟨a, m⟩,
 
-W_p(μ, ν) = || m0 − m1 ||
+|ρ(μ) − ρ(ν)| = |⟨a, m₀ − m₁⟩| ≤ ‖a‖ W_p(μ, ν),
 
-because the coupling
+with equality iff a ∥ (m₀ − m₁).
 
-X ~ μ
-Y = X + (m1 − m0)
+Second equality example
 
-achieves cost ||m1 − m0||^p and is optimal by translation invariance.
+Let μ = N(0, σ₀²), ν = N(0, σ₁²) with d = 1. Then
 
-For linear risk
-
-ρ(μ) = ∫ ⟨a, x⟩ dμ = ⟨a, m⟩
-
-we obtain
-
-| ρ(μ) − ρ(ν) |
-= | ⟨a, m0 − m1⟩ |
-≤ ||a|| W_p(μ, ν)
-
-Equality holds if and only if a is parallel to (m0 − m1).
-
-
-One dimensional covariance changing Gaussian optimal transport equality
-
-Let
-
-μ = N(0, σ0^2)
-ν = N(0, σ1^2)
-
-Then
-
-W_2(μ, ν) = | σ0 − σ1 |
+W₂(μ, ν) = |σ₀ − σ₁|.
 
 Quadratic risk
 
-ρ(μ) = ∫ x^2 dμ = σ0^2
-ρ(ν) = σ1^2
+ρ(μ) = ∫ x² dμ = σ₀²,
+ρ(ν) = σ₁².
 
-Therefore
+Hence
 
-| ρ(μ) − ρ(ν) |
-= | σ0^2 − σ1^2 |
-= (σ0 + σ1) | σ0 − σ1 |
-= (σ0 + σ1) W_2(μ, ν)
+|ρ(μ) − ρ(ν)|
+= |σ₀² − σ₁²|
+= (σ₀ + σ₁) |σ₀ − σ₁|
+= (σ₀ + σ₁) W₂(μ, ν),
 
-Hence the sharp Lipschitz constant for this pair is
-
-L = σ0 + σ1
-
-and equality is attained.
+so the sharp constant for this pair is L = σ₀ + σ₁, and equality holds.
