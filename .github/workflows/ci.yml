@@ -9,16 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Lean toolchain and lake
-        uses: leanprover/lean-action@v1
+      - uses: leanprover/lean-action@v1
         with:
-          cache: true
+          cache: false
+          use-mathlib-cache: false
 
-      - name: Lake update
-        run: lake update
-
-      - name: Build
-        run: lake build
+      - run: lake update
+      - run: lake build
