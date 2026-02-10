@@ -81,3 +81,9 @@ jobs:
           set -euo pipefail
           test -d tools/lake-cache-tool
           test -f tools/lake-cache-tool/lakefile.lean
+
+      - name: Generate Lean capabilities module
+        run: |
+          set -euo pipefail
+          bash tools/ci/probe_ci_capabilities.sh
+          bash tools/ci/write_capabilities_lean.sh
