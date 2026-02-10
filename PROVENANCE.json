@@ -15,6 +15,9 @@
     "urf-tu-stack-provenance-v1"
   ],
   "toolchain": "leanprover/lean4:v4.28.0-rc1",
-  "lean_deps_hash": "07223f5768e8e3eed93dfcf97a1506c4af2b1cd091f3bde1a1d5d4bb7fef9ec6",
-  "build_merkle_root": "74af391aa9933f09b257a8467aa7b0aeff46c36911ed571d03d6cdf8be500648"
+  "lean_deps_hash": "72310790a8abf416e845287edeb43eae9c4ece0993793bad04bb6ac290d4dc40",
+  "build_merkle_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "provenance": {
+    "lake_pin_sha256": "d2aed264eedc820bad7768b1878a83e215f48f4545f51acab926e9499267823d"
+  }
 }
