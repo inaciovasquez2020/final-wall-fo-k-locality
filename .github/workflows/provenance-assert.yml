@@ -37,3 +37,44 @@ jobs:
           lake build
           R2=$(find .lake/build -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | awk '{print $1}')
           test "$R1" = "$R2"
+
+      - name: Assert ATTESTATION_SUBJECT == projection(PROVENANCE)
+        run: |
+          set -euo pipefail
+          jq '{lean_deps_hash,build_merkle_root}' PROVENANCE.json > PROV_PROJ.json
+          diff -u PROV_PROJ.json ATTESTATION_SUBJECT.json
+
+      - name: Assert Lean constants == JSON
+        run: |
+          set -euo pipefail
+          JSON_H=$(jq -r '.lean_deps_hash' ATTESTATION_SUBJECT.json)
+          JSON_R=$(jq -r '.build_merkle_root' ATTESTATION_SUBJECT.json)
+
+          grep -q "$JSON_H" URFCore/Provenance.lean
+          grep -q "$JSON_R" URFCore/Provenance.lean
+
+
+      - name: Verify tag attestation annotation
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          set -euo pipefail
+          TAG_MSG=$(git tag -l --format='%(contents)' "${GITHUB_REF#refs/tags/}")
+          A_HASH=$(shasum -a 256 ATTESTATION_SUBJECT.json | awk '{print $1}')
+          echo "$TAG_MSG" | grep -q "$A_HASH"
+
+      - name: Audit trace: hash gh rate_limit response
+        run: |
+          set -euo pipefail
+          gh api rate_limit > GH_RATE_LIMIT.json
+          sha256sum GH_RATE_LIMIT.json | awk '{print $1}' > GH_RATE_LIMIT.sha256
+
+      - name: Bind token-use event into provenance
+        run: |
+          set -euo pipefail
+          jq \
+            --arg gh_rate_hash "$(cat GH_RATE_LIMIT.sha256)" \
+            '.ci = (.ci // {})
+             | .ci.gh_token_used = true
+             | .ci.gh_rate_limit_sha256 = $gh_rate_hash' \
+            PROVENANCE.json > PROVENANCE.tmp
+          mv PROVENANCE.tmp PROVENANCE.json
