@@ -1,0 +1,29 @@
+URF TU STACK PROVENANCE v1
+
+Lineage
+Deterministic TU Seymour verifier introduced and stabilized
+Lean total variation duality module integrated and built
+Deterministic TU certificate harness introduced and passing
+Nightly CI verification enabled and merged
+Release manifest merged
+Freeze state documented
+Full attestation merged
+
+Cryptographic anchors
+Signed tags
+urf-tu-tvduality-main-v1
+urf-tu-tests-green-v1
+urf-tu-ci-nightly-v1
+urf-tu-stack-release-v1
+urf-tu-stack-signed-v1
+urf-tu-stack-freeze-v1
+urf-tu-stack-attested-v1
+
+Build lineage
+lake build reproducible
+Python TU verifier deterministic execution
+Merkle transparency included
+
+Operational verification
+tools/tu/tests/run_all_tests.sh
+.github/workflows/tu-nightly.yml
