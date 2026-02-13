@@ -1,0 +1,8 @@
+{
+  "schema": "urf-core/demo-cert/v0",
+  "id": "demo-0001",
+  "created_utc": "1970-01-01T00:00:00Z",
+  "payload": {
+    "note": "placeholder minimal demo certificate"
+  }
+}

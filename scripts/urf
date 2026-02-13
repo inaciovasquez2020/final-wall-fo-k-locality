@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cmd="${1:-}"
+shift || true
+
+case "$cmd" in
+  verify)
+    sub="${1:-}"
+    shift || true
+    case "$sub" in
+      demo)
+        echo "URF demo verify: (placeholder) loading examples/demo-cert/cert.json"
+        test -f examples/demo-cert/cert.json
+        echo "OK: file exists"
+        ;;
+      *)
+        echo "Usage: ./scripts/urf verify demo"
+        exit 2
+        ;;
+    esac
+    ;;
+  *)
+    echo "Usage:"
+    echo "  ./scripts/urf verify demo"
+    exit 2
+    ;;
+esac
