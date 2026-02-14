@@ -1,23 +1,24 @@
-# URF Core — Regression Releases
+URF-Core — Release Scope Statement
 
-## v1.0
-- Initial regression framework (AE)
-- Deterministic artifact signing (SHA-256)
-- JSON-based regression certificates
+This repository contains the core, frozen components of the Unified Rigidity Framework (URF).
 
-## v1.1
-- Seeded permutation lift generator (scaffold)
-- Canonical seed → permutation mapping
+Scope:
+- Structural rigidity principles
+- Explicit invariants and admissibility conditions
+- Artifact-first, verifier-compatible specifications
 
-## v1.2
-- Deterministic permutation construction
-- Bijection and cycle-structure guarantees
-- Tag: urf-regression-ae-v1.2
+Non-Claims:
+- This repository does not claim universal applicability.
+- This repository does not encode sociological, epistemic, or discovery processes.
+- Certification is optional and opt-in.
 
-## v1.3
-- Regression F: permutation-lift stress test
-- Seed stability verified across n ∈ {4,5,6,7,8,9,10,12,16,20,24,32}
-- Lean-side invariants: bijection, cycle count, fixed points
-- Signed artifact: urf_regression_ae.json
-- Tag: urf-regression-ae-v1.3
+Interpretation:
+URF constrains post-hoc claims of correctness once asserted.
+It does not replace intuition, discovery, or exploratory research.
+
+Verification:
+All claims intended to be certified must be checkable via explicit artifacts and verifiers.
+
+Status:
+Frozen core. Extensions must live outside this repository.
 
