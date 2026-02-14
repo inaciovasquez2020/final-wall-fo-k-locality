@@ -1,0 +1,5 @@
+1. Choose cutoff P
+2. Run compute_S_HS(P)
+3. Compute tail T_HS(P)
+4. Verify S_HS(P) + T_HS(P) < 1
+5. Save result in zloop/certs

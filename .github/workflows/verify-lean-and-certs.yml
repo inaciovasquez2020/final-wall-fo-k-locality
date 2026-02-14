@@ -1,6 +1,7 @@
 name: verify-lean-and-certs
 
 on:
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
   push:
     branches: [ main ]
   pull_request:
@@ -10,6 +11,7 @@ on:
 jobs:
   lean_and_certs:
     runs-on: ubuntu-latest
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
     strategy:
       fail-fast: true
 
@@ -21,6 +23,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
 
       - name: Install elan + Lean + lake (single source of truth)
         run: |

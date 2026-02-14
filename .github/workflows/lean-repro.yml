@@ -1,6 +1,7 @@
 name: Lean Repro (binary hash equality)
 
 on:
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
   push:
     tags: ["v*"]
   workflow_dispatch:
@@ -11,6 +12,7 @@ permissions:
 jobs:
   lean_repro:
     runs-on: ubuntu-latest
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
     steps:
       - name: Checkout A
         uses: actions/checkout@v4

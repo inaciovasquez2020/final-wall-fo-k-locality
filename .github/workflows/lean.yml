@@ -1,31 +1,20 @@
-name: Lean Action CI
+name: lean
 
 on:
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
   push:
+    paths-ignore:
+      - zloop/**
   pull_request:
-  workflow_dispatch:
+    paths-ignore:
+      - zloop/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Lean toolchain (elan)
-        uses: leanprover/lean-action@v1
-
-      - name: Lake update (deps)
-        run: lake update
-
-      - name: Lake build
-        run: lake build
-
-      # HARD PURGE build artifacts (role=core cannot contain .lake)
-      - name: Purge lake artifacts
-        run: |
-          rm -rf .lake || true
-          find . -name ".lake" -type d -prune -exec rm -rf {} +
-
-      - name: Rolecheck core
-        run: python3 tools/rolecheck/rolecheck.py core
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true

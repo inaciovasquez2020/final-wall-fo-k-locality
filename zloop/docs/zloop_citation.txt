@@ -1,0 +1,25 @@
+Zloop HS Certificate (Interval Arithmetic)
+
+Repository
+https://github.com/inaciovasquez2020/urf-core
+
+Tag
+zloop-hs-cert-P200
+
+Artifact
+zloop/certs/frozen/hs_cert_interval_P200.json
+
+Meaning
+Verified Hilbert–Schmidt contraction
+S_HS(P) + T_HS(P) < 1 at P = 200
+Interval arithmetic with analytic tail bound
+
+Implication
+Zloop holds at cutoff P
+Equivalent to HZ*
+Implies ACL
+Yields conditional RH
+
+Reproduction
+git checkout zloop-hs-cert-P200
+python zloop/scripts/run_certificate_interval.py 200

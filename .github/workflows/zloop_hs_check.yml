@@ -1,0 +1,28 @@
+name: zloop-hs-check
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - zloop/**
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install sympy mpmath
+      - run: python zloop/scripts/run_certificate_interval.py 200
+      - run: |
+          python - <<'PY'
+import json
+import sys
+with open("zloop/certs/hs_cert_interval_P200.json") as f:
+    data = json.load(f)
+if not data["accept"]:
+    sys.exit(1)
+print("Zloop HS certificate accepted")
+PY

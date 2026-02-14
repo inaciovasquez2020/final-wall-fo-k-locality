@@ -1,6 +1,7 @@
 name: lean_container
 
 on:
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
   workflow_dispatch:
   push:
     branches: [ main ]
@@ -8,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+  push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
     steps:
       - uses: actions/checkout@v4
       - name: Build CI image
