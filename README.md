@@ -154,3 +154,5 @@ If you use URF foundational logic or reductions, cite:
 ```bash
 ./scripts/urf verify demo
 ```
+
+URF applies only to post-hoc certification of asserted results and is unnecessary for exploratory, provisional, or rapidly evolving work; it offers a voluntary, artifact-based way to make consequential claims auditable without governing discovery, intuition, or consensus formation.
