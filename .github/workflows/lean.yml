@@ -3,18 +3,38 @@ name: lean
 on:
   push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
   push:
-    paths-ignore:
-      - zloop/**
+    branches:
+      - main
+    paths:
+      - "urf-core/**"
+      - "urf-axioms/**"
+      - "urf-spine/**"
+      - "urf-prefab-system/**"
+      - "flagship-lean/**"
+      - "mathlib4/**"
+      - ".github/workflows/lean.yml"
   pull_request:
-    paths-ignore:
-      - zloop/**
+    paths:
+      - "urf-core/**"
+      - "urf-axioms/**"
+      - "urf-spine/**"
+      - "urf-prefab-system/**"
+      - "flagship-lean/**"
+      - "mathlib4/**"
+      - ".github/workflows/lean.yml"
 
 jobs:
-  build:
+  lean:
     runs-on: ubuntu-latest
   push:n    paths-ignore:n      - zloop/**n  pull_request:n    paths-ignore:n      - zloop/**
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - uses: leanprover/lean-action@v1
         with:
-          build: true
+          lake-package-directory: urf-core
+
