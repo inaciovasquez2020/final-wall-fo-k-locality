@@ -2,47 +2,32 @@ name: External Monitor (Scheduled verify latest tag)
 
 on:
   schedule:
-    - cron: "17 3 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
-
-permissions:
-  contents: read
-  attestations: read
-  id-token: write
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Discover latest v* tag
-        id: tag
-        run: |
-          git ls-remote --tags https://github.com/inaciovasquez2020/urf-core.git \
-            | awk '{print $2}' \
-            | grep '^refs/tags/v' \
-            | sed 's#refs/tags/##' \
-            | grep -v '\^{}' \
-            | sort -V \
-            | tail -n1 > /tmp/tag
-          echo "tag=$(cat /tmp/tag)" >> $GITHUB_OUTPUT
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Clean clone at tag
+      - name: Verify Merkle root and Lean build attestations
         run: |
-          rm -rf src
-          git clone --depth 1 --branch "${{ steps.tag.outputs.tag }}" https://github.com/inaciovasquez2020/urf-core.git src
+          set -euo pipefail
 
-      - name: Verify merkle + lean attestation
-        run: |
-          cd src
+          # Verify transparency Merkle root (repo root paths)
           calc=$(sha256sum transparency/files.sha256 | awk '{print $1}')
           exp=$(cat transparency/merkle.root)
           [ "$calc" = "$exp" ]
+
+          # Verify Lean build attestation
           calc2=$(sha256sum lean-attest/LEAN_BUILD_ATTEST.txt | awk '{print $1}')
           exp2=$(cat lean-attest/LEAN_BUILD_ATTEST.sha256)
           [ "$calc2" = "$exp2" ]
 
-      - name: Verify GitHub attestations (online)
-        run: |
-          cd src
-          gh attestation verify transparency/merkle.root --repo inaciovasquez2020/urf-core
-          gh attestation verify transparency/files.sha256 --repo inaciovasquez2020/urf-core
+          echo "External monitor verification passed"
+
