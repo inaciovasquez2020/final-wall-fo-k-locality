@@ -18,15 +18,26 @@ A Zero-Capacity Invariant for Physical Inference}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 \newtheorem{corollary}{Corollary}
+<<<<<<< HEAD
 
 \newcommand{\Capacity}{\mathrm{Cap}}
 \newcommand{\TC}{\mathrm{TC}}
 \newcommand{\SIGC}{\mathbf{SIGC}}
+=======
+\newtheorem{axiom}{Axiom}
+
+\newcommand{\Capacity}{\mathrm{Cap}}
+\newcommand{\TC}{\mathrm{TC}}
+\newcommand{\ED}{\mathrm{ED}}
+\newcommand{\SIGC}{\mathbf{SIGC}}
+\newcommand{\PhysSys}{\mathbf{PhysSys}}
+>>>>>>> f178752 (docs: restore canonical ERB LaTeX source)
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
+<<<<<<< HEAD
 We formalize the notion of a \emph{Terminal Rigidity Witness}: a physical system whose global
 structure is nontrivial while its operational information capacity is exactly zero.
 We show that the classical Einstein--Rosen bridge provides a canonical example.
@@ -56,5 +67,210 @@ maximal Schwarzschild extension. Hence the induced channel has zero capacity.
 The Einstein--Rosen bridge is a terminal rigidity witness.
 \end{theorem}
 
+=======
+We introduce the notion of a \emph{Terminal Rigidity Witness}: a physical system whose global
+structure is maximally nontrivial, yet whose operational information capacity is identically zero.
+We show that the classical Einstein--Rosen bridge (ERB), the maximal analytic extension of the
+Schwarzschild solution, furnishes a canonical example of such a witness.
+Formally, ERB induces a zero channel in the sense of transcript capacity, and thus constitutes
+a terminal element in the preorder of admissible physical inference systems.
+This provides a rigorous stress test for claims of nonlocal reconstruction, exotic communication,
+and entanglement-based operational geometry.
+\end{abstract}
+
+\section{Background and Motivation}
+
+Modern theoretical physics and computation are increasingly populated by claims of
+\emph{exotic accessibility}: wormholes enabling communication, black hole interiors being
+operationally reconstructible, or entanglement acting as a geometric bridge between distant
+regions of spacetime.
+
+At the same time, across logic, computer science, and thermodynamics, we encounter
+persistent \emph{locality obstructions}: finite-variable logics cannot express global structure,
+bounded transcripts cannot encode global state, and physical interfaces cannot exceed
+entropy bounds.
+
+The central question is therefore structural rather than technological:
+\begin{quote}
+Is there a physical system whose global structure is as extreme as possible,
+yet whose operational information content is provably zero?
+\end{quote}
+We argue that the classical Einstein--Rosen bridge answers this question in the affirmative.
+
+\section{Interfaces and Transcript Capacity}
+
+We adopt an operational framework of finite-capacity inference.
+
+\begin{definition}[Interface]
+An interface mediates interaction between an unknown system state $X$ and an observer,
+producing a transcript $Y_{1:T}$ via admissible observation rules.
+\end{definition}
+
+\begin{definition}[Transcript Capacity]
+The transcript capacity over horizon $T$ is
+\[
+\TC(T) := \sup I(X; Y_{1:T}).
+\]
+\end{definition}
+
+This quantity measures the maximal operational information extractable by any admissible observer.
+
+\section{Physical Systems and the SIGC Preorder}
+
+We model physical systems as triples.
+
+\begin{definition}[Physical System]
+A physical system is a triple
+\[
+S := (\mathcal{I}, \mathcal{L}, E)
+\]
+where $\mathcal{I}$ is a finite set of interfaces,
+$\mathcal{L} = (Y_{1:T})$ is an interaction log,
+and $E$ is total dissipated energy.
+\end{definition}
+
+Each system induces a channel $\mathcal{C}_S : X \to Y_{1:T}$.
+Define $\SIGC$ as the preorder of channels modulo admissible simulation:
+\[
+\mathcal{C}_1 \preceq \mathcal{C}_2
+\iff
+\Capacity(\mathcal{C}_1) \le \Capacity(\mathcal{C}_2).
+\]
+
+\section{Terminal Rigidity Witnesses}
+
+\begin{definition}[Terminal Rigidity Witness]
+A system $S$ is a terminal rigidity witness if
+\[
+\Capacity(\mathcal{C}_S) = 0
+\]
+and $S$ possesses nontrivial global structure.
+\end{definition}
+
+Such systems sit at the minimal element of the SIGC preorder: no admissible refinement can extract
+information from them.
+
+\section{The Einstein--Rosen Bridge}
+
+Let $(M,g)$ be the maximal analytic extension of the Schwarzschild spacetime.
+This spacetime contains two asymptotically flat regions $\Sigma_-$ and $\Sigma_+$ connected
+by an Einstein--Rosen bridge.
+
+\begin{definition}[ERB Channel]
+Define the ERB channel
+\[
+\mathcal{C}_{\mathrm{ERB}} : \Sigma_- \to \Sigma_+
+\]
+as the induced causal communication map.
+\end{definition}
+
+\begin{lemma}[Topological Censorship]
+Under global hyperbolicity and the averaged null energy condition,
+no causal curve connects $\Sigma_-$ to $\Sigma_+$.
+\end{lemma}
+
+\begin{theorem}[ERB Zero Capacity]
+\[
+\Capacity(\mathcal{C}_{\mathrm{ERB}}) = 0.
+\]
+\end{theorem}
+
+\begin{proof}
+By topological censorship, all admissible causal trajectories fail to connect the two boundaries.
+Hence outputs are statistically independent of inputs, so
+$I(X;Y)=0$ for all encodings.
+\end{proof}
+
+\begin{corollary}
+The Einstein--Rosen bridge is a terminal rigidity witness.
+\end{corollary}
+
+\section{Intuition: Geometry Without Information}
+
+The ERB exhibits a striking asymmetry:
+\begin{itemize}[leftmargin=*]
+\item \textbf{Geometric richness}: nontrivial global topology and maximal analytic extension.
+\item \textbf{Operational emptiness}: zero information capacity.
+\end{itemize}
+In plain terms, ERB is a \emph{perfect bridge that carries nothing}.
+
+\section{Implications for Exotic Physics}
+
+Any claim of:
+\begin{itemize}[leftmargin=*]
+\item traversable wormholes,
+\item entanglement-based communication,
+\item black hole interior reconstruction,
+\end{itemize}
+must violate at least one of:
+\begin{itemize}[leftmargin=*]
+\item locality,
+\item thermodynamic calibration,
+\item transcript monotonicity.
+\end{itemize}
+
+\section{Relation to the Viotropic Wall}
+
+The Viotropic Wall theorem states that when informational demand exceeds transcript capacity,
+observables become operationally independent.
+The ERB is the extremal case: demand is nonzero, capacity is exactly zero.
+
+\section{Conclusion}
+
+The Einstein--Rosen bridge furnishes a canonical physical invariant:
+a system of maximal global structure and zero operational content.
+It functions as a terminal rigidity witness for all theories of physical inference.
+
+\begin{thebibliography}{99}
+
+\bibitem{EinsteinRosen1935}
+A. Einstein and N. Rosen,
+\emph{The Particle Problem in the General Theory of Relativity},
+Physical Review \textbf{48}, 73--77 (1935).
+
+\bibitem{Kruskal1960}
+M. D. Kruskal,
+\emph{Maximal Extension of Schwarzschild Metric},
+Physical Review \textbf{119}, 1743--1745 (1960).
+
+\bibitem{FriedmanSchleichWitt1993}
+J. L. Friedman, K. Schleich, and D. M. Witt,
+\emph{Topological Censorship},
+Physical Review Letters \textbf{71}, 1486--1489 (1993).
+
+\bibitem{MorrisThorne1988}
+M. Morris and K. Thorne,
+\emph{Wormholes in Spacetime and Their Use for Interstellar Travel},
+American Journal of Physics \textbf{56}, 395--412 (1988).
+
+\bibitem{Visser1996}
+M. Visser,
+\emph{Lorentzian Wormholes: From Einstein to Hawking},
+Springer (1996).
+
+\bibitem{Landauer1961}
+R. Landauer,
+\emph{Irreversibility and Heat Generation in the Computing Process},
+IBM Journal of Research and Development \textbf{5}, 183--191 (1961).
+
+\bibitem{Libkin2004}
+L. Libkin,
+\emph{Elements of Finite Model Theory},
+Springer (2004).
+
+\bibitem{Grohe2017}
+M. Grohe,
+\emph{Descriptive Complexity, Canonisation, and Definable Graph Structure Theory},
+Cambridge University Press (2017).
+
+\bibitem{Vasquez2026Viotropic}
+I. F. Vasquez,
+\emph{The Viotropic Wall: Finite Capacity, Thermodynamic Calibration,
+and the Limits of Local Inference},
+2026. Manuscript.
+
+\end{thebibliography}
+
+>>>>>>> f178752 (docs: restore canonical ERB LaTeX source)
 \end{document}
 
