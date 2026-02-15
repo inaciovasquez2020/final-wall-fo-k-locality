@@ -1,0 +1,15 @@
+      - name: Sanity checks
+        run: |
+          set -euo pipefail
+
+          test -f README.md
+          test -f CITATION.cff
+
+          # Canonical freeze marker (optional but recommended)
+          test -f FREEZE.md || echo "FREEZE.md not present (allowed)"
+
+          # Source is canonical; PDF is forbidden
+          test -f trw-erb-sigc.tex
+
+          echo "Sanity checks passed"
+
