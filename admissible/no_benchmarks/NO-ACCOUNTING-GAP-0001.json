@@ -4,6 +4,7 @@
   "process": "GenericProcess",
   "violates": "C",
   "witness_kind": "accounting_gap_single_run",
+  "step": 1,
   "n": 64,
   "b(n)": "O(log^k n)",
   "T": 1,
@@ -19,3 +20,4 @@
     "witness": "1000 > 10"
   }
 }
+
