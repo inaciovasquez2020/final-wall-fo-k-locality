@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\title{The Universal Quantifier in URF: Normalization and Regime Classification}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formalize the decision predicate URF-ADMISSIBLE and isolate the remaining universal quantifier:
+$\forall P \in \mathbf{PTime}: \mathrm{URF\text{-}ADMISSIBLE}(P)=\mathrm{YES}$.
+We give direct normalization theorems for deterministic oracle-free Turing machines and for a
+restricted Word-RAM model, and we classify certified global escapes via minimal NO witnesses.
+\end{abstract}
+
+\section{URF-ADMISSIBLE}
+
+\begin{definition}[Toolkit constants]
+Fix once and for all:
+(i) a locality radius $r\in\mathbb{N}$ with $r=O(1)$,
+(ii) a capacity bound $b(n)=O(\log^k n)$ for fixed $k\ge 1$,
+(iii) a horizon $T(n)=\mathrm{poly}(n)$,
+(iv) a progress rule of the form $\Phi(s_T)-\Phi(s_0)\le \sum_{t=1}^T I_t$.
+\end{definition}
+
+\begin{definition}[URF-ADMISSIBLE]
+A uniform, deterministic, oracle-free process $P$ with size parameter $n$ is \emph{URF-admissible}
+iff for all $n$ and all executions of length $T(n)$:
+(A) each step depends only on the radius-$r$ neighborhood of the active component;
+(B) each step injects at most $I_t\le b(n)$ bits of new information;
+(C) $\Phi(s_T)-\Phi(s_0)\le \sum_{t=1}^T I_t$;
+(D) all bounds depend only on $n$ (not the particular instance beyond $n$).
+\end{definition}
+
+\section{The Universal Quantifier (UCLP)}
+
+\begin{definition}[UCLP]
+The Unified Capacity--Locality Problem asks whether
+\[
+\forall P\in\mathbf{PTime}:\ \mathrm{URF\text{-}ADMISSIBLE}(P)=\mathrm{YES}.
+\]
+\end{definition}
+
+\section{A direct normalization theorem for deterministic TMs}
+
+\subsection{Model}
+Fix a deterministic single-tape Turing machine $M$ with finite alphabet $\Sigma$ and blank symbol $\sqcup$.
+For each input length $n$, $M$ runs in time at most $T_M(n)$ where $T_M(n)=\mathrm{poly}(n)$.
+
+\subsection{Compiled URF process}
+We compile $M$ into a process $\widehat P_M$ whose state stores only local tape data plus an
+$O(\log n)$-bit head coordinate.
+
+For a run on input $x\in\Sigma^n$, let the tape be indexed by $\mathbb{Z}$ and initially contain
+$x_0x_1\cdots x_{n-1}$ on cells $0,\dots,n-1$ and blanks elsewhere, with head at $0$.
+
+\begin{definition}[Compiled state]
+Let $Q$ be the finite control state set of $M$.
+Define the compiled state at time $t$ to be
+\[
+s_t := (q_t, h_t, a^-_t, a^0_t, a^+_t),
+\]
+where $q_t\in Q$ is the current control state, $h_t\in\{0,1,\dots,T_M(n)\}$ is the head position,
+and $(a^-_t,a^0_t,a^+_t)\in(\Sigma\cup\{\sqcup\})^3$ are the symbols currently on tape cells
+$h_t-1,h_t,h_t+1$ (with $\sqcup$ when outside written support).
+\end{definition}
+
+\begin{definition}[Locality radius and active component]
+The active component is the tuple $(q_t,h_t,a^-_t,a^0_t,a^+_t)$.
+The radius is fixed as $r:=1$ (the $3$-cell window around the head).
+\end{definition}
+
+\begin{definition}[Injected information per step]
+Let $b_M(n):=c_1\lceil\log_2(T_M(n)+1)\rceil + c_2$, for fixed constants $c_1,c_2$ depending only on
+$M$ and $\Sigma$. Define $I_t:=b_M(n)$ for every step.
+\end{definition}
+
+\begin{definition}[Progress functional]
+Let the emitted token alphabet be $\Gamma := (\Sigma\cup\{\sqcup\})\cup\{\perp\}$.
+At each step, the process emits a token $E_t\in\Gamma$ equal to the current scanned symbol $a^0_t$
+(or $\perp$ if $M$ has halted and the run is padding).
+Define
+\[
+\Phi(s_t) := H(E_{\le t}),
+\qquad E_{\le t}=(E_0,\dots,E_t),
+\]
+with respect to any fixed input distribution on $\Sigma^n$ (e.g.\ uniform), and the induced
+distribution on the emitted transcript.
+\end{definition}
+
+\begin{lemma}[Entropy increment bound]
+For all $t$,
+\[
+\Phi(s_{t+1})-\Phi(s_t)=H(E_{t+1}\mid E_{\le t}) \le \log_2|\Gamma|.
+\]
+\end{lemma}
+\begin{proof}
+Always $H(Z\mid W)\le H(Z)\le \log_2|\mathrm{supp}(Z)|\le \log_2|\Gamma|$.
+\end{proof}
+
+\begin{theorem}[TM Normalization]
+For every deterministic oracle-free single-tape TM $M$ running in time $T_M(n)=\mathrm{poly}(n)$,
+the compiled process $\widehat P_M$ is URF-admissible with radius $r=1$ and capacity bound
+$b_M(n)=O(\log n)$.
+\end{theorem}
+
+\begin{proof}
+We verify (A)--(D) for $\widehat P_M$.
+
+\textbf{(A) Locality.}
+The TM transition function $\delta$ reads only the current control state $q_t$ and scanned symbol $a^0_t$,
+then updates (i) the control state, (ii) the symbol written at the head cell, and (iii) the head move in
+$\{-1,0,+1\}$.
+The compiled update to $(q_{t+1},h_{t+1},a^-_{t+1},a^0_{t+1},a^+_{t+1})$ depends only on
+$(q_t,h_t,a^-_t,a^0_t,a^+_t)$:
+\begin{itemize}
+\item $q_{t+1}$ is determined by $(q_t,a^0_t)$;
+\item $h_{t+1}\in\{h_t-1,h_t,h_t+1\}$ is determined by $(q_t,a^0_t)$;
+\item the new window symbols are obtained from the old window symbols together with the one written symbol
+at the old head and the one-step head move, hence determined by $(q_t,a^-_t,a^0_t,a^+_t)$.
+\end{itemize}
+Thus the update depends only on the radius-$1$ neighborhood around the active component.
+
+\textbf{(B) Capacity.}
+At each step, the only unbounded-size datum in the compiled state is $h_t$.
+Since $0\le h_t\le T_M(n)$, it can be encoded in $\lceil\log_2(T_M(n)+1)\rceil$ bits.
+All other components are drawn from fixed finite sets $Q$ and $\Sigma\cup\{\sqcup\}$.
+Therefore the information injected per step can be bounded by
+$I_t=b_M(n)=c_1\lceil\log_2(T_M(n)+1)\rceil+c_2=O(\log n)$
+because $T_M(n)=\mathrm{poly}(n)$.
+
+\textbf{(C) Accounting.}
+By the entropy increment bound,
+$\Phi(s_{t+1})-\Phi(s_t)\le \log_2|\Gamma|$ for all $t$.
+Choose constants $c_1,c_2$ (in the definition of $b_M$) so that $b_M(n)\ge \log_2|\Gamma|$ for all $n$.
+Then $\Phi(s_{t+1})-\Phi(s_t)\le I_t$ for all $t$ and summing gives
+$\Phi(s_T)-\Phi(s_0)\le \sum_{t=1}^T I_t$.
+
+\textbf{(D) Uniformity.}
+The radius $r=1$ is constant, $b_M(n)$ depends only on $n$ via $T_M(n)$, and $T_M(n)$ is a fixed
+polynomial-time bound attached to $M$, independent of the specific input string beyond its length.
+\end{proof}
+
+\section{A restricted Word-RAM normalization theorem}
+
+\subsection{Model}
+A \emph{restricted Word-RAM} has word size $w(n)=\Theta(\log n)$, a constant number of registers,
+and a memory array of words. Each step executes one instruction from a fixed finite instruction set
+that reads/writes $O(1)$ words. No bulk primitives are allowed.
+
+\begin{definition}[Forbidden primitive]
+A \emph{bulk write} instruction that writes $\Omega(n)$ fresh bits across $\Omega(n)$ distinct
+addresses in a single step is forbidden. This primitive is certified as a (¬B) capacity overflow
+witness in the benchmark suite.
+\end{definition}
+
+\begin{theorem}[Restricted Word-RAM Normalization]
+Every deterministic oracle-free restricted Word-RAM program running in $\mathrm{poly}(n)$ time is
+URF-admissible with constant locality radius and per-step capacity $I_t=O(\log n)$.
+\end{theorem}
+
+\begin{proof}
+Compile the RAM into a transcript whose state stores:
+(i) program counter (one word),
+(ii) register contents (constant many words),
+(iii) the constant many memory words touched by the next instruction (addresses and values).
+Each instruction touches $O(1)$ words, hence locality radius is constant.
+Each step can change at most $O(1)$ words of $w(n)=\Theta(\log n)$ bits, so the injected information
+satisfies $I_t=O(\log n)$.
+Uniformity holds because the instruction set is fixed and $w(n)$ depends only on $n$.
+Accounting holds with the same entropy progress $\Phi(s_t)=H(E_{\le t})$ using an emitted token
+alphabet of size $\mathrm{poly}(n)$ encoded in $O(\log n)$ bits, hence $\Delta\Phi_t=O(\log n)\le I_t$
+after fixing constants.
+\end{proof}
+
+\section{Certified global escapes}
+A process may exit the URF regime only by presenting a certified NO witness specifying a violated clause
+(¬A/¬B/¬C/¬D). The benchmark suite contains minimal witnesses for (¬A), (¬B), and (¬C).
+
+\begin{corollary}[Regime dichotomy]
+Either UCLP holds in the chosen baseline model class (e.g.\ deterministic TMs, restricted Word-RAM), or there exist
+certified global escapes in that class violating URF constraints.
+\end{corollary}
+
+\end{document}
