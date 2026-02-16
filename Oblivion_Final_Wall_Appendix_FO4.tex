@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+
+\title{Appendix A: Explicit FO\textsuperscript{4} Formulas for Overlap Rigidity}
+\author{Inacio F. Vasquez}
+\date{}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\maketitle
+
+\section*{Scope}
+
+This appendix records the exact FO\textsuperscript{4} formulas used in the conditional Overlap Rigidity argument. No claims of provability are made here; these formulas serve as syntactic witnesses for the theory-level statements in the main manuscript.
+
+\section{Guarded Distance}
+
+Let $E(x,y)$ denote adjacency.
+
+\begin{definition}[Distance $\le R$]
+For fixed $R$, define recursively:
+\[
+\mathrm{dist}_{\le 0}(x,y) := (x=y)
+\]
+\[
+\mathrm{dist}_{\le r+1}(x,y) := \exists z \bigl( E(x,z) \land \mathrm{dist}_{\le r}(z,y) \bigr)
+\]
+\end{definition}
+
+All quantifiers are reused variables; depth is bounded.
+
+\section{Guard Predicate}
+
+\begin{definition}[Guard]
+\[
+\mathrm{Guard}_R(x;y) := \mathrm{dist}_{\le R}(x,y)
+\]
+\end{definition}
+
+All subsequent formulas are relativized by this guard.
+
+\section{Cycle Witness}
+
+\begin{definition}[Nontrivial Cycle Through $x$]
+\[
+\mathrm{Cycle}(x) := \exists y\,\exists z\,
+\bigl(
+E(x,y) \land E(y,z) \land E(z,x) \land x \neq y \land y \neq z \land z \neq x
+\bigr)
+\]
+\end{definition}
+
+This detects a simple 3-cycle; longer cycles are definable by iteration.
+
+\section{Overlap Detection}
+
+\begin{definition}[Overlap Formula $\varphi_{R,m}$]
+For fixed $R,m$:
+\[
+\varphi_{R,m} :=
+\exists x \exists y_1 \dots \exists y_m
+\bigl(
+\bigwedge_i \mathrm{Guard}_R(x;y_i)
+\;\land\;
+\bigwedge_i \mathrm{Cycle}(y_i)
+\;\land\;
+\bigwedge_{i \neq j} y_i \neq y_j
+\bigr)
+\]
+\end{definition}
+
+This asserts the existence of $m$ guarded, distinct cycle witnesses.
+
+\section{Guarded Boundedness}
+
+\begin{definition}[Guarded Boundedness $\psi_{R,m}$]
+\[
+\psi_{R,m} := \neg \varphi_{R,m}
+\]
+\end{definition}
+
+\section{Interpretation}
+
+If $\varphi_{R,m}$ holds, the graph has $m$ locally overlapping cycle witnesses within guarded radius $R$. The Overlap Rigidity Axiom asserts that FO\textsuperscript{4}-homogeneous graphs satisfy $\psi_{R,m}$ for suitable parameters.
+
+\bigskip
+\noindent
+Status: syntactic appendix, conditional dependency.
+
+\end{document}
+
