@@ -1,32 +1,163 @@
-Final Wall: FO^k Locality Obstruction
+# final-wall-fo-k-locality
 
-This repository records the terminal obstruction ("Final Wall") encountered by FO^k-local, bounded-degree, and refinement-based methods.
+Canonical repository for **FOᵏ locality definitions and structural invariants** used in the *Final Wall* program.
 
-Contents
-- README.md: scope and interpretation
-- STATUS.md: authoritative claim boundary
-- ARCHIVE.md: historical notes and deprecated paths
-- Oblivion_Final_Wall.tex: canonical technical manuscript
-- docs/: supporting technical notes
-- operator-theory/: supporting reductions
+This repository isolates and formalizes the **notion of first‑order k‑locality** as a dependency layer. It contains *definitions only*, plus strictly local structural lemmas where unavoidable. It is not a claim repository and not a proof of rigidity.
 
-What this repository establishes
-- A precise reduction of a broad class of locality-based methods to a single terminal obstruction
-- Identification of the obstruction as structural, not algorithmic
+---
 
-What this repository does NOT claim
-- No solution to P vs NP or related decision problems
-- No resolution of the terminal rigidity obstruction
-- No claims beyond those listed in STATUS.md
+## Role in the program
 
-Status
-This repository is frozen as a record of the Final Wall.
-Extensions, resolutions, or breakthroughs must occur elsewhere.
+FOᵏ locality is the logical substrate underlying overlap rigidity, WLᵏ indistinguishability, and configuration saturation arguments. This repository provides a **single source of truth** for those locality notions.
 
-## Project Context
-This repository addresses the terminal locality obstruction (“Final Wall”) in FOᵏ rigidity.
+```
+mathlib / finite model theory
+        ↓
+final-wall-fo-k-locality   (this repo)
+        ↓
+overlap-rigidity / counterexamples / conditionals / manuscripts
+```
 
-- Framework context: https://inaciovasquez2020.github.io
-- Status tracking: https://inaciovasquez2020.github.io/vasquez-index/dashboard.html
+Any statement invoking FOᵏ locality must be compatible with the definitions fixed here.
 
-See STATUS.md for the authoritative boundary.
+---
+
+## Scope
+
+This repository formalizes:
+
+* FOᵏ syntax (k‑variable first‑order formulas)
+* Local satisfaction relative to bounded neighborhoods
+* FOᵏ local types and neighborhood equivalence
+* Structural locality invariants usable by downstream arguments
+
+The emphasis is on **definitional precision**, not theorem proving.
+
+---
+
+## What this repository is
+
+* A **definitional layer** for FOᵏ locality
+* A dependency for rigidity, obstruction, and entropy arguments
+* A normalization point ensuring consistent use of locality concepts
+
+## What this repository is not
+
+* A proof of Gaifman locality or Hanf normal forms
+* A classification of FOᵏ expressive power
+* A repository of rigidity theorems
+
+Those results live outside this layer.
+
+---
+
+## Repository structure
+
+```
+.
+├── src/
+│   ├── FO_k/
+│   │   ├── Syntax.lean        # k‑variable syntax
+│   │   ├── Semantics.lean     # satisfaction and structures
+│   │   ├── Locality.lean      # bounded‑radius locality
+│   │   └── Types.lean         # FOᵏ local types
+│   └── Main.lean
+├── tests/
+│   └── sanity.lean            # minimal build checks
+├── lake.toml
+├── lake-manifest.json
+├── STATUS.md
+└── README.md
+```
+
+File naming may evolve, but **the semantic contract will not**.
+
+---
+
+## Build requirements
+
+* Lean version pinned in `lake.toml`
+* mathlib as resolved by `lake-manifest.json`
+
+No external tooling is required.
+
+---
+
+## Build and verification
+
+To build:
+
+```bash
+lake build
+```
+
+Optional sanity checks:
+
+```bash
+lake test
+```
+
+A clean build is the sole correctness criterion at this layer.
+
+---
+
+## Stability and versioning
+
+* Definitions in this repository are **API‑stable**
+* Any breaking change requires:
+
+  * a version tag
+  * an explicit downstream migration note
+
+The default branch is intended to remain usable as a long‑term dependency.
+
+---
+
+## Downstream usage
+
+Typical dependency declaration:
+
+```lean
+require foKLocality from git
+  "https://github.com/inaciovasquez2020/final-wall-fo-k-locality" @ "<tag>"
+```
+
+Downstream projects are expected to:
+
+* state and prove their own theorems
+* treat these definitions as fixed
+
+---
+
+## Relationship to adjacent repositories
+
+* Used by `overlap-rigidity-lean` for formal rigidity arguments
+* Referenced by `final-wall-conditional-index` for dependency disclosure
+* Tested against `overlap-rigidity-counterexamples`
+
+No downstream work may redefine FOᵏ locality independently.
+
+---
+
+## Status
+
+* Layer: **definitional / structural**
+* Claims: **none**
+* Proofs: **none** (beyond trivial locality lemmas)
+* Authority: **canonical for FOᵏ locality**
+
+See `STATUS.md` for coverage notes.
+
+---
+
+## License
+
+MIT (or compatible permissive license).
+
+---
+
+## Integrity note
+
+Locality errors propagate silently. This repository exists to ensure that **every use of FOᵏ locality refers to the same object** everywhere in the program.
+
+If a claim depends on FOᵏ locality, it depends on this layer.
