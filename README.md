@@ -6,6 +6,14 @@ This repository defines the mathematical, logical, and certificate-semantic base
 All downstream executable, packaging, and environment layers derive their meaning from this layer.
 
 ---
+## URF-ADMISSIBLE (v1.0)
+
+URF-ADMISSIBLE is the frozen decision interface enforcing locality, capacity, and accounting.
+All URF claims must pass this gate or provide a certified NO witness.
+
+- Spec: docs/foundations/urf_admissible_spec.md
+- Schemas: admissible/schema/
+- NO Benchmarks: admissible/no_benchmarks/
 
 ## Purpose
 
