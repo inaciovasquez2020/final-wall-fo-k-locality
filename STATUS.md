@@ -1,10 +1,23 @@
-Proven (unconditional)
-- Reduction of FO^k locality-based refinement methods to a single terminal obstruction ("Final Wall")
-- Formal isolation of the FO^k Locality Wall as a structural boundary, not a solved decision problem
+STATUS: FROZEN
 
-Conditional (explicit hypotheses)
-- Any lower-bound amplification beyond the wall depends on unresolved rigidity or expansion assumptions
-- Any algorithmic implications depend on admissibility / locality constraints as stated in the papers
+Title
+Final Wall for FO^k Locality
 
-Open / reduction targets
-- Resolution of the final rigidity obstruction (outside the scope of this repository)
+State
+Theory-complete, conditional.
+
+Summary
+All reductions from FO^k locality to a single obstruction are complete.
+The only remaining dependency is the Overlap Rigidity Lemma.
+
+Dependency
+Overlap Rigidity:
+FO^4 detection of independent overlapping cycles at bounded radius.
+
+Notes
+No further development is planned in this repository.
+Any future work must occur in a separate formalization or synthesis project.
+
+Date
+2026-02-16
+
