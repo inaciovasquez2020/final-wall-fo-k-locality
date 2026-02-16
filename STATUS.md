@@ -18,6 +18,9 @@ Notes
 No further development is planned in this repository.
 Any future work must occur in a separate formalization or synthesis project.
 
+Freeze reference
+Commit: 0e6eb4d3bca3accf0d25cbda9118f021d2703a3d
+
 Date
 2026-02-16
 
