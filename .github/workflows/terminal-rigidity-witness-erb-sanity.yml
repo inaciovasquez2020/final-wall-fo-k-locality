@@ -11,5 +11,11 @@
           # Source is canonical; PDF is forbidden
           test -f trw-erb-sigc.tex
 
+          test -f README.md
+          test -f STATUS.md
+          test -f FREEZE.md
+          test -f trw-erb-sigc.tex
+          test -f CITATION.cff
+          (ci: drop PDF requirement from ERB sanity check)
           echo "Sanity checks passed"
 
