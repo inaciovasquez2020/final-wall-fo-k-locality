@@ -64,7 +64,7 @@ For fixed $k,\Delta,R$, there exists $M=M(k,\Delta,R)$ such that any graph of ma
 $\Delta$ has at most $M$ distinct FO$^{k}$ local types of radius $R$.
 \end{lemma}
 
-This is standard and follows from Ehrenfeucht--Fraïss\'e game bounds.
+This follows from standard Ehrenfeucht--Fra\"{\i}ss\'e game bounds.
 
 \section{Guarded FO$^{4}$ Formulation}
 
@@ -126,6 +126,21 @@ The formula $\varphi(x)$ holds precisely when two linearly independent cycles ov
 within bounded radius.  
 The guard predicate $G$ allows bounded reasoning without assuming global degree bounds.
 
+\section{Explicit Assumptions}
+
+All results beyond this point depend only on the following assumptions.
+
+\begin{enumerate}[label=\textbf{A\arabic*.}]
+\item \textbf{Overlap Rigidity.}  
+There exist constants $R_0,m$ such that if a graph is FO$^{4}_{R_0}$--locally homogeneous,
+then it does not admit more than $m$ linearly independent cycles whose $R_0$--supports
+overlap at a single vertex.
+
+\item \textbf{Divergence Implies Independence.}  
+The FO$^{4}$ predicate $\operatorname{Diverge}_{R_0}$ correctly witnesses linear
+independence in the $\mathbb F_2$ cycle space.
+\end{enumerate}
+
 \section{Overlap Rigidity (Conditional)}
 
 \begin{lemma}[Overlap Rigidity]
@@ -141,8 +156,7 @@ G\text{ is FO$^{4}_{R_0}$--homogeneous}
 \end{lemma}
 
 \textbf{Status.}  
-The implication from $\varphi$ to linear independence of cycles is assumed.
-All other components are proven.
+This lemma depends only on Assumptions A1 and A2.
 
 \section{The Final Wall (Conditional)}
 
