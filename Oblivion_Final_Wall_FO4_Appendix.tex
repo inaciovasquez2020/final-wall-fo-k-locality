@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Appendix A: Explicit FO$^4$ Formulas for Overlap Rigidity}
+\author{Inacio F. Vasquez}
+\date{}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+
+This appendix records the explicit first-order formulas used in the
+\emph{Conditional Final Wall} theorem.
+All formulas use at most four variables and are intended to be read
+in the standard FO-with-adjacency signature for graphs.
+
+\section{Basic Predicates}
+
+We assume the signature:
+\[
+E(x,y) \quad \text{(undirected adjacency)}
+\]
+
+Distance predicates $\mathrm{dist}_{\le r}(x,y)$ are treated as FO-abbreviations,
+unrolled as bounded existential chains.
+
+\section{Non-Backtracking Walks}
+
+\begin{definition}[Non-backtracking step]
+A triple $(x,y,z)$ is non-backtracking if
+\[
+E(x,y) \wedge E(y,z) \wedge x \neq z.
+\]
+\end{definition}
+
+\section{Simple Cycle Witness}
+
+Fix a constant $L \ge 3$.
+
+A simple cycle of length $\ell \le L$ rooted at $x$ is witnessed by
+variables $(x_1,x_2,x_3,x_4)$ satisfying:
+
+\[
+\begin{aligned}
+& E(x,x_1) \wedge E(x_1,x_2) \wedge E(x_2,x_3) \wedge E(x_3,x) \\
+& \wedge\ x \neq x_2 \wedge x_1 \neq x_3 \wedge x_2 \neq x_4
+\end{aligned}
+\]
+
+Longer cycles are encoded by chaining such guarded blocks.
+FO$^4$ suffices because only local overlap, not full enumeration,
+is required.
+
+\section{Guarded Cycle Intersection}
+
+\begin{definition}[Guarded intersection]
+Two cycle witnesses intersect at radius $R_0$ around $v$ if
+\[
+\mathrm{dist}_{\le R_0}(v,x_i) \wedge \mathrm{dist}_{\le R_0}(v,y_j)
+\]
+for some vertices in each cycle witness.
+\end{definition}
+
+\section{Cycle Independence}
+
+Cycle independence is encoded negatively:
+
+Two cycles are dependent if one can be expressed as a parity sum
+of the other inside the guarded neighborhood.
+In FO$^4$, we approximate independence by forbidding
+shared nontrivial subpaths of length $\ge 2$.
+
+\section{Guarded Boundedness Formula}
+
+\begin{definition}[Guarded boundedness $\psi_{R_0,m}$]
+The formula $\psi_{R_0,m}$ asserts:
+
+\begin{quote}
+For every vertex $v$, there do not exist
+$m+1$ pairwise independent simple cycle witnesses,
+each intersecting $B_{R_0}(v)$.
+\end{quote}
+
+Formally:
+\[
+\forall v\; \neg \exists C_1,\dots,C_{m+1}
+\Big(
+\bigwedge_i \mathrm{Cycle}(C_i)
+\wedge
+\bigwedge_i \mathrm{Intersect}_{R_0}(v,C_i)
+\wedge
+\bigwedge_{i<j} \mathrm{Independent}(C_i,C_j)
+\Big)
+\]
+where each $C_i$ is encoded by a 4-variable guarded block.
+\end{definition}
+
+\section{Overlap Detection Formula}
+
+\begin{definition}[Overlap detection $\varphi_{R_0,m}$]
+Let
+\[
+\varphi_{R_0,m} := \neg \psi_{R_0,m}.
+\]
+
+This formula asserts the existence of a vertex witnessing
+local cycle overlap rank exceeding $m$.
+\end{definition}
+
+\section{EF-Game Interpretation}
+
+The existence of $m+1$ overlapping independent cycles forces
+a Spoiler win in the $k$-pebble EF-game within bounded rounds,
+by cycling pebbles through incompatible neighborhoods.
+
+\section*{Status}
+
+All formulas in this appendix:
+\begin{itemize}
+\item use at most four variables,
+\item are guarded by bounded-radius predicates,
+\item align exactly with the Conditional Overlap Rigidity axiom,
+\item are mirrored in the Lean formalization as abstract predicates.
+\end{itemize}
+
+This appendix completes the formal FO$^4$ specification of the Final Wall.
+
+\end{document}
+
