@@ -1,0 +1,15 @@
+{
+  "toolkit_version": "urf-admissible/1.0",
+  "id": "NO-TM-GLOBAL-JUMP-0001",
+  "process": "DeterministicTM",
+  "violates": "A",
+  "witness_kind": "nonlocal_head_jump",
+  "required_radius": "Omega(n)",
+  "step": 1,
+  "description": "TM transition moves head from position 0 to position n in a single step, requiring global tape knowledge.",
+  "transition": {
+    "from": { "state": "q0", "head": 0 },
+    "to":   { "state": "q1", "head": "n" }
+  }
+}
+
