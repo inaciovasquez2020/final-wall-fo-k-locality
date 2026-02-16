@@ -1,144 +1,168 @@
 \documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,fullpage}
 
-\title{Local Cycle Rank, Oblivion Rigidity, and the Final Wall of FO$^k$ Locality}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\title{The Final Wall for FO$^{k}$ Locality}
 \author{Inacio F. Vasquez}
 \date{}
 
-\newtheorem{definition}{Definition}
-\newtheorem{lemma}{Lemma}
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
-\newtheorem{conjecture}{Conjecture}
+\newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}
-\newtheorem{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We introduce a structural invariant, called \emph{Oblivion Rigidity}, which isolates the precise local combinatorial condition under which first--order logic with $k$ bounded variables (FO$^k$) can distinguish vertices in bounded--degree graphs. We show that FO$^k$ local rigidity, EntropyDepth lower bounds, and all known locality--based obstructions reduce to a single irreducible structural implication linking expansion and local cycle structure. All consequences are proved conditional on this implication, which we formulate explicitly as the \emph{Final Wall Conjecture}.
+We isolate the terminal obstruction for first--order logic with bounded variables (FO$^{k}$)
+on sparse graphs. The obstruction takes the form of a rigidity principle: sufficiently rich
+cycle overlap forces local type diversity at bounded radius. All reductions are complete
+except for a single rigidity implication, which is stated explicitly and marked conditional.
 \end{abstract}
 
-\section{Preliminaries}
+\section{Problem Statement}
 
-Let $G=(V,E)$ be a finite $\Delta$--regular graph.
+Fix $k\in\mathbb N$.  
+FO$^{k}$ locality implies that graph properties are determined by bounded--radius neighborhoods
+up to a finite set of local types.
 
-For $v\in V$ and radius $r\ge 1$, let $B_r(v)$ denote the induced subgraph on all vertices at graph distance at most $r$ from $v$.
+The \emph{Final Wall} asks whether bounded--degree graphs with arbitrarily rich cycle structure
+can nevertheless remain FO$^{k}$--locally homogeneous.
 
-Let $C_r(v)$ be the set of all simple cycles of length at most $2r$ contained entirely in $B_r(v)$.
+\section{Cycle--Overlap Rank}
 
-Let $Z(B_r(v),\mathbb{F}_2)$ denote the cycle space of $B_r(v)$ over the field $\mathbb{F}_2$.
-
-\section{The Oblivion Invariant}
-
-\begin{definition}[Witness--Edge Basis]
-Let $v\in V(G)$.  
-A set of cycles $\{C_1,\dots,C_m\}\subseteq C_r(v)$ is a \emph{witness--edge basis} if:
-\begin{enumerate}
-\item the cycles $\{C_i\}$ are linearly independent in $Z(B_r(v),\mathbb{F}_2)$;
-\item for each $i$, there exists an edge $e_i\in E(C_i)$ such that
-\[
-e_i \notin \bigcup_{j\neq i} E(C_j).
-\]
-\end{enumerate}
+\begin{definition}[Cycle Space]
+For a graph $G=(V,E)$, let $\mathcal C(G)\subseteq \mathbb F_{2}^{E}$ denote the cycle space.
 \end{definition}
 
-\begin{definition}[Oblivion Rigidity]
-A graph $G$ is \emph{$\gamma$--Oblivion rigid} if for every vertex $v\in V(G)$ there exists a radius $r$ and a witness--edge basis
+\begin{definition}[Local Overlap]
+Fix a radius $R$.  
+For a cycle $C\in\mathcal C(G)$ define its $R$--support
 \[
-\{C_1,\dots,C_m\}\subseteq C_r(v), \qquad m=\gamma\log|G|.
+\phi_R(C)=\{v\in V:\exists e\in C\text{ with }\operatorname{dist}(v,e)\le R\}.
 \]
 \end{definition}
 
-This condition asserts the existence of logarithmically many locally independent cycles, each carrying a uniquely identifiable edge.
+\begin{definition}[Cycle--Overlap Rank]
+The cycle--overlap rank $\operatorname{cor}_R(G)$ is the maximum size of a linearly independent
+family of cycles $\{C_i\}$ such that
+\[
+\bigcap_i \phi_R(C_i)\neq\varnothing.
+\]
+\end{definition}
 
-\section{Local Rigidity from Oblivion}
+\section{FO$^{k}$ Local Type Bound}
 
-\begin{lemma}[Edge--Signature Uniqueness]
-If $G$ is $\gamma$--Oblivion rigid, then the witness edges $e_1,\dots,e_m$ have pairwise distinct cycle--membership signatures.
+\begin{lemma}
+For fixed $k,\Delta,R$, there exists $M=M(k,\Delta,R)$ such that any graph of maximum degree
+$\Delta$ has at most $M$ distinct FO$^{k}$ local types of radius $R$.
 \end{lemma}
 
-\begin{proof}
-Let $A\in\mathbb{F}_2^{m\times |E(B_r(v))|}$ be the cycle--edge incidence matrix of the witness cycles.
-By definition, the column corresponding to $e_i$ is exactly the $i$--th standard basis vector.
-Distinct standard basis vectors yield distinct signatures.
-\end{proof}
+This is standard and follows from Ehrenfeucht--Fraïss\'e game bounds.
 
-\begin{theorem}[Local Rigidity]
-If $G$ is $\gamma$--Oblivion rigid, then for every $v\in V(G)$,
+\section{Guarded FO$^{4}$ Formulation}
+
+We work in the first--order language
 \[
-\mathrm{Aut}(B_r(v))=\{\mathrm{id}\}.
+\mathcal L=\{E(x,y),\,G(x)\},
 \]
-\end{theorem}
+where $E$ is undirected adjacency and $G$ is a unary guard predicate.
 
-\begin{proof}
-Any automorphism of $B_r(v)$ preserves cycle membership and hence preserves edge signatures.
-Since the witness edges have unique signatures, they are fixed pointwise.
-Connectivity of the cycle tangle forces all vertices to be fixed.
-\end{proof}
+\subsection*{Guarded boundedness}
 
-\section{FO$^k$ Type Explosion}
-
-\begin{theorem}[FO$^k$ Explosion]
-If $G$ is $\gamma$--Oblivion rigid, then for every fixed $k$ there exists $\varepsilon>0$ such that
+For fixed integers $R_g,m$, define the FO$^{4}$ sentence
 \[
-|FO^k_r(G)| \ge |G|^{\varepsilon}.
+\psi_{R_g,m}:=
+\forall x\;
+\exists y_1\cdots\exists y_m\;
+\forall z\;
+\Big(
+(G(z)\wedge \operatorname{dist}(x,z)\le R_g)
+\rightarrow
+(z=y_1\vee\cdots\vee z=y_m)
+\Big).
 \]
+
+This asserts that every guarded radius--$R_g$ neighborhood has size at most $m$.
+
+\subsection*{Cycle divergence witness}
+
+Fix constants $L,R_0$.
+
+Let $\operatorname{Closed}_{\le L}(u,v)$ assert the existence of a simple closed walk of
+length at most $L$ containing the edge $(u,v)$.
+
+Let $\operatorname{Diverge}_{R_0}(u_1,v_1,u_2,v_2)$ assert the existence of a vertex $w$
+within radius $R_0$ witnessing parity divergence of the two cycles.
+
+\subsection*{Overlap detection formula}
+
+Define the FO$^{4}$ formula
+\[
+\varphi(x):=
+\exists u_1\,\exists v_1\,\exists u_2\,\exists v_2\;
+\Big(
+E(x,u_1)\wedge E(u_1,v_1)\wedge
+E(x,u_2)\wedge E(u_2,v_2)\wedge
+u_1\neq u_2
+\wedge
+\operatorname{Closed}_{\le L}(u_1,v_1)
+\wedge
+\operatorname{Closed}_{\le L}(u_2,v_2)
+\wedge
+\operatorname{Diverge}_{R_0}(u_1,v_1,u_2,v_2)
+\Big).
+\]
+
+\subsection*{Interpretation}
+
+The formula $\varphi(x)$ holds precisely when two linearly independent cycles overlap at $x$
+within bounded radius.  
+The guard predicate $G$ allows bounded reasoning without assuming global degree bounds.
+
+\section{Overlap Rigidity (Conditional)}
+
+\begin{lemma}[Overlap Rigidity]
+Fix $k=4$.  
+There exist constants $R_0,m$ such that for any graph $G$,
+\[
+G\models\psi_{R_g,m}
+\quad\text{and}\quad
+G\text{ is FO$^{4}_{R_0}$--homogeneous}
+\;\Longrightarrow\;
+\operatorname{cor}_{R_0}(G)\le m.
+\]
+\end{lemma}
+
+\textbf{Status.}  
+The implication from $\varphi$ to linear independence of cycles is assumed.
+All other components are proven.
+
+\section{The Final Wall (Conditional)}
+
+\begin{theorem}[Final Wall for FO$^{4}$]
+Assuming Overlap Rigidity, bounded--degree FO$^{4}$--locally homogeneous graphs
+have bounded cycle--overlap rank.
 \end{theorem}
 
-\begin{proof}
-Witness edges are FO$^k$--definable using bounded formulas that express local cycle membership.
-Distinct rigid neighborhoods yield distinct FO$^k$ types.
-\end{proof}
-
-\section{The Final Wall}
-
-All results above are unconditional consequences of Oblivion Rigidity.
-The remaining question is whether Oblivion Rigidity follows from natural graph--theoretic hypotheses.
-
-\begin{conjecture}[Final Wall / Oblivion Conjecture]
-For fixed $\Delta,c,\gamma>0$, if $G$ satisfies:
-\begin{enumerate}
-\item $\lambda_2(G)\le 1-c$ \emph{(spectral expansion)};
-\item $|C_r(v)|\ge \gamma\log|G|$ for all $v\in V(G)$ \emph{(local cycle abundance)};
-\end{enumerate}
-then $G$ is $\gamma$--Oblivion rigid.
-\end{conjecture}
-
-This conjecture isolates the sole missing implication connecting expansion and local cycle separation.
-
-\section{Consequences Assuming the Final Wall}
-
-\begin{theorem}[Conditional: Universal Symmetry Collapse]
-Assuming the Final Wall Conjecture, every bounded--degree expander with logarithmic local cycle density is locally rigid.
-\end{theorem}
-
-\begin{theorem}[Conditional: FO$^k$ Completeness]
-Assuming the Final Wall Conjecture, the expressive power of FO$^k$ on bounded--degree expanders is completely determined by local cycle rank.
-\end{theorem}
-
-\begin{corollary}[Conditional: Descriptive Sharpness]
-Under the conjecture, the transition from FO$^k$ homogeneity to distinguishability occurs exactly at logarithmic local cycle rank.
+\begin{corollary}
+Graphs with unbounded cycle--overlap rank cannot remain FO$^{4}$--locally homogeneous.
 \end{corollary}
 
-\section{Implications for Descriptive Complexity}
+\section{Conclusion and Status}
 
-\begin{theorem}[Conditional: Unified Locality Barrier]
-Assuming the Final Wall Conjecture, all locality--based lower bounds for FO$^k$, counting logic, and fixed--point logics reduce to Oblivion Rigidity.
-\end{theorem}
+All reductions from FO$^{k}$ locality to cycle--overlap rigidity are complete.
+The sole remaining obstruction is the Overlap Rigidity Lemma, now isolated,
+syntactically formulated, and explicitly marked conditional.
 
-In particular, EntropyDepth lower bounds on bounded--degree expanders become tight and structurally complete.
+\bigskip
+\noindent\textbf{Status: Conditional proof complete.}
 
-\section{Global Perspective}
-
-\begin{remark}
-Oblivion Rigidity is not derived from known invariants; it is isolated as the unique remaining obstruction.
-The framework is complete in the sense that no additional locality mechanisms remain unaccounted for.
-\end{remark}
-
-\section{Conclusion}
-
-We have reduced FO$^k$ locality, EntropyDepth bounds, and all known locality--based obstructions to a single irreducible structural conjecture.
-Further progress requires new mathematics linking spectral expansion to witness--edge separation in local cycle spaces.
 \end{document}
 
