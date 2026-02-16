@@ -1,5 +1,4 @@
 \documentclass[11pt,a4paper]{article}
-
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
@@ -8,96 +7,82 @@
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{booktabs}
-
-\title{Terminal Rigidity Witnesses and the Einstein--Rosen Bridge:\\
+\title{Terminal Rigidity Witnesses and the Einstein--Rosen Bridge:\
 A Zero-Capacity Invariant for Physical Inference}
-\author{Inacio F. Vasquez\\Independent Researcher}
+\author{Inacio F. Vasquez\Independent Researcher}
 \date{January 2026}
-
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 \newtheorem{corollary}{Corollary}
-
-\newcommand{\Capacity}{\mathrm{Cap}}
-\newcommand{\TC}{\mathrm{TC}}
-\newcommand{\SIGC}{\mathbf{SIGC}}
 \newtheorem{axiom}{Axiom}
-
 \newcommand{\Capacity}{\mathrm{Cap}}
 \newcommand{\TC}{\mathrm{TC}}
-\newcommand{\SIGC}{\mathbf{SIGC}}
-\newcommand{\PhysSys}{\mathbf{PhysSys}}
-
 \begin{document}
 \maketitle
-
 \begin{abstract}
-We formalize the notion of a \emph{Terminal Rigidity Witness}: a physical system whose global
-structure is nontrivial while its operational information capacity is exactly zero.
-We show that the classical Einstein--Rosen bridge provides a canonical example.
+We define a Terminal Rigidity Witness as a physical system with nontrivial global structure but zero operational information capacity.
+We show that the classical Einstein--Rosen bridge in the maximally extended Schwarzschild spacetime is a canonical example under causal accessibility.
 \end{abstract}
-
-\section{Transcript Capacity}
-
-For an interface producing transcript $Y_{1:T}$ from hidden state $X$, define
-\[
-\TC(T) := \sup I(X;Y_{1:T}).
-\]
-
-\section{Terminal Rigidity}
-
-A system $S$ is a terminal rigidity witness if
-\[
-\Capacity(\mathcal C_S) = 0
-\]
-while $S$ has nontrivial global structure.
-
-\section{Einstein--Rosen Bridge}
-
-Topological censorship implies no causal curve connects the two asymptotic regions of the
-maximal Schwarzschild extension. Hence the induced channel has zero capacity.
-
+\section{Transcript capacity}
+Let $X$ denote a hidden physical state and let $Y_{1:T}$ be a transcript produced by an operational interface over $T$ steps.
+Define the transcript capacity
+\TC
+(
+T
+)
+:
+=
+sup
+⁡
+I
+(
+X
+;
+Y
+1
+:
+T
+)
+,
+\TC(T):=supI(X;Y 
+1:T
+​	
+ ),
+where the supremum ranges over admissible encodings and observation strategies available to the observer.
+Define the operational capacity
+\Capacity
+:
+=
+sup
+⁡
+T
+≥
+1
+\TC
+(
+T
+)
+.
+\Capacity:= 
+T≥1
+sup
+​	
+ \TC(T).
+\section{Terminal rigidity}
+\begin{definition}
+A physical system $S$ is a Terminal Rigidity Witness if $\Capacity(\mathcal C_S)=0$ while $S$ has nontrivial global structure.
+\end{definition}
+\section{Einstein--Rosen bridge}
+\begin{axiom}[Causal separation across the bridge]
+No causal curve connects the two asymptotic regions of the maximally extended Schwarzschild spacetime.
+\end{axiom}
 \begin{theorem}
-The Einstein--Rosen bridge is a terminal rigidity witness.
+The Einstein--Rosen bridge is a Terminal Rigidity Witness.
 \end{theorem}
-
-We introduce the notion of a \emph{Terminal Rigidity Witness}: a physical system whose global
-structure is maximally nontrivial, yet whose operational information capacity is identically zero.
-We show that the classical Einstein--Rosen bridge (ERB), the maximal analytic extension of the
-Schwarzschild solution, furnishes a canonical example of such a witness.
-Formally, ERB induces a zero channel in the sense of transcript capacity, and thus constitutes
-a terminal element in the preorder of admissible physical inference systems.
-This provides a rigorous stress test for claims of nonlocal reconstruction, exotic communication,
-and entanglement-based operational geometry.
-We formalize the notion of a \emph{Terminal Rigidity Witness}: a physical system whose global
-structure is nontrivial while its operational information capacity is exactly zero.
-We show that the classical Einstein--Rosen bridge provides a canonical example.
-\end{abstract}
-
-\section{Transcript Capacity}
-
-For an interface producing transcript $Y_{1:T}$ from hidden state $X$, define
-\[
-\TC(T) := \sup I(X;Y_{1:T}).
-\]
-
-\section{Terminal Rigidity}
-
-A system $S$ is a terminal rigidity witness if
-\[
-\Capacity(\mathcal C_S) = 0
-\]
-while $S$ has nontrivial global structure.
-
-\section{Einstein--Rosen Bridge}
-
-Topological censorship implies no causal curve connects the two asymptotic regions of the
-maximal Schwarzschild extension. Hence the induced channel has zero capacity.
-
-\begin{theorem}
-The Einstein--Rosen bridge is a terminal rigidity witness.
-\end{theorem}
-
+\begin{proof}
+By causal separation, no operational interface restricted to causal propagation can transmit influence from hidden states on one asymptotic region to transcripts observed on the other.
+Hence for every $T$ and every admissible strategy, $I(X;Y_{1:T})=0$, so $\TC(T)=0$ and thus $\Capacity(\mathcal C_{\mathrm{ERB}})=0$.
+The maximally extended spacetime nevertheless has nontrivial global structure.
+\end{proof}
 \end{document}
-

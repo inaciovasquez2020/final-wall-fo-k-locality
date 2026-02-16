@@ -1,21 +1,11 @@
+.lake/
+**/.lake/
+build/
 *.aux
 *.log
 *.out
 *.toc
-*.pdf
 papers/**/arxiv/
-
-.lake/
-ip/
-ip/
-urf-cli/dist/
-**/.lake/
-
-# rolecheck local helpers (do not track)
 tools/rolecheck/git_tracked.py
-.lake
-**/.lake
-build/
-.lake/
-.lake
-*.pdf
+urf-cli/dist/
+ip/
