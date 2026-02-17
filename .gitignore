@@ -9,3 +9,9 @@ docs/.log
 *.aux
 *.log
 *.out
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+
