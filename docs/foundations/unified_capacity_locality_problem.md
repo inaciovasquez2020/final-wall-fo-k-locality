@@ -1,138 +1,75 @@
 # Unified Capacity–Locality Problem (UCLP)
 
-## Status
-**Canonical formulation (normalized)**  
-All definitions are explicit. No implicit models, resources, or oracles.
+## Statement
+
+The Unified Capacity–Locality Problem (UCLP) asks whether polynomial-time
+computation is universally constrained by *local information capacity*:
+namely, whether any algorithm operating via fixed-radius local refinement
+must extract a superlinear amount of global information to solve certain
+natural decision problems.
+
+Formally, UCLP investigates whether there exist explicit problem families
+for which any fixed-radius local transcript necessarily incurs large total
+information cost (transcript capacity), ruling out sublinear-capacity
+solutions under URF-admissibility.
 
 ---
 
-## 1. Informal statement
+## Status: RESOLVED (Scoped)
 
-The Unified Capacity–Locality Problem asks whether a computational task can be
-performed by a **local refinement process** whose **per-step information gain**
-is uniformly bounded, while still achieving a required **global separation**
-or decision.
+**Decision:** **NO**, for an explicit constant-width SAT family.
 
-The problem isolates the minimal obstruction shared by locality-based
-algorithms across models (RAM, circuits, TMs) once compiled into a common
-refinement transcript.
+An explicit width-3 SAT family with bounded-degree, high-girth factor graphs
+admits an **unconditional linear lower bound** on transcript capacity:
+any fixed-radius local transcript that determines a satisfying assignment
+must extract **Ω(n)** total information.
 
----
-
-## 2. Computational model (Reasonable)
-
-### Definition 2.1 (Reasonable models)
-A model of computation is **Reasonable** if it satisfies all of the following:
-
-1. Polynomial-time bounded (uniform).
-2. Compilable into a finite transcript of refinement steps.
-3. Each step produces a bounded-description local update.
-4. No hidden global oracle or unbounded preprocessing outside the transcript.
-
-Examples:
-- Logspace-uniform circuits
-- Polynomial-time RAM
-- Polynomial-time Turing machines
-
-Non-examples:
-- Models with unbounded advice
-- Global algebraic solvers not representable as refinement steps
+This establishes a negative resolution of UCLP **within the declared scope**
+(fixed-radius locality; canonical local transcripts; URF-admissibility).
 
 ---
 
-## 3. Transcript formalism
+## Supporting Construction and Proof
 
-### Definition 3.1 (Refinement transcript)
-A **refinement transcript** is a sequence
-\[
-T = (S_0, S_1, \dots, S_m)
-\]
-where each transition \(S_{t-1} \to S_t\) is a local, bounded-radius update
-computed by a Reasonable model.
+The construction uses LDPC/Tseitin-style parity constraints encoded as
+constant-width CNF, with the following properties:
 
-### Definition 3.2 (Transcript capacity)
-Let \(X\) be the hidden target (e.g. satisfying assignment).
-The **transcript capacity** is
-\[
-\mathrm{TC}(T) := \sum_{t=1}^m I(X ; S_t \mid S_{t-1}).
-\]
+- Width-3 CNF
+- Bounded variable–clause degrees
+- High girth (tree-like local neighborhoods)
+- Uniform satisfying distribution forming an affine subspace
 
-This quantity measures the total information extracted by the process.
+Key results:
 
----
+- Each radius-r local observation reveals **O(1)** bits of information.
+- The total entropy of the solution space is **Θ(n)**.
+- Therefore, any transcript that uniquely determines a solution has
+  transcript capacity **Ω(n)**.
 
-## 4. Locality constraint
+**Canonical artifact and proof:**
 
-### Definition 4.1 (Locality bound)
-A transcript is **\(r\)-local** if each refinement step depends only on an
-\(r\)-radius neighborhood of the current state representation.
-
-The locality bound \(r\) is fixed independently of input size.
+- Repository:  
+  https://github.com/inaciovasquez2020/overlap-rigidity-counterexamples
+- Proof document:  
+  `docs/uclp_linear_tc_ldpc.tex`
 
 ---
 
-## 5. Admissibility
+## Scope and Non-Claims
 
-### Definition 5.1 (URF-admissible)
-A task is **URF-admissible** if there exists a Reasonable algorithm whose
-compiled transcript satisfies:
-
-1. Fixed locality radius \(r = O(1)\).
-2. Per-step information gain bounded by
-   \[
-   I(X ; S_t \mid S_{t-1}) \le C
-   \]
-   for a constant \(C\).
-3. Total runtime polynomial in input size.
+- The result is **unconditional** within the stated locality model.
+- No **Ω(n log n)** bound is claimed here.
+- Stronger bounds would require additional information-diffusion or
+  entropy-decay mechanisms not assumed in UCLP.
+- The resolution applies to **explicit constant-width SAT families** and
+  does not assert universality across all computational models.
 
 ---
 
-## 6. The decision problem
+## Governance Note
 
-### UCLP (Decision Form)
+This document records the **authoritative URF decision** for UCLP.
+Supporting artifacts live in dedicated evidence repositories; this page
+serves as the canonical semantic reference.
 
-**Instance:**  
-A computational task \(\mathcal{P}\) (e.g. SAT on a specified distribution).
-
-**Question:**  
-Does there exist a URF-admissible transcript solving \(\mathcal{P}\)?
-
----
-
-## 7. Obstruction principle
-
-### Principle 7.1 (Capacity–Locality obstruction)
-If any solution of \(\mathcal{P}\) requires
-\[
-\mathrm{TC}(T) \ge \Omega(f(n))
-\]
-for superconstant \(f(n)\), then no URF-admissible algorithm exists for
-\(\mathcal{P}\).
-
-This obstruction is invariant under compilation between Reasonable models.
-
----
-
-## 8. Consequences
-
-- Local refinement algorithms are fundamentally capacity-limited.
-- Increasing power requires violating locality, bounded information gain,
-  or Reasonable compilation.
-- Hardness results reduce to lower-bounding transcript capacity.
-
----
-
-## 9. Relation to other frameworks
-
-- **FO\(^k\) / WL\(^k\):** locality-restricted refinement instances.
-- **EntropyDepth / Chronos:** quantitative lower bounds on \(\mathrm{TC}(T)\).
-- **Oblivion Atom:** structural source of unavoidable capacity growth.
-
----
-
-## 10. Canonical form
-
-This document defines the **single formal decision problem** underlying
-capacity-locality limits. All variants must reduce to UCLP to be comparable.
-
-No additional assumptions are permitted unless stated explicitly.
+**Status:** **CLOSED**
