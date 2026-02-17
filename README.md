@@ -46,6 +46,9 @@ Core → Prefab → Infrastructure → Applications
 
 ## Canonical Scope
 
+Structural laws governing admissible strategies are indexed in
+[docs/foundations/structural_laws_index.md](docs/foundations/structural_laws_index.md).
+
 ### Mathematical Foundations
 
 * Rigidity principles
