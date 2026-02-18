@@ -6,6 +6,21 @@ This repository defines the **mathematical, logical, and certificate-semantic ba
 
 ---
 
+## Status (Canonical)
+
+This repository reflects the **current reduction status** of the Unified Rigidity Framework spine.
+
+- **FO^k locality:** Conditionally closed via Configuration Pumping.
+- **EF traps:** Retired (non-canonical).
+- **Remaining obstruction:** **CCL (Cycle-Complexity Lemma)** only.
+- **No new math introduced here.** This repo records structure, boundaries, and dependencies.
+
+Canonical alignment commits:
+- FO^k locality closure: see `final-wall-fo-k-locality`
+- Chronos / EntropyDepth boundary alignment: see `Chronos-EntropyDepth`
+
+State: **CONDITIONAL / FROZEN** (pending CCL).
+
 ## URF-ADMISSIBLE (v1.0)
 
 **URF-ADMISSIBLE** is the frozen decision interface enforcing **locality, capacity, and accounting**. All URF claims must pass this gate or provide a certified **NO** witness.
