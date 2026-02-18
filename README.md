@@ -3,8 +3,6 @@
 **Skeleton (lightweight checks only)**  
 ![Skeleton CI](https://github.com/inaciovasquez2020/urf-core/actions/workflows/entropy-check.yml/badge.svg)
 
-![Verified CI](https://github.com/inaciovasquez2020/urf-core/actions/workflows/lean.yml/badge.svg?branch=paper-I-artifacts)
-
 # URF Core — Foundational Logic Layer
 
 This repository defines the **mathematical, logical, and certificate-semantic base** of the URF program. All downstream executable, packaging, and environment layers derive their meaning from this layer.
