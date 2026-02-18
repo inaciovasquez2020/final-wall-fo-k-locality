@@ -9,3 +9,8 @@ papers/**/arxiv/
 tools/rolecheck/git_tracked.py
 urf-cli/dist/
 ip/
+# local artifacts
+*.pdf
+__pycache__/
+tools/rolecheck/__pycache__/
+
