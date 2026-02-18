@@ -1,1 +1,2 @@
-Frozen canonical state.
+# Freeze
+No new math until review.

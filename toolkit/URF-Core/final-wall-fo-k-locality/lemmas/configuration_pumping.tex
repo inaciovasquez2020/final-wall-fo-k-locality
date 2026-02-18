@@ -1,0 +1,29 @@
+\section*{Configuration Pumping Lemma (Conditional)}
+
+\textbf{Status: CONDITIONAL.}
+
+Fix $k,\Delta,R$.  
+Let $\mathcal T(k,\Delta,R)$ denote the finite set of FO$^k$ configuration
+types on radius-$R$ neighborhoods in bounded-degree graphs.
+
+\begin{lemma}[Configuration Pumping]
+Let $G$ satisfy $\Delta(G)\le\Delta$.
+If for some vertex $v$,
+\[
+\dim_{\mathbb F_2} Z_1(B_{2R}(v)) > |\mathcal T(k,\Delta,R)|,
+\]
+then there exist two distinct pebble configurations with identical
+FO$^k$ local type occurring within radius $R$.
+Consequently,
+\[
+\exists x\neq y:\ \mathrm{tp}^{\mathrm{FO}^k}_R(x)\neq
+\mathrm{tp}^{\mathrm{FO}^k}_R(y).
+\]
+\end{lemma}
+
+\begin{remark}
+This lemma replaces the EF Cycle--Linkage Trap.
+It relies only on finite type counting and configuration repetition.
+No global linkage or holonomy is assumed.
+\end{remark}
+

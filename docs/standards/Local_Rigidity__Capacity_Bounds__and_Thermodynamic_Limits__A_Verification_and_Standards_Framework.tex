@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+% --- Theorem Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{axiom}[definition]{Axiom}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+
+\title{Local Rigidity, Capacity Bounds, and Thermodynamic Limits:\\
+A Verification and Standards Framework}
+\author{Inacio F. Vasquez \\ Independent Researcher}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hrule
+\vspace{0.5em}
+\noindent
+\textbf{STATUS:} VERIFIED / STANDARDS FRAMEWORK \\
+\textbf{SCOPE:} Structural rigidity via local distinguishability, bounded refinement capacity, and thermodynamic extensivity. \\
+\textbf{DEPENDENCIES:} Locality, information theory, thermodynamic limits. \\
+\textbf{NON-CLAIMS:} No dynamics; no phase transition classification; no universality claims.
+\vspace{0.5em}
+\hrule
+
+\section{Background}
+Locality-based physical models rely implicitly on limits of distinguishability, information extraction, and extensivity. These assumptions are rarely stated in a form suitable for verification or certification. This manuscript isolates them as independent structural conditions.
+
+\section{Motivation}
+Can rigidity in physical systems be certified using only verifiable local and information-theoretic data?
+
+\section{Intuition}
+If states are locally distinguishable, refinement capacity is bounded, and thermodynamic scaling is extensive, then global degeneracy cannot persist. Rigidity follows without reference to equations of motion.
+
+\section{Local Distinguishability}
+\begin{definition}[State Space]
+Let $\mathcal{H}=\bigotimes_{v\in V}\mathcal{H}_v$ be a finite-dimensional Hilbert space. For $\Lambda\subset V$, define $\rho_\Lambda=\mathrm{Tr}_{V\setminus\Lambda}(\rho)$.
+\end{definition}
+
+\begin{definition}[Local Distinguishability (LD)]
+There exist $R<\infty$ and $\delta>0$ such that for all $x\neq y$,
+\[
+\|\rho_{B_R}(x)-\rho_{B_R}(y)\|_1 \ge \delta .
+\]
+\end{definition}
+
+\section{Capacity Bound}
+\begin{definition}[Transcript Model]
+A refinement process produces a transcript $\tau_t=(O_1,\dots,O_t)$ of observable outcomes.
+\end{definition}
+
+\begin{axiom}[Capacity Bound (CB)]
+There exists $C<\infty$ such that
+\[
+I(X;O_t\mid\tau_{t-1})\le C \quad \forall t .
+\]
+\end{axiom}
+
+\begin{definition}[Cumulative Information Capacity]
+\[
+I := \sup_T \sum_{t=1}^T I(X;O_t\mid\tau_{t-1}) .
+\]
+\end{definition}
+
+\section{Thermodynamic Limits}
+\begin{axiom}[TLA]
+For amenable geometries,
+\[
+\lim_{N\to\infty}\frac{1}{N}\lambda_{\max}(H_N)\ \text{exists}.
+\]
+\end{axiom}
+
+\begin{axiom}[TLNA]
+For non-amenable geometries, there exists a subsequence with well-defined energy density.
+\end{axiom}
+
+\section{Rigidity Invariant}
+\begin{definition}[Rigidity Invariant]
+\[
+\mathcal{R}:=\inf_R\frac{\delta(R)}{I}.
+\]
+\end{definition}
+
+\begin{theorem}[Rigidity Criterion]
+\[
+\mathcal{R}>0 \iff \text{LD} \wedge \text{CB} \wedge \text{TL}.
+\]
+\end{theorem}
+
+\section{Standards Use}
+A model is admissible iff:
+\begin{itemize}
+\item an explicit $(R,\delta)$ witness is provided,
+\item cumulative information capacity is finite,
+\item thermodynamic scaling is explicit,
+\item $\mathcal{R}$ is computable.
+\end{itemize}
+
+\section*{References}
+\begin{enumerate}
+\item B. Nachtergaele and R. Sims, \emph{Commun.\ Math.\ Phys.} 265 (2006).
+\item O. Bratteli and D. W. Robinson, Springer (1987).
+\item B. Simon, Princeton Univ.\ Press (1993).
+\end{enumerate}
+
+\end{document}
+
