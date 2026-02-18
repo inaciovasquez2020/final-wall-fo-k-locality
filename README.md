@@ -1,5 +1,13 @@
 # final-wall-fo-k-locality
 
+## Status (2026)
+
+This repository records the resolution of the FO^k locality wall.
+The results here are conditionally complete, relying on Configuration
+Pumping as an explicit axiom. EF Cycle–Linkage and related locality traps
+are retired. No claims are made here regarding XYSTEM or the Clause
+Contraction Lemma (CCL), which are tracked independently in urf-axioms.
+
 Canonical repository for **FOᵏ locality definitions and structural invariants** used in the *Final Wall* program.
 
 This repository isolates and formalizes the **notion of first‑order k‑locality** as a dependency layer. It contains *definitions only*, plus strictly local structural lemmas where unavoidable. It is not a claim repository and not a proof of rigidity.
