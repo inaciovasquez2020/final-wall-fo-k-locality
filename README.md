@@ -205,3 +205,25 @@ URF applies only to **post-hoc certification of asserted results**. It is unnece
 
 
 - Chronos–EntropyDepth: https://github.com/inaciovasquez2020/Chronos-EntropyDepth
+
+## URFVIS (Released)
+
+URFVIS is a frozen, tag-scoped certification primitive for visual and structural admissibility checks.
+
+Current release:
+- urfvis-v0.1 (tagged)
+
+Scope:
+- Defines a JSON schema for admissible inspection inputs
+- Supports minisign-based verification of submitted artifacts
+- Produces signed, reproducible certification inputs or explicit refusal
+
+Non-scope:
+- No execution, inference, or proof generation
+- No dependency on Lean or global URF CI state
+- No roadmap beyond tagged releases
+
+Verification:
+Artifacts under certs/urfvis/** are self-contained and can be verified using the published public key.
+
+URFVIS releases are immutable once tagged.
