@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URFOPS",
+  "type": "object",
+  "required": [
+    "ops_id",
+    "operation",
+    "inputs",
+    "constraints",
+    "capacity",
+    "allowed_actions",
+    "forbidden_actions",
+    "declarations"
+  ],
+  "properties": {
+    "ops_id": { "type": "string" },
+    "operation": { "type": "string" },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "capacity": {
+      "type": "object",
+      "required": ["tokens","time_sec","memory_mb"],
+      "properties": {
+        "tokens": { "type": "integer", "minimum": 1 },
+        "time_sec": { "type": "integer", "minimum": 1 },
+        "memory_mb": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "allowed_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "declarations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -227,3 +227,27 @@ Verification:
 Artifacts under certs/urfvis/** are self-contained and can be verified using the published public key.
 
 URFVIS releases are immutable once tagged.
+
+
+## URFOPS (Defined)
+
+URFOPS defines certified operation envelopes for assistant behavior.
+
+Status:
+- Defined
+- Not released
+- No execution authority
+
+Scope:
+- Declares allowed and forbidden actions
+- Enforces capacity and constraint bounds
+- Requires refusal on violation
+
+Non-scope:
+- No skills, agents, or workflows
+- No automation or runtime behavior
+- No release tag until externally required
+
+URFOPS is a specification layer only.
+
+

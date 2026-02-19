@@ -1,0 +1,33 @@
+{
+  "ops_id": "URFOPS-0001",
+  "operation": "Assist with repository inspection and documentation updates",
+  "inputs": [
+    "repository_state"
+  ],
+  "constraints": [
+    "no external network access",
+    "no code execution",
+    "deterministic output",
+    "finite transcript capacity"
+  ],
+  "capacity": {
+    "tokens": 6000,
+    "time_sec": 90,
+    "memory_mb": 1024
+  },
+  "allowed_actions": [
+    "read files",
+    "propose diffs",
+    "generate documentation text"
+  ],
+  "forbidden_actions": [
+    "run code",
+    "modify history",
+    "introduce new dependencies"
+  ],
+  "declarations": [
+    "no hidden tools",
+    "no adaptive retries",
+    "refusal if constraint violated"
+  ]
+}
