@@ -1,4 +1,3 @@
-
 import Mathlib
 import URF.Boundary.VertexBoundary
 
@@ -32,4 +31,3 @@ lemma bounded_overlap_from_PSH :
   simpa using le_rfl
 
 end URF
-

@@ -1,4 +1,3 @@
-
 import Mathlib
 
 open Finset
@@ -13,6 +12,7 @@ lemma vertexBoundary_subset_neighbors (S : Finset V) :
   vertexBoundary adj S ⊆ S.bind adj := by
   intro x hx
   simpa [vertexBoundary] using hx
+
 
 import Mathlib.Data.Finset.Basic
 import Mathlib.Data.Fintype.Basic
@@ -34,4 +34,3 @@ lemma mem_vertex_boundary {S : Finset V} {v : V} :
   simp [vertex_boundary]
 
 end URF
-
