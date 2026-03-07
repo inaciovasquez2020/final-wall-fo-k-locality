@@ -1,18 +1,23 @@
-name: Lean
+name: Lean Action CI
 
 on:
   push:
   pull_request:
 
 jobs:
-  lean:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Install Lean
-        run: |
-          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
-          source "$HOME/.elan/env"
-          lean --version
+        uses: leanprover/lean-action@v1
+        with:
+          use-lake: true
+
+      - name: Generate Lake manifest
+        run: lake update
+
+      - name: Build
+        run: lake build
