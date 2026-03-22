@@ -1,0 +1,6 @@
+name = "urf-core"
+version = "0.1.0"
+defaultTargets = ["URF"]
+
+[[lean_lib]]
+name = "URF"
