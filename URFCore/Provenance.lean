@@ -17,12 +17,11 @@ theorem proj_digest_left_inv : ∀ p, digestToProj (projToDigest p) = p := by
   cases p
   rfl
 
-theorem proj_digest_right_inv : ∀ d, projToDigest (digestToProj d) = d := by
-  intro d
-  cases d
-  rfl
-
-def projDigestEquiv : ProvenanceProj ≃ SLSADigest :=
+def projDigestEquiv : ProvenanceProj ≃ SLSADigest where
+ toFun := projToDigest
+ invFun := digestToProj
+ left_inv := proj_digest_left_inv
+ right_inv := proj_digest_right_inv
 { toFun := projToDigest
 , invFun := digestToProj
 , left_inv := proj_digest_left_inv
