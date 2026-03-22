@@ -1,11 +1,8 @@
 import Lake
 open Lake DSL
 
-package URFCore where
- version := "0.1.0"
-
-lean_lib URFCore
+package URFCore
 
 @[default_target]
-lean_exe urf_core where
- root := `URFCore
+lean_lib URFCore where
+ srcDir := "URFCore"
