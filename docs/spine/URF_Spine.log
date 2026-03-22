@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  5 FEB 2026 20:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  21 MAR 2026 20:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -160,7 +160,7 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count291
 \l__pdf_internal_box=\box54
 )
-No file URF_Spine.aux.
+(./URF_Spine.aux)
 \openout1 = `URF_Spine.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -177,6 +177,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -235,10 +236,10 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 2695 strings out of 473190
- 37661 string characters out of 5715801
- 434453 words of memory out of 5000000
- 25954 multiletter control sequences out of 15000+600000
+ 2698 strings out of 473190
+ 37715 string characters out of 5715801
+ 434444 words of memory out of 5000000
+ 25955 multiletter control sequences out of 15000+600000
  571719 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,226b,221s stack positions out of 10000i,1000n,20000p,200000b,200000s
