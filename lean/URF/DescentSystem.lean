@@ -229,3 +229,23 @@ axiom canonical_edge_separation :
           ↔ i = j
 
 end URF
+
+theorem constructive_cycle_F2_closure
+  {α : Type u}
+  (K : ClosedKernelData α)
+  (R : Nat)
+  (C : Configuration α) :
+  ∃ (E : Type u) (_ : Fintype E) (_ : DecidableEq E)
+    (encode : Witness α → E → ZMod 2)
+    (M : Matrix (Fin (Finset.card (K.extractRWitnesses R C))) E (ZMod 2)),
+      (∀ i e,
+        M i e =
+          encode ((K.extractRWitnesses R C).attach.toFinset.equivFunOnFinite i).1 e) ∧
+      (∃ p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ E,
+        ∀ i j,
+          M i (p j) = if i = j then 1 else 0) ∧
+      Matrix.rank M = Finset.card (K.extractRWitnesses R C) :=
+by
+  admit
+
+end URF
