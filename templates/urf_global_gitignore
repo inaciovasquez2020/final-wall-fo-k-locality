@@ -1,0 +1,53 @@
+# =========================
+# URF GLOBAL GITIGNORE
+# =========================
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editors ---
+.vscode/
+.idea/
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb~
+
+# --- Build / CI ---
+dist/
+build/
+*.log
+*.tmp
+
+# --- Cryptographic / Local Security ---
+*.key
+*.pem
+*.p12
+*.asc.private
+
+# --- Certificates (Local only) ---
+certs/local/
+certs/tmp/
+
+# --- Archives ---
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# --- Local Business / IP ---
+ip/
+
+# --- Workspace ---
+workspace/
+scratch/
+local/

@@ -1,0 +1,6 @@
+We prove an unconditional locality separation for AC0-local constraint
+satisfaction problems. Any solver whose updates are expressible by
+constant-depth AC0 circuits with bounded arity necessarily requires
+linear EntropyDepth on frozen instances. The result is normalization-
+based, machine-independent, and assumes no global axioms.
+

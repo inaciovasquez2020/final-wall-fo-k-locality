@@ -1,0 +1,25 @@
+URF TU STACK ATTESTATION v1
+
+Attested components
+Deterministic Seymour TU verifier
+Lean total variation duality module
+Deterministic TU certificate test harness
+Nightly TU CI verification workflow
+Transparency Merkle inclusion
+Signed release and freeze tags
+
+Attested tag anchors
+urf-tu-tvduality-main-v1
+urf-tu-tests-green-v1
+urf-tu-ci-nightly-v1
+urf-tu-stack-release-v1
+urf-tu-stack-signed-v1
+urf-tu-stack-freeze-v1
+
+Reproducibility commands
+lake build
+python3 tools/tu/tu_seymour_verify.py tools/tu/tests/network_minimal_2x1.json
+bash tools/tu/tests/run_all_tests.sh
+
+CI verification path
+.github/workflows/tu-nightly.yml

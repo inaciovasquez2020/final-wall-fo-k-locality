@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: Unified Rigidity Framework (URF)
+message: "If you use this repository or the URF framework in research, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Vasquez
+    given-names: Inacio F.
+affiliation: Independent Researcher
+repository-code: https://github.com/inaciovasquez2020
+keywords:
+  - rigidity
+  - graph theory
+  - computational complexity
+  - entropy depth
+  - locality
+license: MIT

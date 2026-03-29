@@ -1,0 +1,32 @@
+\section{Logarithmic Locality and Diameter Collapse}
+
+\begin{theorem}[Logarithmic R Collapse]
+Let $G_n$ be a family of connected graphs with diameter
+\[
+\operatorname{diam}(G_n) = O(\log n).
+\]
+If
+\[
+R \ge \tfrac{1}{2}\operatorname{diam}(G_n),
+\]
+then
+\[
+G_n^{(2R)} = K_n,
+\]
+and hence
+\[
+\chi(G_n^{(2R)}) = n.
+\]
+\end{theorem}
+
+\begin{corollary}[Expander Collapse]
+For expander families with $\operatorname{diam}(G_n)=O(\log n)$,
+choosing $R=\Theta(\log n)$ forces
+\[
+\chi(G_n^{(2R)}) = n.
+\]
+\end{corollary}
+
+\paragraph{Interpretation.}
+Local refinement with radius growing logarithmically in $n$
+recovers linear covering depth in small-diameter families.

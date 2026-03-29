@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://urf.local/schema/cutstrings.transcript.schema.json",
+  "title": "CutStrings Transcript",
+  "type": "object",
+  "required": ["toolkit_version", "process", "n", "m", "alphabet_size", "cuts", "trace"],
+  "properties": {
+    "toolkit_version": { "type": "string" },
+    "process": { "const": "CutStrings" },
+    "n": { "type": "integer", "minimum": 0 },
+    "m": { "type": "integer", "minimum": 0 },
+    "alphabet_size": { "type": "integer", "minimum": 1 },
+    "cuts": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 }
+    },
+    "trace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "p", "j", "emit", "I"],
+        "properties": {
+          "t": { "type": "integer", "minimum": 0 },
+          "p": { "type": "integer", "minimum": 0 },
+          "j": { "type": "integer", "minimum": 0 },
+          "emit": { "type": "string" },
+          "I": { "type": "integer", "minimum": 0 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

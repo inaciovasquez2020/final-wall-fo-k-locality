@@ -1,0 +1,93 @@
+{
+  "version": "1.0",
+  "repo": "inaciovasquez2020/urf-core",
+  "generated_utc": "2026-02-09T00:00:00Z",
+  "nodes": [
+    {
+      "id": "AXIOM_aTV",
+      "kind": "AXIOM",
+      "name": "URF.SignedMeasure_dual_norm_bound",
+      "path": "spine/lean/MeasureDuality/SignedMeasureDualBound.lean",
+      "status": "active"
+    },
+    {
+      "id": "THM_simple",
+      "kind": "THEOREM",
+      "name": "URF.SignedMeasure_dual_norm_bound_simple",
+      "path": "spine/lean/MeasureDuality/SignedMeasureDualBoundSimple.lean",
+      "status": "proved"
+    },
+    {
+      "id": "THM_TV_eq_dual",
+      "kind": "THEOREM",
+      "name": "TVDuality.TV_eq_dual",
+      "path": "spine/lean/TVDuality/TVDuality.lean",
+      "status": "conditional"
+    },
+    {
+      "id": "CERT_tv_finite",
+      "kind": "CERT",
+      "name": "TV finite certificate",
+      "path": "tools/tv_cert",
+      "status": "active"
+    },
+    {
+      "id": "CERT_tv_step",
+      "kind": "CERT",
+      "name": "TV step certificate",
+      "path": "tools/tv_step_cert",
+      "status": "active"
+    },
+    {
+      "id": "CERT_tu_seymour",
+      "kind": "CERT",
+      "name": "TU Seymour certificate verifier",
+      "path": "tools/tu/tu_seymour_verify.py",
+      "status": "active"
+    },
+    {
+      "id": "CI_verify_tu_tv",
+      "kind": "CI",
+      "name": "verify-tu-tv",
+      "path": ".github/workflows/verify-tu-tv.yml",
+      "required": true
+    }
+  ],
+  "edges": [
+    {
+      "kind": "uses",
+      "src": "THM_simple",
+      "dst": "AXIOM_aTV"
+    },
+    {
+      "kind": "uses",
+      "src": "THM_TV_eq_dual",
+      "dst": "AXIOM_aTV"
+    },
+    {
+      "kind": "validated_by",
+      "src": "THM_TV_eq_dual",
+      "dst": "CERT_tv_finite"
+    },
+    {
+      "kind": "validated_by",
+      "src": "THM_TV_eq_dual",
+      "dst": "CERT_tv_step"
+    },
+    {
+      "kind": "gated_by",
+      "src": "CERT_tv_finite",
+      "dst": "CI_verify_tu_tv"
+    },
+    {
+      "kind": "gated_by",
+      "src": "CERT_tv_step",
+      "dst": "CI_verify_tu_tv"
+    },
+    {
+      "kind": "gated_by",
+      "src": "CERT_tu_seymour",
+      "dst": "CI_verify_tu_tv"
+    }
+  ]
+}

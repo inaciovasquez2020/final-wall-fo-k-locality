@@ -1,0 +1,54 @@
+\section{Locality–Diameter Entropy Dichotomy}
+
+\begin{theorem}[Locality–Diameter Entropy Dichotomy]
+Let $G_n$ be a connected graph family with maximum degree $\Delta$.
+Let $R(n)$ denote the locality radius of refinement.
+
+Define depth lower bound:
+\[
+T_n \ge \chi(G_n^{(2R(n))}).
+\]
+
+Then exactly one of the following regimes holds:
+
+\begin{enumerate}
+\item \textbf{Bounded Local Regime.}
+If $\Delta = O(1)$ and $R(n)=O(1)$, then
+\[
+\chi(G_n^{(2R(n))}) = O(1),
+\quad
+T_n = O(1).
+\]
+
+\item \textbf{Logarithmic Expansion Regime.}
+If $\operatorname{diam}(G_n)=O(\log n)$ and
+\[
+R(n)=\Theta(\log n),
+\]
+then
+\[
+\chi(G_n^{(2R(n))}) = \Theta(n),
+\quad
+T_n = \Theta(n).
+\]
+
+\item \textbf{Metric Collapse Regime.}
+If
+\[
+\operatorname{diam}(G_n) \le 2R(n),
+\]
+then
+\[
+G_n^{(2R(n))} = K_n,
+\quad
+\chi(G_n^{(2R(n))}) = n,
+\quad
+T_n = n.
+\]
+\end{enumerate}
+\end{theorem}
+
+\paragraph{Structural Interpretation.}
+Entropy depth is governed by $2R$-metric collapse.
+Expansion alone is insufficient.
+Linear entropy depth requires diameter compression relative to locality radius.

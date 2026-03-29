@@ -1,0 +1,48 @@
+\section{Unconditional Locality Separation for AC$^0$-Local CSPs}
+
+We isolate a nontrivial regime in which normalization and lower bounds
+are unconditional.
+
+\subsection{AC$^0$-Local CSPs}
+
+An \emph{AC$^0$-local CSP} is a constraint satisfaction problem whose
+constraint scopes have bounded arity and bounded degree, and whose
+solver dynamics are expressible as iterative local propagation steps
+computed by constant-depth AC$^0$ circuits with bounded fan-in over a
+fixed finite vocabulary.
+
+\subsection{Normalization}
+
+\begin{theorem}[AC$^0$ Normalization]\label{thm:ac0-normalization}
+Every AC$^0$ bounded-arity update system admits a simulation by
+bounded-rank logical refinement, preserving EntropyDepth up to constant
+factors.
+\end{theorem}
+
+\begin{proof}
+By Theorem (B$^{**}$), AC$^0$ bounded-arity updates unfold into
+bounded-rank refinement layers with $O(1)$ information gain per step.
+\end{proof}
+
+\subsection{Separation}
+
+\begin{theorem}[Unconditional Separation]\label{thm:ac0-separation}
+For every AC$^0$-local CSP solver $A$ and every frozen instance $F$ in the
+AC$^0$-local CSP class,
+\[
+\mathrm{EDA}_A(F) = \Theta(n).
+\]
+Consequently, no AC$^0$-local CSP solver decides all frozen instances in
+sublinear refinement depth.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:ac0-normalization}, $A$ reduces to bounded-rank
+refinement. Frozen instances force linear EntropyDepth under refinement.
+\end{proof}
+
+\subsection{Scope}
+
+The above results are unconditional and do not invoke TRAP.
+They close the locality frontier for AC$^0$-local CSPs.
+

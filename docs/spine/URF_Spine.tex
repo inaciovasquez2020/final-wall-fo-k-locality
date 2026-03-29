@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Unified Rigidity Framework:\\Canonical Spine}
+\author{Inacio F. Vasquez}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\emph{
+This document is the canonical spine of the Unified Rigidity Framework.
+All other results in this repository reduce to definitions, lemmas,
+or corollaries of the statements herein.
+}
+\end{center}
+
+\bigskip
+
+\section*{Gödel-Style Numbered Laws}
+
+\begin{axiom}[URF-0.0 Finite Realizability]
+All information-bearing objects admit a finite realization.
+\end{axiom}
+
+\begin{axiom}[URF-0.1 Locality]
+There exists $r$ such that
+\[
+Y_t = f_t\!\left(N_r(X), Y_{<t}\right)
+\]
+for all $t$.
+\end{axiom}
+
+\begin{axiom}[URF-0.2 Capacity]
+There exists $C<\infty$ such that for all $T$,
+\[
+I(X;Y_{1:T}) \le C.
+\]
+\end{axiom}
+
+\begin{axiom}[URF-0.3 Entropy Non-Amplification]
+There exists a universal constant $K$ such that for all $t$,
+\[
+I(X;Y_t \mid Y_{<t}) \le K.
+\]
+\end{axiom}
+
+\begin{axiom}[URF-0.4 No Global Reconstruction]
+No admissible refinement reconstructs unbounded global structure from local views.
+\end{axiom}
+
+\begin{axiom}[URF-0.5 Exchange Correlation Capacity]
+For any systems $A,B$ interacting only via a mediator $M$, if $M$ is
+finite-dimensional or quasi-local with exponential clustering, then
+there exists $\mathrm{Cap}(M)<\infty$ such that
+\[
+\forall t:\quad I(A:B)_t \le \mathrm{Cap}(M).
+\]
+\end{axiom}
+
+\begin{axiom}[URF-0.6 Support Rigidity]
+For all $r$ there exists $R$ such that
+\[
+\mathrm{FO}^k_r(x) \equiv \mathrm{FO}^k_r(y)
+\;\Rightarrow\;
+\mathrm{FO}^k_R(N_R(x)) \equiv \mathrm{FO}^k_R(N_R(y)).
+\]
+\end{axiom}
+
+\begin{axiom}[URF-0.7 Irreversibility]
+Information erasure produces entropy at least $k_B \ln 2$ per bit.
+\end{axiom}
+
+\begin{axiom}[URF-0.8 Non-Viotropy]
+No admissible process satisfies
+\[
+\lim_{E\to 0} \frac{I}{E} = \infty.
+\]
+\end{axiom}
+
+\begin{axiom}[URF-0.9 Rigidity--Collapse]
+Persistent local indistinguishability implies global structural collapse.
+\end{axiom}
+
+\begin{axiom}[URF-1.0 No Free Genesis]
+There exists a universal constant $K_G$ such that for all $t$,
+\[
+H_{\mathrm{ext}}(Y_{1:t}) \le H_{\mathrm{ext}}(Y_{1:t-1}) + K_G.
+\]
+\end{axiom}
+
+\begin{axiom}[URF-1.1 Extractor Completeness]
+Every admissible global invariant is FO$^k$-definable from the transcript:
+\[
+\forall G\in\mathcal G_{\mathrm{adm}}\;
+\exists f\in\mathcal F_{\mathrm{adm}}\;
+\forall t:\;
+G(\mathrm{history}_{\le t}) = f(Y_{1:t}).
+\]
+\end{axiom}
+
+\section*{Extractable Entropy}
+
+\begin{definition}[Admissible Extractors]
+Fix constants $k,r$. Define
+\[
+\mathcal F_{\mathrm{adm}}
+:=
+\left\{
+f \mid
+f(Y_{1:t}) =
+\mathrm{Code}\!\left(
+\mathrm{Th}^{k,r}(\mathcal I(Y_{1:t}))
+\right)
+\text{ for some FO}^k \text{ interpretation } \mathcal I
+\right\}.
+\]
+\end{definition}
+
+\begin{definition}[Extractable Entropy]
+\[
+H_{\mathrm{ext}}(t)
+:=
+\sup_{f\in\mathcal F_{\mathrm{adm}}}
+H_{\mathrm{Shannon}}(f(Y_{1:t})).
+\]
+\end{definition}
+
+\begin{lemma}[Capacity Dominates Extractable Entropy]
+Assume URF-0.2. Then for all $t$,
+\[
+H_{\mathrm{ext}}(t) \le C.
+\]
+\end{lemma}
+
+\begin{proof}
+For any $f\in\mathcal F_{\mathrm{adm}}$,
+\[
+H(f(Y_{1:t}))
+\le I(X;f(Y_{1:t}))
+\le I(X;Y_{1:t})
+\le C,
+\]
+by data processing and URF-0.2. Taking the supremum yields the claim.
+\end{proof}
+
+\begin{theorem}[Genesis Wall]
+Assume URF-0.2, URF-1.0, and URF-1.1. Then
+\[
+\sup_t H_{\mathrm{ext}}(t) < \infty.
+\]
+\end{theorem}
+
+\end{document}
+

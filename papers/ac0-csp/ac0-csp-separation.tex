@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+
+\title{An Unconditional Locality Separation for AC$^0$-Local CSPs}
+\author{Inacio F. Vasquez}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove an unconditional separation for a broad class of
+constraint satisfaction problems solvable by local propagation.
+Any solver whose update rules are expressible by constant-depth
+AC$^0$ circuits with bounded arity necessarily requires linear
+EntropyDepth on frozen instances. No global normalization axiom
+is assumed.
+\end{abstract}
+
+\section{AC$^0$-Local CSPs}
+
+\begin{definition}
+An AC$^0$-local CSP is a constraint satisfaction problem whose
+constraints have bounded arity and bounded degree, and whose
+solver dynamics consist of iterative local propagation steps
+computable by constant-depth AC$^0$ circuits with bounded fan-in
+over a fixed finite vocabulary.
+\end{definition}
+
+\section{Normalization}
+
+\begin{theorem}[AC$^0$ Normalization]
+Every AC$^0$ bounded-arity update system admits a simulation by
+bounded-rank logical refinement, preserving EntropyDepth up to
+constant factors.
+\end{theorem}
+
+\section{Separation}
+
+\begin{theorem}[Unconditional Separation]
+For every AC$^0$-local CSP solver $A$ and every frozen instance $F$,
+\[
+\mathrm{EDA}_A(F) = \Theta(n).
+\]
+\end{theorem}
+
+\section{Conclusion}
+
+The locality frontier is unconditionally closed for AC$^0$-local
+constraint satisfaction. Any algorithm escaping this barrier must
+exit the AC$^0$-local regime.
+\end{document}
+

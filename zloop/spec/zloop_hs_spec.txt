@@ -1,0 +1,33 @@
+Definitions
+
+alpha_p = log p
+
+w(t) = (15/16)(1 - t^2)^2 for |t| <= 1, zero otherwise
+
+hatw(xi) = integral over R of w(t) * exp(-2π i xi t) dt
+
+delta = 1/4
+
+a_p = (log p)^(1 - delta)
+
+beta_{p,q} = a_p a_q hatw(log p - log q) for p != q
+beta_{p,p} = 0
+
+D_pp = alpha_p
+K_pq = beta_{p,q}
+
+L = D^{-1/2} K D^{-1/2}
+
+L_P is the truncation to primes p,q <= P
+
+HS quantity
+
+S_HS(P) = sum over p,q<=P, p!=q of |beta_{p,q}|^2 / (alpha_p alpha_q)
+
+Tail bound
+
+T_HS(P) = (2/delta) * (||w''||_1^2 / (2π)^4) * (log P)^(-2 delta)
+
+Acceptance condition
+
+S_HS(P) + T_HS(P) < 1

@@ -1,0 +1,27 @@
+\section{Diameter Collapse and Linear Chromatic Number}
+
+\begin{theorem}[Diameter Collapse Implies Complete Power Graph]
+Let $G_n$ be a graph with diameter $\operatorname{diam}(G_n) \le 2R$.
+Then the $2R$-power graph satisfies
+
+\[
+G_n^{(2R)} = K_n.
+\]
+
+In particular,
+\[
+\chi(G_n^{(2R)}) = n.
+\]
+\end{theorem}
+
+\begin{proof}
+If $\operatorname{diam}(G_n) \le 2R$, then every pair of vertices is at distance
+$\le 2R$. Hence every pair is adjacent in $G_n^{(2R)}$, so the graph is complete.
+\end{proof}
+
+\begin{corollary}[Linear Covering Depth]
+Under diameter collapse,
+\[
+T \ge \chi(G_n^{(2R)}) = n.
+\]
+\end{corollary}

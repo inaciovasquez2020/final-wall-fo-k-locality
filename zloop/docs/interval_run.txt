@@ -1,0 +1,3 @@
+python zloop/scripts/run_certificate_interval.py 200
+inspect zloop/certs/hs_cert_interval_P200.json
+verify accept == true

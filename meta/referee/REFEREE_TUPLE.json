@@ -1,0 +1,17 @@
+{
+  "artifacts_sha256": {
+    ".github/workflows/verify-tu-tv.yml": "0882b56c13267d2461d8f91b5c43e0d08029a5f48486e2209b369ffba53413ca",
+    "docs/governance/REPO_LATTICE.md": "679bee5f48fee10f5da6858fcb42027fb9db52d4eefb092871b96833a6c91820",
+    "meta/deps/DEPENDENCY_GRAPH.json": "4d08ddd6b5e340e5bce623354020684b3bee4aaf82f094a6637ce1208644e63b",
+    "meta/obstructions/TV_CRI.md": "d9e575bce25d26e6111a34f01248d7757bee5681212360cdb4aeba8cb28b821b",
+    "tools/tu/testdata/network_minimal_CERT.json": "43628ab2a68e7d12a976849c48268c1f7823de133e5f3bc6f86c09539ce2e167",
+    "tools/tu/tu_seymour_verify.py": "c101cf9decb79e5528edc0aee8c9f83b91c797e42d07fb6244b5b5be02e4acde",
+    "tools/tv_cert/generate_tv_finite_cert.py": "3f13d5016a75d82deaed2171f7e1edc3ac35034e8d7539e36bfda818b88d5f57",
+    "tools/tv_cert/verify_tv_finite_cert.py": "86227fa674a78a28970731285475379c2f2f5d9f183fa59ea430619e8ff6e020",
+    "tools/tv_step_cert/generate_tv_step_cert.py": "440daf1abdc5a1ae0a3a555a6af5d709b0fe01a0cb7db0b782d92e3ed817a57c",
+    "tools/tv_step_cert/verify_tv_step_cert.py": "761ea64fc9077c1b44867e98732192b85c441ee8f77c525d84942aa86037288b"
+  },
+  "ran_lean": true,
+  "ref": "a704bdc9de2dab2b28b5cb846310d98637cd5359",
+  "repo": "inaciovasquez2020/urf-core"
+}

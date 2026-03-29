@@ -1,0 +1,15 @@
+{
+  "toolkit_version": "urf-admissible/1.0",
+  "process": "CutStrings",
+  "n": 8,
+  "m": 2,
+  "alphabet_size": 2,
+  "cuts": [2, 5],
+  "trace": [
+    { "t": 0, "p": 0, "j": 0, "emit": "0", "I": 8 },
+    { "t": 1, "p": 1, "j": 0, "emit": "1", "I": 8 },
+    { "t": 2, "p": 2, "j": 0, "emit": "⊥", "I": 8 },
+    { "t": 3, "p": 2, "j": 1, "emit": "0", "I": 8 }
+  ]
+}
+

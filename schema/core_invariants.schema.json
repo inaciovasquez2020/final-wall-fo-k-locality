@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "URF Core Invariants",
+  "type": "object",
+  "required": ["invariant_id", "description", "scope"],
+  "properties": {
+    "invariant_id": {
+      "type": "string",
+      "description": "Stable identifier for the invariant"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable invariant statement"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["axiom", "definition", "theorem", "certificate"]
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

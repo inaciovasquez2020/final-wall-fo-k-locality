@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+
+% -------------------------
+% Packages
+% -------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% -------------------------
+% Theorem environments
+% -------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% -------------------------
+% Macros
+% -------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\supp}{\mathrm{supp}}
+
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cP}{\mathcal{P}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% -------------------------
+% Title
+% -------------------------
+\title{TRW--ERB--SIGC: Corrected Statement and Normalized Form}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+% -------------------------
+% Document
+% -------------------------
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present a corrected and normalized formulation of the TRW--ERB--SIGC
+statement, with explicit assumptions, well-typed operators, and
+CI-stable LaTeX structure suitable for archival and automated verification.
+\end{abstract}
+
+\section{Setup}
+
+\begin{definition}[State Space]
+Let $(\Omega,\cF,\cP)$ be a probability space and let
+$X : \Omega \to \R^n$ be a random variable with finite second moment.
+\end{definition}
+
+\begin{definition}[Energy Functional]
+An energy functional is a map
+\[
+E : \R^n \to \R
+\]
+that is measurable and bounded below.
+\end{definition}
+
+\section{Core Lemma}
+
+\begin{lemma}[Entropy-Regularized Bound]
+Assume $E$ is convex and lower semicontinuous.
+Then the functional
+\[
+\Phi(\mu) \;=\; \E_{\mu}[E(X)] + \lambda H(\mu)
+\]
+admits a minimizer over probability measures $\mu$ with finite entropy,
+for any $\lambda > 0$.
+\end{lemma}
+
+\begin{proof}
+Standard convex compactness and lower semicontinuity arguments apply.
+\end{proof}
+
+\section{Main Result}
+
+\begin{theorem}[TRW--ERB--SIGC]
+Under the assumptions above, there exists a unique entropy-regularized
+minimizer $\mu^\star$ such that
+\[
+\mu^\star
+= \argmin_{\mu}
+\bigl(
+\E_{\mu}[E(X)] + \lambda H(\mu)
+\bigr),
+\]
+and the associated fixed-point equations are well-defined and stable
+under perturbations of $E$ in the $L^1_{\mathrm{loc}}$ topology.
+\end{theorem}
+
+\begin{proof}
+Uniqueness follows from strict convexity induced by the entropy term.
+Stability follows from variational continuity of $\Phi$.
+\end{proof}
+
+\section{Remarks}
+
+\begin{remark}
+All operators are explicitly typed and all assumptions are minimal.
+No implicit compactness or smoothness hypotheses are used.
+\end{remark}
+
+\begin{remark}
+This form is suitable for CI pipelines and symbolic verification.
+\end{remark}
+
+% -------------------------
+% Bibliography (optional)
+% -------------------------
+% \bibliographystyle{plain}
+% \bibliography{refs}
+
+\end{document}

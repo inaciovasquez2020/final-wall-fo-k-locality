@@ -1,0 +1,26 @@
+{
+  "vis_id": "URFVIS-0001",
+  "claim": "Visual inspection and structural admissibility certification of client-provided artifact",
+  "inputs": [
+    "client_submission.pdf"
+  ],
+  "constraints": [
+    "no external network access",
+    "deterministic verification",
+    "finite transcript capacity"
+  ],
+  "capacity": {
+    "tokens": 8000,
+    "time_sec": 120,
+    "memory_mb": 1024
+  },
+  "interfaces": [
+    "pdf",
+    "json"
+  ],
+  "declarations": [
+    "no hidden inputs",
+    "no adaptive retries",
+    "refusal if invariant violated"
+  ]
+}

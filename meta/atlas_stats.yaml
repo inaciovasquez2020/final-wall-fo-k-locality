@@ -1,0 +1,6 @@
+version: 1
+stats:
+  - id: ATLAS.STAT.NoSmallCE
+    status: conditional
+    requires: ["declared_sampling_distribution_mu_N", "independence_or_equivalent"]
+    inequality: "p <= (1/t)*log(1/delta)"

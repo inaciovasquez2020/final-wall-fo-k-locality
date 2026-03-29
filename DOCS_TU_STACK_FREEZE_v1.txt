@@ -1,0 +1,24 @@
+URF TU Stack Freeze v1
+
+State
+TU Seymour deterministic verifier present
+Lean total variation duality module present
+Deterministic TU certificate tests passing
+Nightly TU CI active
+Transparency Merkle integrated
+Signed release tags present
+
+Signed anchors
+urf-tu-tvduality-main-v1
+urf-tu-tests-green-v1
+urf-tu-ci-nightly-v1
+urf-tu-stack-release-v1
+urf-tu-stack-signed-v1
+
+Repro commands
+lake build
+python3 tools/tu/tu_seymour_verify.py tools/tu/tests/network_minimal_2x1.json
+bash tools/tu/tests/run_all_tests.sh
+
+CI
+.github/workflows/tu-nightly.yml

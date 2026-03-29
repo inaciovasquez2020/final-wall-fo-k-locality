@@ -1,0 +1,25 @@
+{
+  "toolkit_version": "urf-admissible/1.0",
+  "id": "NO-RAM-CAPACITY-OVERFLOW-0001",
+  "process": "WordRAM",
+  "violates": "B",
+  "witness_kind": "superlog_injection_single_step",
+  "required_injection_bits": "Omega(n)",
+  "step": 1,
+  "model": {
+    "word_size": "O(log n)",
+    "uniform": true,
+    "oracle_free": true,
+    "deterministic": true
+  },
+  "description": "Single step writes Omega(n) fresh bits into memory via a bulk write, exceeding the per-step capacity bound b(n)=O(log^k n).",
+  "operation": {
+    "type": "BULK_WRITE",
+    "addresses": "0..n-1",
+    "payload_bits": "n"
+  },
+  "violation_check": {
+    "constraint": "I_t <= b(n)",
+    "witness": "I_1 = Omega(n) > O(log^k n)"
+  }
+}

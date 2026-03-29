@@ -1,0 +1,16 @@
+{
+  "toolkit_version": "urf-admissible/1.0",
+  "id": "NO-CUTSTRINGS-PARITY-0001",
+  "process": "CutStrings",
+  "violates": "A",
+  "witness_kind": "global_cut_selection",
+  "required_radius": "Omega(n)",
+  "step": 0,
+  "definition": {
+    "Cuts(x)": {
+      "if_parity_1": ["n/2"],
+      "else": ["n/3"]
+    }
+  }
+}
+

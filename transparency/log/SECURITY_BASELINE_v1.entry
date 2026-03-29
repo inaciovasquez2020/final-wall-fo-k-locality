@@ -1,0 +1,5 @@
+tag: SECURITY_BASELINE_v1
+commit: f30daf7ecbc764beabbe96def7d4abb0aa40efc6
+utc: 2026-02-09T23:14:41Z
+merkle_root_sha256: 4ef5b938282aaed62950e4e53a66ed3ba75723d15579697c96519c19ec079573
+manifest_path: transparency/files.sha256

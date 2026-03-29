@@ -1,0 +1,13 @@
+{
+  "build": {
+    "inputs": [
+      "meta/lemmas.yaml",
+      "meta/deps.yaml"
+    ],
+    "timestamp": "DETERMINISTIC",
+    "tool": "tools/compile_dag.py"
+  },
+  "edges": [],
+  "nodes": [],
+  "version": 1
+}

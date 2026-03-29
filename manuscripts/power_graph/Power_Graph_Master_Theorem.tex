@@ -1,0 +1,21 @@
+\begin{theorem}[Entropy Depth Lower Bound via Power Graph]
+Let $G_n$ be a graph on $n$ vertices.
+Let $T_n$ denote the minimal number of sequential $R$-local refinement steps
+needed to activate all vertices.
+
+Then
+\[
+T_n \ge \chi(G_n^{(2R)}).
+\]
+In particular,
+\[
+T_n \ge \frac{n}{\alpha(G_n^{(2R)})}.
+\]
+\end{theorem}
+
+\begin{proof}
+Vertices at distance $\le 2R$ cannot activate simultaneously.
+Each refinement layer forms an independent set in $G_n^{(2R)}$.
+Thus the number of layers is at least the chromatic number.
+The second inequality follows from $\chi \ge n/\alpha$.
+\end{proof}

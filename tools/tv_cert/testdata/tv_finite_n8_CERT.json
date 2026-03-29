@@ -1,0 +1,28 @@
+{
+  "type": "TV_FINITE_DUAL_CERT",
+  "n": 8,
+  "f": [
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+  ],
+  "signed_measure": [
+    0.125,
+    -0.125,
+    0.125,
+    -0.125,
+    0.125,
+    -0.125,
+    0.125,
+    -0.125
+  ],
+  "total_variation": 1.0,
+  "lhs_abs_integral": 0.0625,
+  "rhs_tv_bound": 0.5625,
+  "inequality_holds": true
+}

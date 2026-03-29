@@ -1,0 +1,45 @@
+\section{Bounded Power-Graph Chromatic Number Under Bounded Degree}
+
+\begin{theorem}[Bounded $\chi_R$ for Bounded Degree Graphs]
+Let $G_n$ be a family of graphs with maximum degree $\Delta$ independent of $n$.
+Fix $R \ge 1$ independent of $n$.
+Then the $2R$-power graph $G_n^{(2R)}$ satisfies
+
+\[
+\chi(G_n^{(2R)}) \le 1 + \Delta \sum_{i=0}^{2R-1} (\Delta-1)^i
+\]
+
+In particular, $\chi(G_n^{(2R)}) = O_{\Delta,R}(1)$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+For any vertex $v$, the number of vertices within distance $2R$ is bounded by
+
+\[
+1 + \Delta \sum_{i=0}^{2R-1} (\Delta-1)^i.
+\]
+
+Thus $G_n^{(2R)}$ has maximum degree bounded by a constant depending only on $\Delta$ and $R$.
+Greedy coloring yields $\chi(G_n^{(2R)}) \le \Delta(G_n^{(2R)}) + 1$.
+\end{proof}
+
+\section{Entropy-Depth Consequence}
+
+\begin{corollary}[Constant Depth Under Local Bounded Degree]
+Under the assumptions above, any refinement process limited to $R$-local activation satisfies
+
+\[
+T \ge \chi(G_n^{(2R)}) = O_{\Delta,R}(1).
+\]
+
+Thus bounded locality and bounded degree alone do not force superconstant entropy depth.
+\end{corollary}
+
+\paragraph{Implication.}
+Linear entropy depth requires violation of at least one:
+\begin{itemize}
+\item Unbounded degree
+\item $R$ growing with $n$
+\item Diameter collapse
+\item Nonlocal transcript accumulation
+\end{itemize}

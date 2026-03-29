@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amsthm, amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\title{Parallel Local Refinement and Power Graph Depth Bound}
+\author{Inacio Vasquez}
+\date{}
+\maketitle
+
+\begin{definition}
+For a graph $G$ and integer $R \ge 1$, define the $R$-power graph $G^{(2R)}$
+on the same vertex set with
+\[
+uv \in E(G^{(2R)}) \iff 1 \le \mathrm{dist}_G(u,v) \le 2R.
+\]
+\end{definition}
+
+\begin{theorem}[Power Graph Depth Bound]
+Let $G_n$ have maximum degree $\Delta$ and let $X_n$ be a distribution
+with entropy $H(X_n)$. Assume:
+
+\begin{itemize}
+\item Each round activates an $R$-independent set of vertices.
+\item Per-vertex information gain is bounded by $c$.
+\item Every vertex must be activated at least once.
+\end{itemize}
+
+Then the refinement depth $T$ satisfies:
+\[
+T \ge 
+\max \left\{
+\frac{H(X_n)}{c\,\alpha(G_n^{(2R)})},
+\;
+\chi(G_n^{(2R)})
+\right\}.
+\]
+\end{theorem}
+
+\end{document}

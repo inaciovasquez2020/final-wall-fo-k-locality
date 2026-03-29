@@ -1,0 +1,23 @@
+{
+  "toolkit_version": "urf-admissible/1.0",
+  "id": "NO-ACCOUNTING-GAP-0001",
+  "process": "GenericProcess",
+  "violates": "C",
+  "witness_kind": "accounting_gap_single_run",
+  "step": 1,
+  "n": 64,
+  "b(n)": "O(log^k n)",
+  "T": 1,
+  "description": "Progress increases by DeltaPhi while injected information is bounded by It; violates Phi(sT)-Phi(s0) <= sum It.",
+  "run": {
+    "Phi_s0": 0,
+    "Phi_sT": 1000,
+    "It": [10],
+    "claim": "Phi_sT - Phi_s0 = 1000 > 10 = sum(It)"
+  },
+  "violation_check": {
+    "constraint": "Phi(sT)-Phi(s0) <= sum_{t<=T} I_t",
+    "witness": "1000 > 10"
+  }
+}
+

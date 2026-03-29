@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "URFVIS",
+  "type": "object",
+  "required": [
+    "vis_id",
+    "claim",
+    "inputs",
+    "constraints",
+    "capacity",
+    "interfaces",
+    "declarations"
+  ],
+  "properties": {
+    "vis_id": { "type": "string" },
+    "claim": { "type": "string" },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "capacity": {
+      "type": "object",
+      "required": ["tokens","time_sec","memory_mb"],
+      "properties": {
+        "tokens": { "type": "integer", "minimum": 1 },
+        "time_sec": { "type": "integer", "minimum": 1 },
+        "memory_mb": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "interfaces": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "declarations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+\title{Metric Collapse as the Structural Driver of Entropy Depth}
+\author{Inacio Vasquez}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We classify entropy-depth lower bounds for local refinement processes
+via chromatic properties of power graphs.
+We prove that bounded-degree fixed-radius systems admit constant depth,
+while linear entropy depth arises precisely from metric collapse
+of $2R$-neighborhood geometry.
+\end{abstract}
+
+\section{Setup}
+
+Let $G_n$ be a connected graph.
+For locality radius $R$, define the power graph $G_n^{(2R)}$
+with edges between vertices at distance $\le 2R$.
+
+Depth satisfies:
+\[
+T_n \ge \chi(G_n^{(2R)}).
+\]
+
+\section{Bounded Local Regime}
+
+\begin{theorem}
+If $\Delta(G_n)=O(1)$ and $R=O(1)$,
+then $\chi(G_n^{(2R)}) = O(1)$.
+\end{theorem}
+
+\begin{proof}
+The $2R$-ball size is bounded by
+\[
+1 + \Delta \sum_{i=0}^{2R-1} (\Delta-1)^i.
+\]
+Thus maximum degree in $G_n^{(2R)}$ is bounded.
+Greedy coloring completes the proof.
+\end{proof}
+
+\section{Metric Collapse Regime}
+
+\begin{theorem}
+If $\operatorname{diam}(G_n) \le 2R$,
+then $G_n^{(2R)} = K_n$ and
+$\chi(G_n^{(2R)}) = n$.
+\end{theorem}
+
+\section{Logarithmic Collapse in Small-Diameter Families}
+
+\begin{theorem}
+If $\operatorname{diam}(G_n)=O(\log n)$
+and $R=\Theta(\log n)$,
+then $\chi(G_n^{(2R)})=\Theta(n)$.
+\end{theorem}
+
+\section{Unified Dichotomy}
+
+Exactly one holds:
+
+\begin{itemize}
+\item Fixed $R$, bounded degree $\Rightarrow T_n = O(1)$.
+\item $R \ge \tfrac{1}{2}\operatorname{diam}(G_n)$ $\Rightarrow T_n = n$.
+\item $R=\Theta(\log n)$ in expanders $\Rightarrow T_n=\Theta(n)$.
+\end{itemize}
+
+\section{Conclusion}
+
+Entropy depth is governed by $2R$-metric collapse.
+Expansion alone does not force linear depth.
+Linear entropy depth arises precisely when locality radius
+compresses global metric structure.
+
+\end{document}

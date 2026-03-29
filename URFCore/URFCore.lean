@@ -1,0 +1,3 @@
+namespace URFCore
+
+end URFCore

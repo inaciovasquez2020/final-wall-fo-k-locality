@@ -1,0 +1,25 @@
+{
+  "matrix": {
+    "m": 2,
+    "n": 2,
+    "entries": [
+      1, 0,
+      -1, 0
+    ]
+  },
+  "root": {
+    "kind": "network",
+    "A": {
+      "rows": [0, 1],
+      "cols": [0]
+    },
+    "network_witness": {
+      "V": 2,
+      "E": 1,
+      "tail": [1],
+      "head": [0],
+      "row_to_vertex": [0, 1],
+      "col_to_edge": [0]
+    }
+  }
+}

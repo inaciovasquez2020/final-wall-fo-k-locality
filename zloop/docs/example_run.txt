@@ -1,0 +1,3 @@
+python zloop/scripts/run_certificate.py 1000
+check zloop/certs/hs_cert_P1000.json
+verify accept == true

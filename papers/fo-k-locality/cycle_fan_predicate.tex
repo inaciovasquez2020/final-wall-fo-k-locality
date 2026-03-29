@@ -1,0 +1,17 @@
+\section*{Cycle Fan Predicate}
+
+For fixed $k,R$, define the FO$^k$ formula:
+
+\[
+\varphi_{m,R}(x_1):=
+\exists x_2,\dots,x_k
+\Big(
+\mathrm{Path}_{\le R}(x_1,x_k)
+\;\wedge\;
+\exists^{\ge m} z\;
+[\mathrm{Adj}(x_k,z)\wedge \mathrm{Path}_{\le R}(z,x_1)]
+\Big)
+\]
+
+This expresses that $x_1$ admits an $(m,R)$-cycle fan.
+

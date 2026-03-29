@@ -1,0 +1,3 @@
+FROZEN: admissible/schema/no_benchmark.schema.json
+Version: v1.0
+Policy: any change requires explicit version bump and compatibility note.

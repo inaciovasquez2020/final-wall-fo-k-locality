@@ -1,0 +1,8 @@
+version: 1
+schema: constants
+required_top_level: [constants]
+constant_fields:
+  id: {type: string, required: true}
+  statement: {type: string, required: true}
+  constant_value: {type: string, required: true}
+  tightness: {type: enum, required: false, values: [loose, moderate, sharp, optimal, unknown]}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://urf.local/schema/no_benchmark.schema.json",
+  "title": "URF Certified NO Benchmark",
+  "type": "object",
+  "required": ["toolkit_version", "id", "process", "violates", "witness_kind", "step"],
+  "properties": {
+    "toolkit_version": { "type": "string" },
+    "id": { "type": "string" },
+    "process": { "type": "string" },
+    "violates": { "type": "string", "enum": ["A", "B", "C", "D"] },
+    "witness_kind": { "type": "string" },
+    "step": { "type": ["integer", "string"] },
+    "description": { "type": "string" }
+  },
+  "additionalProperties": true
+}

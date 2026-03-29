@@ -1,0 +1,3 @@
+version: 1
+schema: tlg_instances
+required_top_level: [version, instances]

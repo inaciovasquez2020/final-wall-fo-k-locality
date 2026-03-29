@@ -1,0 +1,18 @@
+{
+  "instance": {
+    "name": "xor_2bit_reveal",
+    "n_states": 4,
+    "H0_lower": 2.0
+  },
+  "bound": {
+    "C": 1.0,
+    "epsilon": 0.0
+  },
+  "trace": {
+    "posteriors": [
+      { "p": [0.25,0.25,0.25,0.25] },
+      { "p": [0.5,0.5,0,0] },
+      { "p": [1,0,0,0] }
+    ]
+  }
+}
