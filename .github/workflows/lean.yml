@@ -1,22 +1,23 @@
-name: Lean Action CI
-
+name: build
 on:
   push:
   pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Lean
-        uses: leanprover/lean-action@v1
-        with:
-
-      - name: Generate Lake manifest
-        run: lake update
+      - name: Install Lean toolchain from repo
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          source $HOME/.elan/env
+          elan toolchain install $(cat lean-toolchain)
+          elan default $(cat lean-toolchain)
 
       - name: Build
-        run: lake build
+        run: |
+          source $HOME/.elan/env
+          lake update
+          lake build
+

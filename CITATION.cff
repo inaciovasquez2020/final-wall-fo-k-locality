@@ -1,23 +1,11 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
-title: "URF-Core: Unified Rigidity Framework — Frozen Core"
-version: "urf-core-freeze-2026-02"
-date-released: 2026-02-14
+message: "If you use this work, please cite it as below."
+title: "Unified Rigidity Framework — Module"
 authors:
+  - orcid: https://orcid.org/0009-0008-8459-3400
   - family-names: Vasquez
     given-names: Inacio F.
-repository-code: "https://github.com/inaciovasquez2020/urf-core"
-license: "MIT"
-keywords:
-  - rigidity
-  - verification
-  - reproducibility
-  - formal methods
-  - complexity theory
-  - mathematical physics
-abstract: >
-  URF-Core is the frozen core of the Unified Rigidity Framework.
-  It provides invariant-based, artifact-first specifications
-  intended for verifiable claims and independent execution.
-  Discovery and exploratory research are explicitly out of scope.
-
+version: 1.0
+year: 2026
+url: "https://github.com/inaciovasquez2020"
+license: MIT

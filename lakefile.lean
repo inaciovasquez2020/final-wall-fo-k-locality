@@ -1,12 +1,9 @@
 import Lake
 open Lake DSL
 
-package URFCore
+package urf_core
 
-@[default_target]
-lean_lib URFCore where
- srcDir := "URFCore"
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4.git" @
+  "a3a10db0e9d66acbebf76c5e6a135066525ac900"
 
-@[default_target]
-lean_exe urf_core where
- root := `Provenance
