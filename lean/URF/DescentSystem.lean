@@ -219,3 +219,13 @@ structure ClosedKernelData (α : Type u) where
     ∀ x : Poincare.State, ¬ Poincare.terminal x → Poincare.rank (Poincare.step x) < Poincare.rank x
 
 end URF
+
+axiom canonical_edge_separation :
+  ∀ {α : Type u} (K : ClosedKernelData α) (R : Nat) (C : Configuration α),
+    ∃ (ι : Fin (Finset.card (K.extractRWitnesses R C)) ≃ {w // w ∈ K.extractRWitnesses R C})
+      (pivotEdge : Fin (Finset.card (K.extractRWitnesses R C)) → K.E),
+      ∀ i j,
+        pivotEdge j ∈ K.witnessSupportEdges (ι i)
+          ↔ i = j
+
+end URF
