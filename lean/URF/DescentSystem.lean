@@ -295,3 +295,19 @@ axiom greedy_pivot_separation :
         (p j ∈ K.witnessSupportEdges (ι i).1) ↔ i = j
 
 end URF
+
+theorem greedy_edge_separation_lemma
+  {α : Type u}
+  (K : ClosedKernelData α)
+  (R : Nat)
+  (C : Configuration α) :
+  ∀ (S : Finset (Witness α)),
+    S ⊆ K.extractRWitnesses R C →
+    S.Nonempty →
+    ∃ w ∈ S, ∃ e : K.E,
+      e ∈ K.witnessSupportEdges w ∧
+      ∀ w' ∈ S.erase w, e ∉ K.witnessSupportEdges w' :=
+by
+  admit
+
+end URF
