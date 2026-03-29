@@ -4,10 +4,9 @@ namespace Test
 
 open URF
 
-theorem termination_descent
-  {α} (C : Configuration α) :
-  ∃ n, True :=
-by
-  exact ⟨0, trivial⟩
+def sampleConfig : Configuration Nat :=
+  { data := 0, rank := 3 }
+
+#eval sampleConfig.rank
 
 end Test
