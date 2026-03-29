@@ -286,3 +286,12 @@ by
   admit
 
 end URF
+
+axiom greedy_pivot_separation :
+  ∀ {α : Type u} (K : ClosedKernelData α) (R : Nat) (C : Configuration α),
+    ∃ (ι : Fin (Finset.card (K.extractRWitnesses R C)) ≃ {w // w ∈ K.extractRWitnesses R C})
+      (p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ K.E),
+      ∀ i j,
+        (p j ∈ K.witnessSupportEdges (ι i).1) ↔ i = j
+
+end URF
