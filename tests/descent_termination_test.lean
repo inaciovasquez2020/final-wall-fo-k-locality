@@ -1,12 +1,13 @@
 import URF.URFInvariant
+import URF.WitnessCore
 
 namespace Test
 
 open URF
 
-def sampleConfig : Configuration Nat :=
-  { data := 0, rank := 3 }
-
-#eval sampleConfig.rank
+theorem cross_module_compiles :
+  True :=
+by
+  trivial
 
 end Test

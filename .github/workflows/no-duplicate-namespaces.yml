@@ -4,7 +4,23 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Check duplicate namespaces
+      - uses: actions/checkout@v4
+      - name: Detect duplicate namespaces
+        shell: bash
         run: |
-          grep -R "namespace " lean | sort | uniq -d && exit 1 || echo "OK"
+          ns_file="$(mktemp)"
+          grep -R '^[[:space:]]*namespace[[:space:]]\+' lean 2>/dev/null \
+            | awk '{print $2}' \
+            | perl -ne 'print unless $seen{$_}++' > /dev/null
+          grep -R '^[[:space:]]*namespace[[:space:]]\+' lean 2>/dev/null \
+            | awk '{print $2}' \
+            | perl -ne 'print if $seen{$_}++' > "$ns_file"
+          if [ -s "$ns_file" ]; then
+            echo "Duplicate namespaces found:"
+            cat "$ns_file"
+            exit 1
+          fi
+      - name: Lake update
+        run: lake update
+      - name: Build
+        run: lake build
