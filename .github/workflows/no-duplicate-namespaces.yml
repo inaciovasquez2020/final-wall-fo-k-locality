@@ -5,19 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Detect duplicate namespaces
-        shell: bash
+      - name: Detect duplicate namespaces (file-level)
         run: |
-          ns_file="$(mktemp)"
-          grep -R '^[[:space:]]*namespace[[:space:]]\+' lean 2>/dev/null \
+          dup=$(grep -R '^[[:space:]]*namespace[[:space:]]\+' lean 2>/dev/null \
+            | awk -F: '{print $2}' \
             | awk '{print $2}' \
-            | perl -ne 'print unless $seen{$_}++' > /dev/null
-          grep -R '^[[:space:]]*namespace[[:space:]]\+' lean 2>/dev/null \
-            | awk '{print $2}' \
-            | perl -ne 'print if $seen{$_}++' > "$ns_file"
-          if [ -s "$ns_file" ]; then
+            | sort | uniq -c | awk '$1>1 {print $2}')
+          if [ -n "$dup" ]; then
             echo "Duplicate namespaces found:"
-            cat "$ns_file"
+            echo "$dup"
             exit 1
           fi
       - name: Lake update
