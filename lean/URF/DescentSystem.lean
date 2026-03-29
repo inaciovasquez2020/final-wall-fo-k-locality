@@ -203,3 +203,19 @@ axiom poincare_inline_descent :
       Matrix.rank (extractRMatrix S Poincare.descentSystem x.rank x) = 0
 
 end URF
+
+structure ClosedKernelData (α : Type u) where
+  E : Type u
+  fintypeE : Fintype E
+  decEqE : DecidableEq E
+  witnessSupportEdges : Witness α → Finset E
+  extractRWitnesses : Nat → Configuration α → Finset (Witness α)
+  pivotEdge : ∀ R C, Fin (Finset.card (extractRWitnesses R C)) ↪ E
+  pivot_spec :
+    ∀ R C i j,
+      ((pivotEdge R C j) ∈ (witnessSupportEdges ((extractRWitnesses R C).toList.get ⟨i.1, by simpa using i.2⟩)))
+        ↔ i = j
+  poincare_descent :
+    ∀ x : Poincare.State, ¬ Poincare.terminal x → Poincare.rank (Poincare.step x) < Poincare.rank x
+
+end URF
