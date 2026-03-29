@@ -311,3 +311,57 @@ by
   admit
 
 end URF
+
+theorem greedy_pivot_selection
+  {α : Type u}
+  (K : ClosedKernelData α)
+  (R : Nat)
+  (C : Configuration α)
+  (hsep :
+    ∀ (S : Finset (Witness α)),
+      S ⊆ K.extractRWitnesses R C →
+      S.Nonempty →
+      ∃ w ∈ S, ∃ e : K.E,
+        e ∈ K.witnessSupportEdges w ∧
+        ∀ w' ∈ S.erase w, e ∉ K.witnessSupportEdges w') :
+  ∃ (ι : Fin (Finset.card (K.extractRWitnesses R C)) ≃ {w // w ∈ K.extractRWitnesses R C})
+    (p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ K.E),
+    ∀ i j,
+      (p j ∈ K.witnessSupportEdges (ι i).1) ↔ i = j :=
+by
+  admit
+
+theorem identity_submatrix_construction
+  {α : Type u}
+  (K : ClosedKernelData α)
+  (R : Nat)
+  (C : Configuration α)
+  (hgp :
+    ∃ (ι : Fin (Finset.card (K.extractRWitnesses R C)) ≃ {w // w ∈ K.extractRWitnesses R C})
+      (p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ K.E),
+      ∀ i j,
+        (p j ∈ K.witnessSupportEdges (ι i).1) ↔ i = j) :
+  ∃ (M : Matrix (Fin (Finset.card (K.extractRWitnesses R C))) K.E (ZMod 2))
+    (p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ K.E),
+    (∀ i e,
+      M i e =
+        if e ∈ K.witnessSupportEdges
+             ((Classical.choose hgp).toFun i).1
+        then 1 else 0) ∧
+    (∀ i j, M i (p j) = if i = j then 1 else 0) :=
+by
+  admit
+
+theorem full_rank_from_identity
+  {α : Type u}
+  (K : ClosedKernelData α)
+  (R : Nat)
+  (C : Configuration α)
+  (M : Matrix (Fin (Finset.card (K.extractRWitnesses R C))) K.E (ZMod 2))
+  (p : Fin (Finset.card (K.extractRWitnesses R C)) ↪ K.E)
+  (hid : ∀ i j, M i (p j) = if i = j then 1 else 0) :
+  Matrix.rank M = Finset.card (K.extractRWitnesses R C) :=
+by
+  admit
+
+end URF
