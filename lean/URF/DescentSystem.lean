@@ -249,3 +249,18 @@ by
   admit
 
 end URF
+
+structure ExtractRData (α : Type u) where
+  extractR : Nat → Configuration α → Finset (Witness α)
+  dependencyRich : Nat → Configuration α → Prop
+  nonempty_of_dependency :
+    ∀ R C, dependencyRich R C → (extractR R C).Nonempty
+  distinct_supports :
+    ∀ R C, Pairwise (fun w₁ w₂ => Disjoint w₁.support w₂.support) (extractR R C).val
+  two_witnesses_of_positive_rank :
+    ∀ R C, 1 < C.rank → ∃ w₁ ∈ extractR R C, ∃ w₂ ∈ extractR R C, w₁ ≠ w₂
+  independent_of_disjoint_supports :
+    ∀ R C,
+      LinearIndependent (fun w : {w // w ∈ extractR R C} => witnessVector (w : Witness α))
+
+end URF
