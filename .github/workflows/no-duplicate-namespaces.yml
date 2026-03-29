@@ -1,0 +1,10 @@
+name: No Duplicate Namespace Check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check duplicate namespaces
+        run: |
+          grep -R "namespace " lean | sort | uniq -d && exit 1 || echo "OK"
