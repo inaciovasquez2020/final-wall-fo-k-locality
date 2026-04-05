@@ -1,21 +1,26 @@
-Status: Frozen canonical witness.
+# URF Core Status
 
-### URF_law3 — Spectral Gap / Clause Contraction
+## Scope
 
-**Status:** CLOSED (classified)
+URF Core contains the foundational axioms, interfaces, and reference objects for the Unified Rigidity Framework.
 
-**Outcome:**
-URF_law3 does not hold in full generality. It admits a sharp liquid–frozen
-classification.
+## Core Commitments
 
-- **Liquid regime:** Under Uniform Spectral Independence (soft constraints /
-  Gibbs relaxations), clause contraction holds and URF_law3 follows.
-- **Frozen regime:** In hard-constraint systems with deterministic backbones,
-  the contraction coefficient saturates (ρ = 1) and the spectral gap collapses
-  unconditionally.
+- explicit axioms
+- named dependencies
+- executable verification path
+- clear separation between proved and conditional layers
 
-**Canonical reference:**
-URF/Terminal_Classification/URF_Terminal_Classification_Liquid_Frozen.tex
+## Status Labels
 
-**Remaining work:**
-Characterization of the liquid–frozen boundary, not further universal proofs.
+- closed
+- conditional
+- open
+- archival
+
+## Current State
+
+- axiomatic base: public
+- reference object: canonical
+- verification path: active
+- extension layers: external to core
