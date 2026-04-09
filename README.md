@@ -9,6 +9,10 @@ This repository is **terminal and frozen**. It provides the *final structural st
 - Final Wall / terminal rigidity statements
 - Machine- and algorithm-independent formulation
 
+
+## Conditional note
+- `notes/INFUSED_CONDITIONAL_SOLUTION_2026_04.md` — weakest conditional infusion of known public ingredients toward Overlap Rigidity.
+
 ## Status
 - Definitions: complete
 - Structural lemmas: complete
