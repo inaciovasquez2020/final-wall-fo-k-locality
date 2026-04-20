@@ -3,25 +3,33 @@
 ## Status
 OPEN
 
-## Target lemma
-For fixed $(\Delta,R,L)$ there exist a finite motif set $\mathcal M^{\ast}_{\Delta,R,L}$,
-FO^4 formulas $\Mot_\tau(x,y)$ for each $\tau\in\mathcal M^{\ast}_{\Delta,R,L}$,
-and a constant $\mu=\mu(\Delta,R,L)$ such that:
+## Statement template
+Fix integers \(\Delta,R,L,\mu \ge 1\).
 
-1. For every bounded-degree graph $G$ with $\Delta(G)\le \Delta$ and every ordered edge $(u,v)$,
-   \[
-   \Sig^{\ast}_{R,L}(u,v):=\{\tau:\ G\models \Mot_\tau(u,v)\}
-   \]
-   is well-defined.
+For each ordered edge \((u,v)\in \vec E(G)\), let
+\[
+\mathcal C_{R,L}(u,v)
+\]
+denote the family of simple cycles of length at most \(L\) meeting the ordered-edge \(R\)-ball around \((u,v)\).
 
-2. For every motif class $\tau$ and every ordered edge $(u,v)$,
+Let
+\[
+\Sig^{\ast}_{R,L}(u,v)
+\]
+be the anchored ordered-edge motif profile extracted from \(\mathcal C_{R,L}(u,v)\).
+
+Assume:
+
+1. There is a finite anchored motif family.
+2. Each anchored motif is \(FO^4\)-definable.
+3. For every ordered edge \((u,v)\) and every anchored motif type \(\tau\),
    \[
    \dim_{\mathbf F_2}\Bigl\langle [C]:
    C\in\mathcal C_{R,L}(u,v),\ m_C^{\ast}=\tau
    \Bigr\rangle \le \mu.
    \]
 
-3. If
+4. If
    \[
    \operatorname{ovrk}_{R,L}(G)>m,
    \]
@@ -34,7 +42,7 @@ and a constant $\mu=\mu(\Delta,R,L)$ such that:
    \]
 
 ## Consequence
-There exists $q_{\Delta,R,L}$ such that
+There exists \(q_{\Delta,R,L}\) such that
 \[
 \operatorname{ovrk}_{R,L}(G)>m
 \Longrightarrow
