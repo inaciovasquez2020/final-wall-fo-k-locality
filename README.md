@@ -22,3 +22,7 @@ This repository is **terminal and frozen**. It provides the *final structural st
 ## Freeze
 This repository is certificate-only once frozen.
 No semantic changes allowed.
+
+## External status
+
+This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
